@@ -1,0 +1,6 @@
+neo4j:
+  boltAddress: bolt://neo4j:7687
+  user: neo4j
+  password: root
+
+experimentsFile: experiments.yaml

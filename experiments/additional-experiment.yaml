@@ -1,0 +1,5 @@
+charts:
+  repositoryUrl: https://github.com/HanSolo/charts
+  sourcePackage: .
+  tagIds:
+    - 1.0.5

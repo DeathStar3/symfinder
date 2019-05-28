@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>${title}</title>
+</head>
+<body id="index-body">
+
+
+
+
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="headingOne">
+            <a class="navbar-brand" href="#">
+                <img src="symfinder-icon.png" width="35" height="35" class="d-inline-block" alt="">
+                Symfinder
+            </a>
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block" id="hide-info-button" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Hide project information
+                </button>
+            </h2>
+            <p class="badge-dark ml-auto mr-1 my-lg-0" style="font-size: 1em" id="xp-identifier">${identifier}</p>
+        </nav>
+
+        <div id="collapseOne" class="collapse show border-white" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body ">
+                <div class="row py-4 pl-4">
+                    <div class="input-group col-4">
+                        <input id="package-to-filter" type="text" class="form-control border-dark" placeholder="Package/class to filter"
+                               aria-label="Package/class to filter" aria-describedby="add-filter-button">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-dark" type="button" id="add-filter-button">Add new filter</button>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" id="filter-isolated" value="filter-isolated">Filter isolated nodes</button>
+                    </div>
+                </div>
+                <div class="row py-4 pl-4 justify-content-between">
+                    <div class="col-auto mr-auto">
+                        <ul class="list-group" id="list-tab" role="tablist">
+                        </ul>
+                    </div>
+                    <div class="col-4">
+                        <p id="statistics"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<svg width="960" height="500"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="${jsScriptFile}"></script>
+<script >
+    function display() {
+        let filters = [${filters}];
+        displayGraph("${jsonFile}", "${jsonStatsFile}", filters);
+    }
+    window.onload = display;
+</script>
+</body>

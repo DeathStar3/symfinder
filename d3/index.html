@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Symfinder</title>
+</head>
+<body id="index-body">
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="headingOne">
+    <a class="navbar-brand" href="#">
+        <img src="symfinder-icon.png" width="35" height="35" class="d-inline-block" alt="">
+        Symfinder
+    </a>
+</nav>
+
+<div class="row py-4 pl-4">
+    <h2>Experiments</h2>
+</div>
+<div class="row py-4 pl-4 justify-content-between">
+    <div class="col-auto mr-auto">
+        <div class="list-group" id="list-tab">
+            % for name, path in xps.items():
+            <a href="${path}" class="list-group-item list-group-item-action">${name}</a>
+            % endfor
+        </div>
+    </div>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

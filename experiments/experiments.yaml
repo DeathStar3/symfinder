@@ -1,0 +1,42 @@
+awt:
+  repositoryUrl: https://github.com/JetBrains/jdk8u_jdk
+  sourcePackage: src/share/classes/java/awt
+  tagIds:
+    - jb8u202-b1532
+cxf:
+  repositoryUrl: https://github.com/apache/cxf
+  sourcePackage: .
+  tagIds:
+    - cxf-3.2.7
+junit:
+  repositoryUrl: https://github.com/junit-team/junit4
+  sourcePackage: .
+  tagIds:
+    - r4.12
+maven:
+  repositoryUrl: https://github.com/apache/maven
+  sourcePackage: .
+  tagIds:
+    - maven-3.6.0
+jhipster:
+  repositoryUrl: https://github.com/jhipster/jhipster
+  sourcePackage: jhipster-framework/
+  tagIds:
+    - 2.0.28
+jfreechart:
+  repositoryUrl: https://github.com/jfree/jfreechart
+  sourcePackage: .
+  tagIds:
+    - v1.5.0
+  filters:
+    - org.jfree.chart.util.PublicCloneable
+javaGeom:
+  repositoryUrl: https://github.com/dlegland/javaGeom
+  sourcePackage: .
+  commitIds:
+    - 7e5ee60ea9febe2acbadb75557d9659d7fafdd28
+argoUML:
+  repositoryUrl: https://github.com/marcusvnac/argouml-spl/
+  sourcePackage: .
+  commitIds:
+    - bcae37308b13b7ee62da0867a77d21a0141a0f18
