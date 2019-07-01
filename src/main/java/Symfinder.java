@@ -417,9 +417,13 @@ public class Symfinder {
 
     }
 
+	/**
+	 * We consider as a test class a class contained in a package containing "test".
+	 * This condition is sufficient if we consider projects built using Maven.
+	 * Adding a condition on the class' name may remove from the analysis important classes (in JUnit for example)
+	 */
     private boolean isTestClass(ITypeBinding classBinding) {
-        return classBinding.getQualifiedName().contains("Test") ||
-                Arrays.asList(classBinding.getPackage().getNameComponents()).contains("test");
+        return Arrays.asList(classBinding.getPackage().getNameComponents()).contains("test");
     }
 
     private ASTNode getParentOfNodeWithType(ASTNode node, int astNodeType) {

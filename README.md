@@ -12,10 +12,14 @@
 - Windows 10 64bit: Pro, Enterprise or Education (Build 15063 or later)
 - macOS Sierra 10.12 or newer on a hardware from at least 2010
 
-**Note:** If you run Symfinder on a Windows system, Symfinder must be placed somewhere on your `C:` drive.
+**Note:** If you run symfinder on a Windows system, symfinder must be placed somewhere on your `C:` drive.
 
 If your system does not match any of the requirements above, you must install a virtual machine.
 [This tutorial](https://www.wikihow.com/Install-Ubuntu-on-VirtualBox) may help you.
+
+**Note:** By default, on a GNU/Linux host, Docker commands must be run using `sudo`. Two options are available for you in order to run symfinder:
+- Follow [these short steps](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) to allow your user to call Docker commands,
+- Preface the scripts calls with `sudo`.
 
 ## Getting Symfinder
 
@@ -81,6 +85,14 @@ This command will analyse the following projects:
 - [JFreeChart 1.5.0](https://github.com/jfree/jfreechart/tree/v1.5.0/src/main/java/org/jfree)
 - [JavaGeom](https://github.com/dlegland/javaGeom/tree/7e5ee60ea9febe2acbadb75557d9659d7fafdd28/src)
 - [ArgoUML](https://github.com/marcusvnac/argouml-spl/tree/bcae37308b13b7ee62da0867a77d21a0141a0f18/src)
+
+You can specify the projects you want to run by passing their names as parameters of the running script, for example
+
+```bash
+./run.sh junit
+```
+
+More details about the analysed projects and their definition are given in the [Using Symfinder on your project](#using-symfinder-on-your-project) section.
 
 ### Analysing the output data
 

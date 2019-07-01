@@ -29,7 +29,7 @@ function displayGraph(jsonFile, jsonStatsFile, nodefilters = [], filterIsolated 
     if (firstTime) {
         filters.forEach(filter => {
             $("#list-tab").append(getFilterItem(filter));
-        });
+    });
         firstTime = false;
     }
 
@@ -164,13 +164,16 @@ function generateGraph() {
             })
             .style("stroke", "black")
             .style("stroke-width", function (d) {
-                return d.types.includes("ABSTRACT") ? 1 : d.strokeWidth
+                return d.nbVariants
             })
             .attr("r", function (d) {
                 return d.radius
             })
             .attr("fill", function (d) {
                 return d.types.includes("INTERFACE") ? d3.rgb(0, 0, 0) : d3.rgb(color(d.constructors))
+            })
+            .attr("name", function (d) {
+                return d.name
             })
             .call(d3.drag()
                 .on("start", dragstarted)
@@ -236,6 +239,10 @@ function generateGraph() {
 
         //	ENTER + UPDATE
         label = label.merge(newLabel);
+
+        d3.selectAll("circle.node").on("click", function () {
+            addFilter(d3.select(this).attr("name"));
+        });
 
         //	update simulation nodes, links, and alpha
         simulation
@@ -319,6 +326,14 @@ function generateGraph() {
 
 }
 
+function addFilter(value) {
+    if (value) {
+        $("#list-tab").append(getFilterItem(value));
+        filters.push(value);
+        displayGraph(jsonFile, jsonStatsFile, filters, filterIsolated);
+    }
+}
+
 $(document).on('click', ".list-group-item", function (e) {
     e.preventDefault();
     $('.active').removeClass('active');
@@ -329,11 +344,7 @@ $("#add-filter-button").on('click', function (e) {
     let input = $("#package-to-filter");
     let inputValue = input.val();
     input.val("");
-    if (inputValue) {
-        $("#list-tab").append(getFilterItem(inputValue));
-        filters.push(inputValue);
-        displayGraph(jsonFile, jsonStatsFile, filters, filterIsolated);
-    }
+    addFilter(inputValue);
 });
 
 $("#filter-isolated").on('click', function (e) {
