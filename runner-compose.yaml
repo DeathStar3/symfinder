@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@etu.univ-cotedazur.fr>
+# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
 # Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
@@ -23,16 +23,17 @@ version: "3.6"
 
 services:
   runner:
-    build:
-      context: .
-      dockerfile: docker/runner/RunnerDockerfile
-    image: symfinder-runner
+    image: deathstar3/symfinder-runner:${TAG}
     container_name: symfinder-runner
     environment:
       - DIR_PATH=${PWD}
+      - TAG=${TAG}
       - SYMFINDER_UID=${SYMFINDER_UID}
       - SYMFINDER_GID=${SYMFINDER_GID}
       - SYMFINDER_PROJECTS=${SYMFINDER_PROJECTS}
       - COMPOSE_CONVERT_WINDOWS_PATHS=1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./experiments:/experiments
+      - ./symfinder.yaml:/symfinder.yaml
+      - ./symfinder-compose.yaml:/symfinder-compose.yaml

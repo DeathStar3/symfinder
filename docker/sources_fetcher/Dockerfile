@@ -1,4 +1,3 @@
-#!/bin/sh
 #
 # This file is part of symfinder.
 #
@@ -20,8 +19,7 @@
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
-set -e
-
-java -jar /symfinder.jar /resources/"$1" "$2"
-
-chown -R $SYMFINDER_UID:$SYMFINDER_GID /generated_visualizations
+FROM python:3.7.3-alpine3.9
+RUN apk add git bash && pip install PyYAML mako
+ADD docker/sources_fetcher/files/* /
+CMD sh sources_fetcher.sh

@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@etu.univ-cotedazur.fr>
+# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
 # Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
@@ -41,9 +41,10 @@ with open('symfinder.yaml', 'r') as config_file:
     with open("experiments/" + data["experimentsFile"], 'r') as experiments_file:
         experiments = yaml.load(experiments_file.read(), Loader=yaml.FullLoader)
         projects_to_analyse = os.getenv('SYMFINDER_PROJECTS')
-        for p in projects_to_analyse.split(" "):
-            if p not in experiments.keys():
-                print("WARNING: project {} does not exist".format(p))
+        if projects_to_analyse:
+            for p in projects_to_analyse.split(" "):
+                if p not in experiments.keys():
+                    print("WARNING: project {} does not exist".format(p))
         for xp_name, xp_config in experiments.items():
             if not projects_to_analyse or xp_name in projects_to_analyse.split(" "):
                 projects_package = "resources"

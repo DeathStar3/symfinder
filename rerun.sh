@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@etu.univ-cotedazur.fr>
+# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
 # Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
@@ -27,4 +27,4 @@ export SYMFINDER_GID=$(id -g)
 export SYMFINDER_PROJECTS="$@"
 
 docker-compose -f runner-compose.yaml up
-
+docker-compose -f runner-compose.yaml down

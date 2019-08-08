@@ -1,3 +1,24 @@
+<!--
+This file is part of symfinder.
+
+symfinder is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+symfinder is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
+
+Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+Copyright 2018-2019 Xhevahire Ternava <xhevahire.ternava@lip6.fr>
+Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+//-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +33,7 @@
 
 
 
-<div class="accordion" id="accordionExample">
+<div class="accordion">
     <div class="card">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="headingOne">
             <a class="navbar-brand" href="#">
@@ -20,15 +41,20 @@
                 Symfinder
             </a>
             <h2 class="mb-0">
-                <button class="btn btn-dark btn-block" id="hide-info-button" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="btn btn-dark btn-block" id="hide-info-button" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     Hide project information
+                </button>
+            </h2>
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block" id="hide-legend-button" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Show legend
                 </button>
             </h2>
             <p class="badge-dark ml-auto mr-1 my-lg-0" style="font-size: 1em" id="xp-identifier">${identifier}</p>
         </nav>
 
-        <div id="collapseOne" class="collapse show border-white" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body ">
+        <div id="collapseOne" class="collapse multi-collapse show border-white" aria-labelledby="headingOne">
+            <div class="card-body">
                 <div class="row py-4 pl-4">
                     <div class="input-group col-4">
                         <input id="package-to-filter" type="text" class="form-control border-dark" placeholder="Package/class to filter"
@@ -49,6 +75,13 @@
                     <div class="col-4">
                         <p id="statistics"></p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="collapseTwo" class="collapse multi-collapse border-white" aria-labelledby="headingTwo">
+            <div class="card-body">
+                <div class="text-center">
+                    <img width="800" src="symfinder-legend.svg">
                 </div>
             </div>
         </div>

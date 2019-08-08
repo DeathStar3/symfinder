@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@etu.univ-cotedazur.fr>
+# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
 # Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
@@ -32,7 +32,18 @@ create_directory(){
 create_directory resources
 create_directory generated_visualizations
 
-SYMFINDER_PROJECTS="$@"
+#SYMFINDER_PROJECTS="$@"
 
-docker run -it -v $(pwd)/resources:/resources -v $(pwd)/d3:/d3 -v $(pwd)/generated_visualizations:/generated_visualizations --user $(id -u):$(id -g) -e SYMFINDER_VERSION=$(git rev-parse --short=0 HEAD) -e SYMFINDER_PROJECTS="${SYMFINDER_PROJECTS[@]}" --rm symfinder-sources_fetcher
-./rerun.sh "$@"
+if [[ "$1" == "--local" ]]; then
+    export TAG=local
+    SYMFINDER_PROJECTS="${@:2}"
+else
+    export TAG=latest
+    SYMFINDER_PROJECTS="$@"
+fi
+
+echo "Using $TAG images"
+
+docker run -it -v $(pwd)/experiments:/experiments -v $(pwd)/symfinder.yaml:/symfinder.yaml -v $(pwd)/resources:/resources -v $(pwd)/d3:/d3 -v $(pwd)/generated_visualizations:/generated_visualizations --user $(id -u):$(id -g) -e SYMFINDER_VERSION=$(git rev-parse --short=0 HEAD) -e SYMFINDER_PROJECTS="${SYMFINDER_PROJECTS[@]}" --rm deathstar3/symfinder-fetcher:${TAG}
+
+./rerun.sh "$SYMFINDER_PROJECTS"

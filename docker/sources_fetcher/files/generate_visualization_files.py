@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@etu.univ-cotedazur.fr>
+# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
 # Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
@@ -36,6 +36,7 @@ def copy_file(filename):
 copy_file("symfinder.js")
 copy_file("style.css")
 copy_file("symfinder-icon.png")
+copy_file("symfinder-legend.svg")
 
 with open('symfinder.yaml', 'r') as config_file:
     data = yaml.load(config_file.read(), Loader=yaml.FullLoader)

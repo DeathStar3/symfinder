@@ -38,30 +38,7 @@ If your system does not match any of the requirements above, you must install a 
 
 ## Reproducing the experiments
 
-1. Build the project by running
-
-    - On GNU/Linux and macOS
-
-    ```bash
-    ./build.sh
-    ```
-
-    - On Windows
-
-    ```batch
-    build.bat
-    ```
-
-**Note:** you can pass Maven build arguments to the build script.
-A useful use case is for skipping the execution of tests:
-
-```bash
-./build.sh -DskipTests
-```
-
-The reference for Maven CLI Options is [here](https://maven.apache.org/ref/3.1.0/maven-embedder/cli.html).
-
-2. Once the build is finished, run the analyses by running
+Run the analyses by running
 
 
     - On GNU/Linux and macOS

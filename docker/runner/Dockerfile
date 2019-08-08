@@ -1,4 +1,3 @@
-#!/bin/sh
 #
 # This file is part of symfinder.
 #
@@ -20,8 +19,8 @@
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
-set -e
-
-java -jar /symfinder.jar /resources/"$1" "$2"
-
-chown -R $SYMFINDER_UID:$SYMFINDER_GID /generated_visualizations
+FROM python:3.7.3-alpine3.9
+RUN apk add bash py-pip && apk add --virtual buildpacks python-dev libffi-dev openssl-dev gcc libc-dev make && pip install docker-compose && apk del buildpacks
+ADD docker/runner/files/* /
+ADD docker/* /docker/
+CMD python3 run_xps.py
