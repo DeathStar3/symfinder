@@ -1,0 +1,22 @@
+{
+  "name": "karma-conf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "karma start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-core": "^3.5.0",
+    "karma": "^4.4.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^1.2.0",
+    "karma-helpful-reporter": "^0.3.4",
+    "karma-jasmine": "^2.0.1",
+    "karma-jquery": "^0.2.4",
+    "karma-spec-reporter": "^0.0.32"
+  }
+}

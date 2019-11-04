@@ -1,0 +1,80 @@
+{
+  "nodes": [
+    {
+      "name": "standardNode",
+      "constructorVariants": 0,
+      "classVariants": 2,
+      "types": [
+        "CLASS",
+        "VP"
+      ],
+      "methodVPs": 8
+    },
+    {
+      "name": "abstractClassNode",
+      "constructorVariants": 0,
+      "classVariants": 2,
+      "types": [
+        "CLASS",
+        "ABSTRACT",
+        "VP"
+      ],
+      "methodVPs": 8
+    },
+    {
+      "name": "interfaceNode",
+      "constructorVariants": 0,
+      "classVariants": 2,
+      "types": [
+        "INTERFACE",
+        "VP"
+      ],
+      "methodVPs": 8
+    },
+    {
+      "name": "strategyNode",
+      "constructorVariants": 0,
+      "classVariants": 2,
+      "types": [
+        "CLASS",
+        "STRATEGY",
+        "VP"
+      ],
+      "methodVPs": 8
+    },
+    {
+      "name": "factoryNode",
+      "constructorVariants": 0,
+      "classVariants": 2,
+      "types": [
+        "INTERFACE",
+        "FACTORY",
+        "VP"
+      ],
+      "methodVPs": 8
+    },
+    {
+      "name": "templateNode",
+      "constructorVariants": 0,
+      "classVariants": 2,
+      "types": [
+        "INTERFACE",
+        "TEMPLATE",
+        "VP"
+      ],
+      "methodVPs": 8
+    },
+    {
+      "name": "decoratorNode",
+      "constructorVariants": 0,
+      "classVariants": 2,
+      "types": [
+        "INTERFACE",
+        "DECORATOR",
+        "VP"
+      ],
+      "methodVPs": 8
+    }
+  ],
+  "links": []
+}

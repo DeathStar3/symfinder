@@ -1,0 +1,93 @@
+{
+  "nodes": [
+    {
+      "name": "OneMethodOverload",
+      "constructorVariants": 0,
+      "classVariants": 0,
+      "types": [
+        "CLASS",
+        "ABSTRACT",
+        "VP"
+      ],
+      "methodVPs": 1
+    },
+    {
+      "name": "TenMethodOverloads",
+      "constructorVariants": 0,
+      "classVariants": 0,
+      "types": [
+        "CLASS",
+        "ABSTRACT",
+        "VP"
+      ],
+      "methodVPs": 10
+    },
+    {
+      "name": "OneConstructorOverload",
+      "constructorVariants": 1,
+      "classVariants": 0,
+      "types": [
+        "CLASS",
+        "ABSTRACT",
+        "VP"
+      ],
+      "methodVPs": 0
+    },
+    {
+      "name": "TenConstructorOverloads",
+      "constructorVariants": 10,
+      "classVariants": 0,
+      "types": [
+        "CLASS",
+        "ABSTRACT",
+        "VP"
+      ],
+      "methodVPs": 0
+    },
+    {
+      "name": "NoVariant",
+      "constructorVariants": 0,
+      "classVariants": 0,
+      "types": [
+        "CLASS",
+        "ABSTRACT",
+        "VP"
+      ],
+      "methodVPs": 0
+    },
+    {
+      "name": "TenVariants",
+      "constructorVariants": 0,
+      "classVariants": 10,
+      "types": [
+        "CLASS",
+        "ABSTRACT",
+        "VP"
+      ],
+      "methodVPs": 0
+    },
+    {
+      "name": "factoryInterfaceNode",
+      "constructorVariants": 0,
+      "classVariants": 2,
+      "types": [
+        "INTERFACE",
+        "FACTORY",
+        "VP"
+      ],
+      "methodVPs": 8
+    },
+    {
+      "name": "factoryClassNode",
+      "constructorVariants": 0,
+      "classVariants": 2,
+      "types": [
+        "FACTORY",
+        "VP"
+      ],
+      "methodVPs": 8
+    }
+  ],
+  "links": [
+  ]
+}

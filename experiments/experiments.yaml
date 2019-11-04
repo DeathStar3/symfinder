@@ -11,6 +11,7 @@ cxf:
 junit:
   repositoryUrl: https://github.com/junit-team/junit4
   sourcePackage: .
+#  buildImage: docker/build_images/junit/Dockerfile
   tagIds:
     - r4.12
 maven:
@@ -39,7 +40,7 @@ javaGeom:
     - 7e5ee60ea9febe2acbadb75557d9659d7fafdd28
 argoUML:
   repositoryUrl: https://github.com/marcusvnac/argouml-spl/
-  sourcePackage: .
+  sourcePackage: src/argouml-app
   commitIds:
     - bcae37308b13b7ee62da0867a77d21a0141a0f18
   filters:

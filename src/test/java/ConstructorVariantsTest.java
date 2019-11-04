@@ -8,11 +8,11 @@
  *
  * symfinder is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
+ * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
  * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
  * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
@@ -26,7 +26,7 @@ import org.neo4j.driver.v1.types.Node;
 
 import static org.junit.Assert.assertEquals;
 
-public class ConstructorVariantsTest extends Neo4JTest {
+public class ConstructorVariantsTest extends Neo4jTest {
 
     @Test
     public void OneClassNoConstructorVariant() {
@@ -34,6 +34,7 @@ public class ConstructorVariantsTest extends Neo4JTest {
             Node rectangleClass = graph.createNode("Rectangle", EntityType.CLASS);
             Node rectangleConstructor = graph.createNode("Rectangle", EntityType.CONSTRUCTOR);
             graph.linkTwoNodes(rectangleClass, rectangleConstructor, RelationType.METHOD);
+            graph.setConstructorVariants();
             assertEquals(0, graph.getNbConstructorVariants());
         });
     }
@@ -46,6 +47,7 @@ public class ConstructorVariantsTest extends Neo4JTest {
             Node rectangleConstructor2 = graph.createNode("Rectangle", EntityType.CONSTRUCTOR);
             graph.linkTwoNodes(rectangleClass, rectangleConstructor1, RelationType.METHOD);
             graph.linkTwoNodes(rectangleClass, rectangleConstructor2, RelationType.METHOD);
+            graph.setConstructorVariants();
             assertEquals(2, graph.getNbConstructorVariants());
         });
     }
@@ -60,6 +62,7 @@ public class ConstructorVariantsTest extends Neo4JTest {
             graph.linkTwoNodes(rectangleClass, rectangleConstructor1, RelationType.METHOD);
             graph.linkTwoNodes(rectangleClass, rectangleConstructor2, RelationType.METHOD);
             graph.linkTwoNodes(rectangleClass, rectangleConstructor3, RelationType.METHOD);
+            graph.setConstructorVariants();
             assertEquals(3, graph.getNbConstructorVariants());
         });
     }
@@ -73,12 +76,13 @@ public class ConstructorVariantsTest extends Neo4JTest {
            Node circleConstructor = graph.createNode("Circle", EntityType.METHOD);
            graph.linkTwoNodes(rectangleClass, rectangleConstructor, RelationType.METHOD);
            graph.linkTwoNodes(circleClass, circleConstructor, RelationType.METHOD);
+           graph.setConstructorVariants();
            assertEquals(0, graph.getNbConstructorVariants());
        });
     }
 
     @Test
-    public void TwoClassesOneConstructorVariant() {
+    public void TwoClassesTwoConstructorVariantsOnOneClass() {
         runTest(graph -> {
             Node rectangleClass = graph.createNode("Rectangle", EntityType.CLASS);
             Node rectangleConstructor1 = graph.createNode("Rectangle", EntityType.CONSTRUCTOR);
@@ -88,12 +92,13 @@ public class ConstructorVariantsTest extends Neo4JTest {
             graph.linkTwoNodes(rectangleClass, rectangleConstructor1, RelationType.METHOD);
             graph.linkTwoNodes(rectangleClass, rectangleConstructor2, RelationType.METHOD);
             graph.linkTwoNodes(circleClass, circleConstructor, RelationType.METHOD);
+            graph.setConstructorVariants();
             assertEquals(2, graph.getNbConstructorVariants());
         });
     }
 
     @Test
-    public void TwoClassesTwoConstructorVariants() {
+    public void TwoClassesTwoConstructorVariantsOnBothClasses() {
         runTest(graph -> {
             Node rectangleClass = graph.createNode("Rectangle", EntityType.CLASS);
             Node circleClass = graph.createNode("Circle", EntityType.CLASS);
@@ -105,6 +110,7 @@ public class ConstructorVariantsTest extends Neo4JTest {
             graph.linkTwoNodes(rectangleClass, rectangleConstructor2, RelationType.METHOD);
             graph.linkTwoNodes(circleClass, circleConstructor1, RelationType.METHOD);
             graph.linkTwoNodes(circleClass, circleConstructor2, RelationType.METHOD);
+            graph.setConstructorVariants();
             assertEquals(4, graph.getNbConstructorVariants());
         });
     }

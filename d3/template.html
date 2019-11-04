@@ -17,7 +17,7 @@ along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
 Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
 Copyright 2018-2019 Xhevahire Ternava <xhevahire.ternava@lip6.fr>
 Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
-//-->
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +46,17 @@ Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
                 </button>
             </h2>
             <h2 class="mb-0">
-                <button class="btn btn-dark btn-block" id="hide-legend-button" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <button class="btn btn-dark btn-block" id="hide-color-button" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Color packages
+                </button>
+            </h2>
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block" id="hide-legend-button" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     Show legend
                 </button>
+            </h2>
+            <h2 class="mb-0">
+                <button type="button" class="btn btn-dark btn-block" data-toggle="button" aria-pressed="false" id="filter-variants-button" value="filter-variants-button">Show variants</button>
             </h2>
             <p class="badge-dark ml-auto mr-1 my-lg-0" style="font-size: 1em" id="xp-identifier">${identifier}</p>
         </nav>
@@ -80,8 +88,27 @@ Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
         </div>
         <div id="collapseTwo" class="collapse multi-collapse border-white" aria-labelledby="headingTwo">
             <div class="card-body">
+                <div class="row py-4 pl-4">
+                    <div class="input-group col-4">
+                        <input id="package-to-color" type="text" class="form-control border-dark" placeholder="Package/class to color"
+                               aria-label="Package/class to filter" aria-describedby="add-package-button">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-dark" type="button" id="add-package-button">Add new package</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-4 pl-4 justify-content-between">
+                    <div class="col-auto mr-auto">
+                        <ul class="list-group" id="color-tab" role="tablist">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="collapseThree" class="collapse multi-collapse border-white" aria-labelledby="headingThree">
+            <div class="card-body">
                 <div class="text-center">
-                    <img width="800" src="symfinder-legend.svg">
+                    <img width="900" src="symfinder-legend.svg">
                 </div>
             </div>
         </div>
@@ -99,12 +126,21 @@ Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="${jsScriptFile}"></script>
-<script >
-    function display() {
-        let filters = [${filters}];
-        displayGraph("${jsonFile}", "${jsonStatsFile}", filters);
+<script src="scripts/nodes-filter.js" type="module"></script>
+<script type="module">
+    import {Graph} from "./scripts/graph.js";
+
+    var visualization;
+
+    async function display(jsonFile, jsonStatsFile) {
+        let filters = [];
+        visualization = new Graph(jsonFile, jsonStatsFile, filters);
+        return await visualization.displayGraph();
     }
-    window.onload = display;
+
+    window.onload = async () => {
+        window.graph = await display("${jsonFile}", "${jsonStatsFile}");
+    };
+
 </script>
 </body>

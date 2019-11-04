@@ -8,11 +8,11 @@
  *
  * symfinder is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
+ * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
  * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
  * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
@@ -26,7 +26,7 @@ import org.neo4j.driver.v1.types.Node;
 
 import static org.junit.Assert.assertEquals;
 
-public class MethodVPsTest extends Neo4JTest {
+public class MethodVPsTest extends Neo4jTest {
 
     @Test
     public void OneClassNoMethodOverload(){
@@ -37,8 +37,8 @@ public class MethodVPsTest extends Neo4JTest {
             RelationType relationType = RelationType.METHOD;
             graph.linkTwoNodes(nodeClass, nodeMethod1, relationType);
             graph.linkTwoNodes(nodeClass, nodeMethod2, relationType);
-            graph.setMethodsOverloads();
-            assertEquals(0, graph.getTotalNbOverloadedMethods());
+            graph.setMethodVPs();
+            assertEquals(0, graph.getNbMethodVPs());
         });
     }
 
@@ -55,8 +55,8 @@ public class MethodVPsTest extends Neo4JTest {
             graph.linkTwoNodes(shapeNode, shapeMethod2, RelationType.METHOD);
             graph.linkTwoNodes(polygonNode, polygonMethod1, RelationType.METHOD);
             graph.linkTwoNodes(polygonNode, polygonMethod2, RelationType.METHOD);
-            graph.setMethodsOverloads();
-            assertEquals(0, graph.getTotalNbOverloadedMethods());
+            graph.setMethodVPs();
+            assertEquals(0, graph.getNbMethodVPs());
         });
     }
 
@@ -69,8 +69,8 @@ public class MethodVPsTest extends Neo4JTest {
             RelationType relationType = RelationType.METHOD;
             graph.linkTwoNodes(nodeClass, nodeMethod1, relationType);
             graph.linkTwoNodes(nodeClass, nodeMethod2, relationType);
-            graph.setMethodsOverloads();
-            assertEquals(1, graph.getTotalNbOverloadedMethods());
+            graph.setMethodVPs();
+            assertEquals(1, graph.getNbMethodVPs());
         });
     }
 
@@ -87,8 +87,8 @@ public class MethodVPsTest extends Neo4JTest {
             graph.linkTwoNodes(shapeNode, shapeMethod2, RelationType.METHOD);
             graph.linkTwoNodes(polygonNode, polygonMethod1, RelationType.METHOD);
             graph.linkTwoNodes(polygonNode, polygonMethod2, RelationType.METHOD);
-            graph.setMethodsOverloads();
-            assertEquals(1, graph.getTotalNbOverloadedMethods());
+            graph.setMethodVPs();
+            assertEquals(1, graph.getNbMethodVPs());
         });
     }
 
@@ -105,8 +105,8 @@ public class MethodVPsTest extends Neo4JTest {
             graph.linkTwoNodes(shapeNode, shapeMethod2, RelationType.METHOD);
             graph.linkTwoNodes(polygonNode, polygonMethod1, RelationType.METHOD);
             graph.linkTwoNodes(polygonNode, polygonMethod2, RelationType.METHOD);
-            graph.setMethodsOverloads();
-            assertEquals(2, graph.getTotalNbOverloadedMethods());
+            graph.setMethodVPs();
+            assertEquals(2, graph.getNbMethodVPs());
         });
     }
 

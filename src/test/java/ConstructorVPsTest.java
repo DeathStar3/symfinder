@@ -8,11 +8,11 @@
  *
  * symfinder is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
+ * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
  * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
  * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
@@ -26,7 +26,7 @@ import org.neo4j.driver.v1.types.Node;
 
 import static org.junit.Assert.assertEquals;
 
-public class ConstructorVPsTest extends Neo4JTest {
+public class ConstructorVPsTest extends Neo4jTest {
 
     @Test
     public void OneClassNoConstructorOverload() {
@@ -34,8 +34,8 @@ public class ConstructorVPsTest extends Neo4JTest {
             Node shapeClass = graph.createNode("Shape", EntityType.CLASS);
             Node shapeConstructor = graph.createNode("Shape", EntityType.CONSTRUCTOR);
             graph.linkTwoNodes(shapeClass, shapeConstructor, RelationType.METHOD);
-            graph.setConstructorsOverloads();
-            assertEquals(0, graph.getTotalNbOverloadedConstructors());
+            graph.setConstructorVPs();
+            assertEquals(0, graph.getNbConstructorVPs());
         });
     }
 
@@ -47,8 +47,8 @@ public class ConstructorVPsTest extends Neo4JTest {
             Node shapeConstructor2 = graph.createNode("Shape", EntityType.CONSTRUCTOR);
             graph.linkTwoNodes(shapeClass, shapeConstructor1, RelationType.METHOD);
             graph.linkTwoNodes(shapeClass, shapeConstructor2, RelationType.METHOD);
-            graph.setConstructorsOverloads();
-            assertEquals(1, graph.getTotalNbOverloadedConstructors());
+            graph.setConstructorVPs();
+            assertEquals(1, graph.getNbConstructorVPs());
         });
     }
 
@@ -62,8 +62,8 @@ public class ConstructorVPsTest extends Neo4JTest {
             graph.linkTwoNodes(shapeClass, shapeConstructor1, RelationType.METHOD);
             graph.linkTwoNodes(shapeClass, shapeConstructor2, RelationType.METHOD);
             graph.linkTwoNodes(shapeClass, shapeConstructor3, RelationType.METHOD);
-            graph.setConstructorsOverloads();
-            assertEquals(2, graph.getTotalNbOverloadedConstructors());
+            graph.setConstructorVPs();
+            assertEquals(1, graph.getNbConstructorVPs());
         });
     }
 
@@ -76,8 +76,8 @@ public class ConstructorVPsTest extends Neo4JTest {
             Node polygonConstructor = graph.createNode("Polygon", EntityType.CONSTRUCTOR);
             graph.linkTwoNodes(shapeClass, shapeConstructor1, RelationType.METHOD);
             graph.linkTwoNodes(polygonClass, polygonConstructor, RelationType.METHOD);
-            graph.setConstructorsOverloads();
-            assertEquals(0, graph.getTotalNbOverloadedConstructors());
+            graph.setConstructorVPs();
+            assertEquals(0, graph.getNbConstructorVPs());
         });
     }
 
@@ -92,8 +92,8 @@ public class ConstructorVPsTest extends Neo4JTest {
             graph.linkTwoNodes(shapeClass, shapeConstructor1, RelationType.METHOD);
             graph.linkTwoNodes(shapeClass, shapeConstructor2, RelationType.METHOD);
             graph.linkTwoNodes(polygonClass, polygonConstructor, RelationType.METHOD);
-            graph.setConstructorsOverloads();
-            assertEquals(1, graph.getTotalNbOverloadedConstructors());
+            graph.setConstructorVPs();
+            assertEquals(1, graph.getNbConstructorVPs());
         });
     }
 
@@ -110,8 +110,8 @@ public class ConstructorVPsTest extends Neo4JTest {
             graph.linkTwoNodes(shapeClass, shapeConstructor2, RelationType.METHOD);
             graph.linkTwoNodes(polygonClass, polygonConstructor1, RelationType.METHOD);
             graph.linkTwoNodes(polygonClass, polygonConstructor2, RelationType.METHOD);
-            graph.setConstructorsOverloads();
-            assertEquals(2, graph.getTotalNbOverloadedConstructors());
+            graph.setConstructorVPs();
+            assertEquals(2, graph.getNbConstructorVPs());
         });
     }
 

@@ -41,13 +41,13 @@ If your system does not match any of the requirements above, you must install a 
 Run the analyses by running
 
 
-    - On GNU/Linux and macOS
+- On GNU/Linux and macOS
 
     ```bash
     ./run.sh
     ```
 
-    - On Windows
+- On Windows
 
     ```batch
     run.bat

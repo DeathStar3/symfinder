@@ -8,11 +8,11 @@
  *
  * symfinder is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
+ * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
  * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
  * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
@@ -20,13 +20,19 @@
  */
 
 import configuration.Configuration;
-import neo4j_types.*;
+import neograph.NeoGraph;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.core.dom.*;
-import org.neo4j.driver.v1.types.Node;
+import org.eclipse.jdt.core.dom.AST;
+import org.eclipse.jdt.core.dom.ASTParser;
+import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.CompilationUnit;
+import visitors.ClassesVisitor;
+import visitors.FactoryVisitor;
+import visitors.GraphBuilderVisitor;
+import visitors.StrategyTemplateDecoratorVisitor;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +42,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -51,17 +59,17 @@ public class Symfinder {
     private String sourcePackage;
     private String graphOutputPath;
 
-    private int nbCorrectedInheritanceLinks = 0;
-
     public Symfinder(String sourcePackage, String graphOutputPath) {
         this.sourcePackage = sourcePackage;
         this.graphOutputPath = graphOutputPath;
-        this.neoGraph = new NeoGraph(Configuration.getNeo4JBoltAddress(),
+        this.neoGraph = new
+                NeoGraph(Configuration.getNeo4JBoltAddress(),
                 Configuration.getNeo4JUser(),
                 Configuration.getNeo4JPassword());
     }
 
     public void run() throws IOException {
+        logger.log(Level.getLevel("MY_LEVEL"), "Symfinder version: " + System.getenv("SYMFINDER_VERSION"));
         String classpathPath;
 
         classpathPath = System.getenv("JAVA_HOME");
@@ -80,45 +88,32 @@ public class Symfinder {
         neoGraph.createInterfacesIndex();
 
         logger.log(Level.getLevel("MY_LEVEL"), "ClassesVisitor");
-        visitPackage(classpathPath, files, new ClassesVisitor());
+        visitPackage(classpathPath, files, new ClassesVisitor(neoGraph));
         logger.log(Level.getLevel("MY_LEVEL"), "GraphBuilderVisitor");
-        visitPackage(classpathPath, files, new GraphBuilderVisitor());
-        logger.log(Level.getLevel("MY_LEVEL"), "StrategyVisitor");
-        visitPackage(classpathPath, files, new StrategyVisitor());
+        visitPackage(classpathPath, files, new GraphBuilderVisitor(neoGraph));
+        logger.log(Level.getLevel("MY_LEVEL"), "StrategyTemplateVisitor");
+        visitPackage(classpathPath, files, new StrategyTemplateDecoratorVisitor(neoGraph));
         logger.log(Level.getLevel("MY_LEVEL"), "FactoryVisitor");
-        visitPackage(classpathPath, files, new FactoryVisitor());
+        visitPackage(classpathPath, files, new FactoryVisitor(neoGraph));
 
-        neoGraph.setMethodsOverloads();
-        neoGraph.setConstructorsOverloads();
-        neoGraph.setNbVariantsProperty();
-        neoGraph.setVPLabels();
-        neoGraph.writeVPGraphFile(graphOutputPath);
-        logger.log(Level.getLevel("MY_LEVEL"), "Number of methods VPs: " + neoGraph.getTotalNbOverloadedMethods());
-        logger.log(Level.getLevel("MY_LEVEL"), "Number of constructors VPs: " + neoGraph.getTotalNbOverloadedConstructors());
+        neoGraph.detectVPsAndVariants();
+        logger.log(Level.getLevel("MY_LEVEL"), "Number of VPs: " + neoGraph.getTotalNbVPs());
+        logger.log(Level.getLevel("MY_LEVEL"), "Number of methods VPs: " + neoGraph.getNbMethodVPs());
+        logger.log(Level.getLevel("MY_LEVEL"), "Number of constructors VPs: " + neoGraph.getNbConstructorVPs());
         logger.log(Level.getLevel("MY_LEVEL"), "Number of method level VPs: " + neoGraph.getNbMethodLevelVPs());
         logger.log(Level.getLevel("MY_LEVEL"), "Number of class level VPs: " + neoGraph.getNbClassLevelVPs());
-        logger.log(Level.getLevel("MY_LEVEL"), "Number of VPs: " + neoGraph.getTotalNbVPs());
+        logger.log(Level.getLevel("MY_LEVEL"), "Number of variants: " + neoGraph.getTotalNbVariants());
         logger.log(Level.getLevel("MY_LEVEL"), "Number of methods variants: " + neoGraph.getNbMethodVariants());
         logger.log(Level.getLevel("MY_LEVEL"), "Number of constructors variants: " + neoGraph.getNbConstructorVariants());
         logger.log(Level.getLevel("MY_LEVEL"), "Number of method level variants: " + neoGraph.getNbMethodLevelVariants());
         logger.log(Level.getLevel("MY_LEVEL"), "Number of class level variants: " + neoGraph.getNbClassLevelVariants());
-        logger.log(Level.getLevel("MY_LEVEL"), "Number of variants: " + neoGraph.getTotalNbVariants());
         logger.log(Level.getLevel("MY_LEVEL"), "Number of nodes: " + neoGraph.getNbNodes());
         logger.log(Level.getLevel("MY_LEVEL"), "Number of relationships: " + neoGraph.getNbRelationships());
-        logger.log(Level.getLevel("MY_LEVEL"), "Number of corrected inheritance relationships: " + nbCorrectedInheritanceLinks + "/" + neoGraph.getNbInheritanceRelationships());
+        logger.log(Level.getLevel("MY_LEVEL"), "Number of corrected inheritance relationships: " + GraphBuilderVisitor.getNbCorrectedInheritanceLinks() + "/" + neoGraph.getNbInheritanceRelationships());
+        neoGraph.writeVPGraphFile(graphOutputPath);
         neoGraph.writeStatisticsFile(graphOutputPath.replace(".json", "-stats.json"));
         logger.debug(neoGraph.generateStatisticsJson());
-        neoGraph.deleteGraph();
         neoGraph.closeDriver();
-    }
-
-    private boolean isTestPath(Path path) {
-        for (int i = 0 ; i < path.getNameCount() ; i++) {
-            if (path.getName(i).toString().equals("test")) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private void visitPackage(String classpathPath, List <File> files, ASTVisitor visitor) throws IOException {
@@ -150,6 +145,15 @@ public class Symfinder {
         logger.printf(Level.getLevel("MY_LEVEL"), "%s execution time: %s", visitor.getClass().getTypeName(), formatExecutionTime(elapsedTime));
     }
 
+    private boolean isTestPath(Path path) {
+        for (int i = 0 ; i < path.getNameCount() ; i++) {
+            if (path.getName(i).toString().equals("test")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private String getFileLines(File file) {
         for (Charset charset : Charset.availableCharsets().values()) {
             String lines = getFileLinesWithEncoding(file, charset);
@@ -177,257 +181,5 @@ public class Symfinder {
         return sdf.format(resultdate);
     }
 
-    /**
-     * This class ensures is inherited by all visitors and ensures that some parts of the code are ignored:
-     * - enums
-     * - test classes
-     * - private nested classes
-     * - anonymous classes
-     */
-    private class SymfinderVisitor extends ASTVisitor {
-
-        @Override
-        public boolean visit(TypeDeclaration type) {
-            ITypeBinding classBinding = type.resolveBinding();
-            logger.printf(Level.INFO, "Visitor: %s - Class: %s", this.getClass().getTypeName(), classBinding.getQualifiedName());
-            return ! isTestClass(classBinding) && ! (classBinding.isNested() && Modifier.isPrivate(classBinding.getModifiers())) && ! classBinding.isEnum() && ! classBinding.isAnonymous();
-        }
-
-        @Override
-        public boolean visit(AnonymousClassDeclaration classDeclarationStatement) {
-            return false;
-        }
-
-    }
-
-    /**
-     * Parses all classes and the methods they contain, and adds them to the database.
-     */
-    private class ClassesVisitor extends SymfinderVisitor {
-
-        @Override
-        public boolean visit(TypeDeclaration type) {
-            if (super.visit(type)) {
-                EntityType nodeType;
-                EntityAttribute[] nodeAttributes;
-                // If the class is abstract
-                if (Modifier.isAbstract(type.getModifiers())) {
-                    nodeType = EntityType.CLASS;
-                    nodeAttributes = new EntityAttribute[]{EntityAttribute.ABSTRACT};
-                    // If the type is an interface
-                } else if (type.isInterface()) {
-                    nodeType = EntityType.INTERFACE;
-                    nodeAttributes = new EntityAttribute[]{};
-                    // The type is a class
-                } else {
-                    nodeType = EntityType.CLASS;
-                    nodeAttributes = new EntityAttribute[]{};
-                }
-                neoGraph.createNode(type.resolveBinding().getQualifiedName(), nodeType, nodeAttributes);
-                return true;
-            }
-            return false;
-        }
-
-        @Override
-        public boolean visit(MethodDeclaration method) {
-            // Ignoring methods in anonymous classes
-            ITypeBinding declaringClass;
-            if (! (method.resolveBinding() == null)) {
-                declaringClass = method.resolveBinding().getDeclaringClass();
-                    String methodName = method.getName().getIdentifier();
-                    String parentClassName = declaringClass.getQualifiedName();
-                    logger.printf(Level.DEBUG, "Method: %s, parent: %s", methodName, parentClassName);
-                    EntityType methodType = method.isConstructor() ? EntityType.CONSTRUCTOR : EntityType.METHOD;
-                    Node methodNode = Modifier.isAbstract(method.getModifiers()) ? neoGraph.createNode(methodName, methodType, EntityAttribute.ABSTRACT) : neoGraph.createNode(methodName, methodType);
-                    Node parentClassNode = neoGraph.getOrCreateNode(parentClassName, declaringClass.isInterface() ? EntityType.INTERFACE : EntityType.CLASS);
-                    neoGraph.linkTwoNodes(parentClassNode, methodNode, RelationType.METHOD);
-            }
-            return false;
-        }
-
-    }
-
-    /**
-     * Parses all classes and creates the inheritance relations.
-     * This step cannot be done in the ClassesVisitor, as due to problems with name resolving in Eclipse JDT,
-     * we have to do this manually by finding the corresponding nodes in the database.
-     * Hence, all nodes must have been parsed at least once.
-     */
-    private class GraphBuilderVisitor extends SymfinderVisitor {
-
-        List <ImportDeclaration> imports = new ArrayList <>();
-
-        @Override
-        public boolean visit(ImportDeclaration node) {
-            if (! node.isStatic()) {
-                imports.add(node);
-            }
-            return true;
-        }
-
-        @Override
-        public boolean visit(TypeDeclaration type) {
-            if (super.visit(type)) {
-                ITypeBinding classBinding = type.resolveBinding();
-                String thisClassName = classBinding.getQualifiedName();
-                Optional <Node> thisNode = classBinding.isInterface() ? neoGraph.getInterfaceNode(thisClassName) : neoGraph.getClassNode(thisClassName);
-                if (thisNode.isPresent()) {
-                    // Link to superclass if exists
-                    ITypeBinding superclassType = classBinding.getSuperclass();
-                    if (superclassType != null) {
-                        createImportedClassNode(thisClassName.split("<")[0], thisNode.get(), superclassType, EntityType.CLASS, RelationType.EXTENDS, "SUPERCLASS");
-                    }
-
-                    // Link to implemented interfaces if exist
-                    for (ITypeBinding o : classBinding.getInterfaces()) {
-                        createImportedClassNode(thisClassName.split("<")[0], thisNode.get(), o, EntityType.INTERFACE, RelationType.IMPLEMENTS, "INTERFACE");
-                    }
-                }
-                return true;
-            }
-            return false;
-        }
-
-        private void createImportedClassNode(String thisClassName, Node thisNode, ITypeBinding importedClassType, EntityType entityType, RelationType relationType, String name) {
-            Optional <String> myImportedClass = getClassFullName(importedClassType.getName().split("<")[0]);
-            String qualifiedName = importedClassType.getQualifiedName().split("<")[0];
-            if (myImportedClass.isPresent() && ! myImportedClass.get().equals(qualifiedName)) {
-                nbCorrectedInheritanceLinks++;
-                logger.debug(String.format("DIFFERENT %s FULL NAMES FOUND FOR CLASS %s: \n" +
-                        "JDT qualified name: %s\n" +
-                        "Manually resolved name: %s\n" +
-                        "Getting manually resolved name.", name, thisClassName.split("<")[0], qualifiedName, myImportedClass.get()));
-            }
-            Node superclassNode = neoGraph.getOrCreateNode(myImportedClass.orElse(qualifiedName), entityType, new EntityAttribute[]{EntityAttribute.OUT_OF_SCOPE}, new EntityAttribute[]{});
-            neoGraph.linkTwoNodes(superclassNode, thisNode, relationType);
-        }
-
-        /**
-         * Iterates on imports to find the real full class name (class name with package).
-         * There are two kinds of imports:
-         * - imports of classes:   a.b.TheClass  (1)
-         * - imports of packages:  a.b.*         (2)
-         * The determination is done in two steps:
-         * - Iterate over (1). If a correspondence is found, return it.
-         * - Iterate over (2) and for each one check in the database if the package a class with this class name.
-         * WARNING: all classes must have been parsed at least once before executing this method.
-         * Otherwise, the class we are looking to may not exist in the database.
-         *
-         * @param className
-         *
-         * @return
-         */
-        private Optional <String> getClassFullName(String className) {
-            Optional <ImportDeclaration> first = imports.stream()
-                    .filter(importDeclaration -> importDeclaration.getName().getFullyQualifiedName().endsWith(className))
-                    .findFirst();
-            if (first.isPresent()) {
-                return Optional.of(first.get().getName().getFullyQualifiedName());
-            }
-            Optional <Optional <Node>> first1 = imports.stream()
-                    .filter(ImportDeclaration::isOnDemand)
-                    .map(importDeclaration -> neoGraph.getNodeWithNameInPackage(className, importDeclaration.getName().getFullyQualifiedName()))
-                    .filter(Optional::isPresent)
-                    .findFirst();
-            return first1.map(node -> node.get().get("name").asString()); // Optional.empty -> out of scope class
-        }
-
-        @Override
-        public void endVisit(TypeDeclaration node) {
-            imports.clear();
-        }
-
-    }
-
-    /**
-     * Detects strategy patterns.
-     * We detect as a strategy pattern:
-     * - a class who possesses at least two variants and is used as a field in another class
-     * - a class whose name contains "Strategy"
-    */
-    private class StrategyVisitor extends SymfinderVisitor {
-
-        @Override
-        public boolean visit(FieldDeclaration field) {
-            logger.debug(field);
-            ITypeBinding binding = field.getType().resolveBinding();
-            if (binding != null) {
-                Node typeNode = neoGraph.getOrCreateNode(binding.getQualifiedName(), binding.isInterface() ? EntityType.INTERFACE : EntityType.CLASS, new EntityAttribute[]{EntityAttribute.OUT_OF_SCOPE}, new EntityAttribute[]{});
-                if (binding.getName().contains("Strategy") || neoGraph.getNbVariants(typeNode) >= 2) {
-                    neoGraph.addLabelToNode(typeNode, DesignPatternType.STRATEGY.toString());
-                }
-            }
-            return false;
-        }
-
-    }
-
-    /**
-     * Detects factory patterns.
-     * We detect as a factory pattern:
-     * - a class who possesses a method which returns an object whose type is a subtype of the method return type
-     * - a class whose name contains "Factory"
-     */
-    private class FactoryVisitor extends SymfinderVisitor {
-
-        @Override
-        public boolean visit(TypeDeclaration type) {
-            if (super.visit(type)) {
-                String qualifiedName = type.resolveBinding().getQualifiedName();
-                if (qualifiedName.contains("Factory")) {
-                    neoGraph.addLabelToNode(neoGraph.getOrCreateNode(qualifiedName, type.resolveBinding().isInterface() ? EntityType.INTERFACE : EntityType.CLASS), DesignPatternType.FACTORY.toString());
-                }
-                return true;
-            }
-            return false;
-        }
-
-        @Override
-        public boolean visit(ReturnStatement node) {
-            String typeOfReturnedObject;
-            if (node.getExpression() != null &&
-                    node.getExpression().resolveTypeBinding() != null &&
-                    ! node.getExpression().resolveTypeBinding().isNested() &&
-                    (typeOfReturnedObject = node.getExpression().resolveTypeBinding().getQualifiedName()) != null &&
-                    ! typeOfReturnedObject.equals("null")) {
-                MethodDeclaration methodDeclaration = (MethodDeclaration) getParentOfNodeWithType(node, ASTNode.METHOD_DECLARATION);
-                if (methodDeclaration != null && ! methodDeclaration.isConstructor() && methodDeclaration.getReturnType2().resolveBinding() != null && methodDeclaration.resolveBinding() != null) {
-                    logger.debug(methodDeclaration.getName().getIdentifier());
-                    String parsedClassType = methodDeclaration.resolveBinding().getDeclaringClass().getQualifiedName();
-                    String methodReturnType = methodDeclaration.getReturnType2().resolveBinding().getQualifiedName();
-                    logger.debug("typeOfReturnedObject : " + typeOfReturnedObject);
-                    logger.debug("methodReturnType : " + methodReturnType);
-                    Node methodReturnTypeNode = neoGraph.getOrCreateNode(methodReturnType, methodDeclaration.getReturnType2().resolveBinding().isInterface() ? EntityType.INTERFACE : EntityType.CLASS, new EntityAttribute[]{EntityAttribute.OUT_OF_SCOPE}, new EntityAttribute[]{});
-                    Node parsedClassNode = neoGraph.getOrCreateNode(parsedClassType, methodDeclaration.resolveBinding().getDeclaringClass().isInterface() ? EntityType.INTERFACE : EntityType.CLASS, new EntityAttribute[]{EntityAttribute.OUT_OF_SCOPE}, new EntityAttribute[]{});
-                    Node returnedObjectTypeNode = neoGraph.getOrCreateNode(typeOfReturnedObject, EntityType.CLASS);
-                    if (neoGraph.relatedTo(methodReturnTypeNode, returnedObjectTypeNode) && neoGraph.getNbVariants(methodReturnTypeNode) >= 2) {
-                        neoGraph.addLabelToNode(parsedClassNode, DesignPatternType.FACTORY.toString());
-                    }
-                }
-            }
-            return false;
-        }
-
-    }
-
-	/**
-	 * We consider as a test class a class contained in a package containing "test".
-	 * This condition is sufficient if we consider projects built using Maven.
-	 * Adding a condition on the class' name may remove from the analysis important classes (in JUnit for example)
-	 */
-    private boolean isTestClass(ITypeBinding classBinding) {
-        return Arrays.asList(classBinding.getPackage().getNameComponents()).contains("test");
-    }
-
-    private ASTNode getParentOfNodeWithType(ASTNode node, int astNodeType) {
-        ASTNode parentNode = node.getParent();
-        // If parentNode == null, it means that we went up through all parents without finding
-        // a node of the corresponding type.
-        while (parentNode != null && parentNode.getNodeType() != astNodeType) {
-            parentNode = parentNode.getParent();
-        }
-        return parentNode;
-    }
 }
 

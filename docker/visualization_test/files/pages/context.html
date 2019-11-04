@@ -1,0 +1,164 @@
+<!--
+  ~ This file is part of symfinder.
+  ~
+  ~ symfinder is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ symfinder is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with symfinder. If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~ Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+  ~ Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+  ~ Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+  -->
+
+<!DOCTYPE html>
+<!--
+This is the execution context.
+Loaded within the iframe.
+Reloaded before every execution run.
+-->
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body id="index-body">
+
+<div class="accordion">
+    <div class="card">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="headingOne">
+            <a class="navbar-brand" href="#">
+<!--                <img src="symfinder-icon.png" width="35" height="35" class="d-inline-block" alt="">-->
+                Symfinder
+            </a>
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block" id="hide-info-button" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Hide project information
+                </button>
+            </h2>
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block" id="hide-color-button" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Color packages
+                </button>
+            </h2>
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block" id="hide-legend-button" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Show legend
+                </button>
+            </h2>
+            <h2 class="mb-0">
+            <button type="button" class="btn btn-dark btn-block" data-toggle="button" aria-pressed="false" id="filter-variants-button" value="filter-variants-button">Show variants</button>
+            </h2>
+            <p class="badge-dark ml-auto mr-1 my-lg-0" style="font-size: 1em" id="xp-identifier">identifier</p>
+        </nav>
+
+        <div id="collapseOne" class="collapse multi-collapse show border-white" aria-labelledby="headingOne">
+            <div class="card-body">
+                <div class="row py-4 pl-4">
+                    <div class="input-group col-4">
+                        <input id="package-to-filter" type="text" class="form-control border-dark" placeholder="Package/class to filter"
+                               aria-label="Package/class to filter" aria-describedby="add-filter-button">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-dark" type="button" id="add-filter-button">Add new filter</button>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" id="filter-isolated" value="filter-isolated">Filter isolated nodes</button>
+                    </div>
+                </div>
+                <div class="row py-4 pl-4 justify-content-between">
+                    <div class="col-auto mr-auto">
+                        <ul class="list-group" id="list-tab" role="tablist">
+                        </ul>
+                    </div>
+                    <div class="col-4">
+                        <p id="statistics"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="collapseTwo" class="collapse multi-collapse border-white" aria-labelledby="headingTwo">
+            <div class="card-body">
+                <div class="row py-4 pl-4">
+                    <div class="input-group col-4">
+                        <input id="package-to-color" type="text" class="form-control border-dark" placeholder="Package/class to color"
+                               aria-label="Package/class to filter" aria-describedby="add-package-button">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-dark" type="button" id="add-package-button">Add new package</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-4 pl-4 justify-content-between">
+                    <div class="col-auto mr-auto">
+                        <ul class="list-group" id="color-tab" role="tablist">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="collapseThree" class="collapse multi-collapse border-white" aria-labelledby="headingThree">
+            <div class="card-body">
+                <div class="text-center">
+<!--                    <img width="900" src="symfinder-legend.svg">-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The scripts need to be in the body DOM element, as some test running frameworks need the body
+     to have already been created so they can insert their magic into it. For example, if loaded
+     before body, Angular Scenario test framework fails to find the body and crashes and burns in
+     an epic manner. -->
+<svg width="960" height="500"></svg>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script type="module">
+    import {Graph} from "./scripts/graph.js";
+
+    window.display = display;
+
+    async function display(jsonFile, jsonStatsFile, filters) {
+        var visualization = new Graph(jsonFile, jsonStatsFile, filters);
+        await visualization.displayGraph();
+        return visualization;
+    }
+
+</script>
+<script src="./context.js"></script>
+<script type="text/javascript">
+    // Configure our Karma and set up bindings
+    %CLIENT_CONFIG%
+    window.__karma__.setupContext(window);
+
+    // All served files with the latest timestamps
+    %MAPPINGS%
+</script>
+<!-- Dynamically replaced with <script> tags -->
+%SCRIPTS%
+<!-- Since %SCRIPTS% might include modules, the `loaded()` call needs to be in a module too.
+ This ensures all the tests will have been declared before karma tries to run them. -->
+<script type="module">
+    window.__karma__.loaded();
+</script>
+<script nomodule>
+    window.__karma__.loaded();
+</script>
+</body>
+</html>

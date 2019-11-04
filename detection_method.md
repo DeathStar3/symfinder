@@ -25,7 +25,7 @@ public int getNbClassLevelVPs() {
     return nbInterfaces + nbAbstractClasses + nbExtendedClasses;
 }
 ```
-<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/NeoGraph.java#L427">source</a>
+<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/neograph.NeoGraph.java#L427">source</a>
 
 
 ### Getting the number of method level _vp_-s
@@ -47,7 +47,7 @@ public void setMethodsOverloads() {
             "SET c.methods = 0");
 }
 ```
-<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/NeoGraph.java#L216">source</a>
+<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/neograph.NeoGraph.java#L216">source</a>
 
 
 
@@ -59,7 +59,7 @@ public int getTotalNbOverloadedMethods() {
             .list().get(0).get(0).asInt();
 }
 ```
-<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/NeoGraph.java#L389">source</a>
+<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/neograph.NeoGraph.java#L389">source</a>
 
 The number of overriden constructors for a class node is determined by first counting the number of constructor nodes linked to this node, and storing it in the `constructors` property.
 
@@ -73,7 +73,7 @@ public void setConstructorsOverloads() {
             "SET c.constructors = 0");
 }
 ```
-<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/NeoGraph.java#L230">source</a>
+<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/neograph.NeoGraph.java#L230">source</a>
 
 
 Then, we get the sum of the values of this property for each node to get the total number of overriden constructors.
@@ -84,7 +84,7 @@ public int getTotalNbOverloadedConstructors() {
             .list().get(0).get(0).asInt();
 }
 ```
-<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/NeoGraph.java#L379">source</a>
+<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/neograph.NeoGraph.java#L379">source</a>
 
 
 By adding these two values, we obtain the number of method level _vp_-s.
@@ -104,7 +104,7 @@ public int getNbClassLevelVariants() {
             .list().get(0).get(0).asInt();
 }
 ```
-<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/NeoGraph.java#L333">source</a>
+<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/neograph.NeoGraph.java#L333">source</a>
 
 
 ### Getting the number of method level variants
@@ -123,7 +123,7 @@ public int getNbMethodVariants() {
             .list().get(0).get(0).asInt();
 }
 ```
-<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/NeoGraph.java#L354">source</a>
+<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/neograph.NeoGraph.java#L354">source</a>
 
 The number of overrides of constructors is determined by counting for each class node the number of constructor nodes linked to it and having the same name.
 
@@ -135,6 +135,6 @@ public int getNbConstructorVariants() {
             .list().get(0).get(0).asInt();
 }
 ```
-<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/NeoGraph.java#L367">source</a>
+<a href="https://github.com/DeathStar3/symfinder-internal/blob/454b0aba4c50bd8c0523132568d77fe229c5d671/src/main/java/neograph.NeoGraph.java#L367">source</a>
 
 By adding these two values, we obtain the number of method level variants.

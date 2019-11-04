@@ -8,11 +8,11 @@
  *
  * symfinder is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
+ * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
  * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
  * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
@@ -27,12 +27,14 @@ import org.neo4j.driver.v1.types.Node;
 
 import static org.junit.Assert.assertEquals;
 
-public class ClassLevelVariantsTest extends Neo4JTest {
+public class ClassLevelVariantsTest extends Neo4jTest {
 
     @Test
     public void NoSubclass() {
         runTest(graph -> {
             graph.createNode("Shape", EntityType.CLASS, EntityAttribute.ABSTRACT);
+            graph.setVPLabels();
+            graph.setVariantsLabels();
             assertEquals(0, graph.getNbClassLevelVariants());
         });
     }
@@ -41,6 +43,7 @@ public class ClassLevelVariantsTest extends Neo4JTest {
     public void OneConcreteClass() {
         runTest(graph -> {
             graph.createNode("Shape", EntityType.CLASS);
+            graph.detectVPsAndVariants();
             assertEquals(0, graph.getNbClassLevelVariants());
         });
     }
@@ -51,6 +54,7 @@ public class ClassLevelVariantsTest extends Neo4JTest {
             Node shapeClass = graph.createNode("Shape", EntityType.CLASS, EntityAttribute.ABSTRACT);
             Node circleClass = graph.createNode("Circle", EntityType.CLASS);
             graph.linkTwoNodes(shapeClass, circleClass, RelationType.EXTENDS);
+            graph.detectVPsAndVariants();
             assertEquals(1, graph.getNbClassLevelVariants());
         });
     }
@@ -65,6 +69,7 @@ public class ClassLevelVariantsTest extends Neo4JTest {
             graph.linkTwoNodes(shapeClass, circleClass, RelationType.EXTENDS);
             graph.linkTwoNodes(shapeClass, rectangleClass, RelationType.EXTENDS);
             graph.linkTwoNodes(shapeClass, triangleClass, RelationType.EXTENDS);
+            graph.detectVPsAndVariants();
             assertEquals(3, graph.getNbClassLevelVariants());
         });
     }
@@ -76,6 +81,18 @@ public class ClassLevelVariantsTest extends Neo4JTest {
             Node shapeClass = graph.createNode("Shape", EntityType.CLASS, EntityAttribute.ABSTRACT);
             Node polygonClass = graph.createNode("Polygon", EntityType.CLASS, EntityAttribute.ABSTRACT);
             graph.linkTwoNodes(shapeClass, polygonClass, RelationType.EXTENDS);
+            graph.detectVPsAndVariants();
+            assertEquals(1, graph.getNbClassLevelVariants());
+        });
+    }
+
+    @Test
+    public void OutOfScopeSuperclass() {
+        runTest(graph -> {
+            Node objectClass = graph.createNode("Object", EntityType.CLASS, EntityAttribute.ABSTRACT, EntityAttribute.OUT_OF_SCOPE);
+            Node polygonClass = graph.createNode("Polygon", EntityType.CLASS);
+            graph.linkTwoNodes(objectClass, polygonClass, RelationType.EXTENDS);
+            graph.detectVPsAndVariants();
             assertEquals(0, graph.getNbClassLevelVariants());
         });
     }

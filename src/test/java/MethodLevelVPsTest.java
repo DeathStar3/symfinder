@@ -8,11 +8,11 @@
  *
  * symfinder is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
+ * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
  * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
  * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
@@ -26,7 +26,7 @@ import org.neo4j.driver.v1.types.Node;
 
 import static org.junit.Assert.assertEquals;
 
-public class MethodLevelVPsTest extends Neo4JTest {
+public class MethodLevelVPsTest extends Neo4jTest {
 
     @Test
     public void NoMethodOverloadNoConstructorOverload() {
@@ -37,8 +37,10 @@ public class MethodLevelVPsTest extends Neo4JTest {
             RelationType relationType = RelationType.METHOD;
             graph.linkTwoNodes(shapeClass, shapeConstructor, relationType);
             graph.linkTwoNodes(shapeClass, displayMethod, relationType);
-            graph.setMethodsOverloads();
-            graph.setConstructorsOverloads();
+            graph.setMethodVPs();
+            graph.setConstructorVPs();
+            assertEquals(0, graph.getNbMethodVPs());
+            assertEquals(0, graph.getNbConstructorVPs());
             assertEquals(0, graph.getNbMethodLevelVPs());
         });
     }
@@ -54,8 +56,10 @@ public class MethodLevelVPsTest extends Neo4JTest {
             graph.linkTwoNodes(shapeClass, shapeConstructor, relationType);
             graph.linkTwoNodes(shapeClass, displayMethod1, relationType);
             graph.linkTwoNodes(shapeClass, displayMethod2, relationType);
-            graph.setMethodsOverloads();
-            graph.setConstructorsOverloads();
+            graph.setMethodVPs();
+            graph.setConstructorVPs();
+            assertEquals(1, graph.getNbMethodVPs());
+            assertEquals(0, graph.getNbConstructorVPs());
             assertEquals(1, graph.getNbMethodLevelVPs());
         });
     }
@@ -71,8 +75,10 @@ public class MethodLevelVPsTest extends Neo4JTest {
             graph.linkTwoNodes(shapeClass, shapeConstructor1, relationType);
             graph.linkTwoNodes(shapeClass, shapeConstructor2, relationType);
             graph.linkTwoNodes(shapeClass, displayMethod, relationType);
-            graph.setMethodsOverloads();
-            graph.setConstructorsOverloads();
+            graph.setMethodVPs();
+            graph.setConstructorVPs();
+            assertEquals(0, graph.getNbMethodVPs());
+            assertEquals(1, graph.getNbConstructorVPs());
             assertEquals(1, graph.getNbMethodLevelVPs());
         });
     }
@@ -90,8 +96,10 @@ public class MethodLevelVPsTest extends Neo4JTest {
             graph.linkTwoNodes(shapeClass, shapeConstructor2, relationType);
             graph.linkTwoNodes(shapeClass, displayMethod1, relationType);
             graph.linkTwoNodes(shapeClass, displayMethod2, relationType);
-            graph.setMethodsOverloads();
-            graph.setConstructorsOverloads();
+            graph.setMethodVPs();
+            graph.setConstructorVPs();
+            assertEquals(1, graph.getNbMethodVPs());
+            assertEquals(1, graph.getNbConstructorVPs());
             assertEquals(2, graph.getNbMethodLevelVPs());
         });
     }

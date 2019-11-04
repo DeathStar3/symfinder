@@ -1,0 +1,25 @@
+sat4j-core:
+  repositoryUrl: https://gitlab.ow2.org/sat4j/sat4j/
+  sourcePackage: org.sat4j.core
+  commitIds:
+    - 5cee71e6
+sat4j-pb:
+  repositoryUrl: https://gitlab.ow2.org/sat4j/sat4j/
+  sourcePackage: org.sat4j.pb
+  commitIds:
+    - 5cee71e6
+sat4j-maxsat:
+  repositoryUrl: https://gitlab.ow2.org/sat4j/sat4j/
+  sourcePackage: org.sat4j.maxsat
+  commitIds:
+    - 5cee71e6
+sat4j-sat:
+  repositoryUrl: https://gitlab.ow2.org/sat4j/sat4j/
+  sourcePackage: org.sat4j.sat
+  commitIds:
+    - 5cee71e6
+sat4j:
+  repositoryUrl: https://gitlab.ow2.org/sat4j/sat4j/
+  sourcePackage: .
+  commitIds:
+    - 5cee71e6

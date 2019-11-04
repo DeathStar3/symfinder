@@ -8,18 +8,22 @@
  *
  * symfinder is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
+ * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
  * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
  * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
  * Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
  */
 
-import neo4j_types.*;
+import neo4j_types.DesignPatternType;
+import neo4j_types.EntityAttribute;
+import neo4j_types.EntityType;
+import neo4j_types.RelationType;
+import neograph.NeoGraph;
 import org.junit.Test;
 import org.neo4j.graphdb.*;
 
@@ -29,7 +33,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
-public class NeoGraphTest extends Neo4JTest {
+public class NeoGraphTest extends Neo4jTest {
 
     @Test
     public void createNodeOneLabel() {
@@ -109,15 +113,15 @@ public class NeoGraphTest extends Neo4JTest {
             RelationType relationType = RelationType.METHOD;
             graph.linkTwoNodes(classNode, drawNode1, relationType);
             graph.linkTwoNodes(classNode, areaNode, relationType);
-            graph.setMethodsOverloads();
+            graph.setMethodVPs();
             try (Transaction tx = graphDatabaseService.beginTx()) {
                 List <Node> allNodes = graphDatabaseService.getAllNodes().stream()
                         .filter(node -> node.hasLabel(Label.label(EntityType.CLASS.toString())))
                         .collect(Collectors.toList());
                 assertEquals(1, allNodes.size());
                 Node node = allNodes.get(0);
-                assertTrue(node.getAllProperties().containsKey("methods"));
-                assertEquals(0L, node.getProperty("methods"));
+                assertTrue(node.getAllProperties().containsKey("methodVPs"));
+                assertEquals(0L, node.getProperty("methodVPs"));
                 tx.success();
             }
         });
@@ -134,15 +138,15 @@ public class NeoGraphTest extends Neo4JTest {
             graph.linkTwoNodes(classNode, drawNode1, relationType);
             graph.linkTwoNodes(classNode, drawNode2, relationType);
             graph.linkTwoNodes(classNode, areaNode, relationType);
-            graph.setMethodsOverloads();
+            graph.setMethodVPs();
             try (Transaction tx = graphDatabaseService.beginTx()) {
                 List <Node> allNodes = graphDatabaseService.getAllNodes().stream()
                         .filter(node -> node.hasLabel(Label.label(EntityType.CLASS.toString())))
                         .collect(Collectors.toList());
                 assertEquals(1, allNodes.size());
                 Node node = allNodes.get(0);
-                assertTrue(node.getAllProperties().containsKey("methods"));
-                assertEquals(1L, node.getProperty("methods"));
+                assertTrue(node.getAllProperties().containsKey("methodVPs"));
+                assertEquals(1L, node.getProperty("methodVPs"));
                 tx.success();
             }
         });
@@ -161,15 +165,15 @@ public class NeoGraphTest extends Neo4JTest {
             graph.linkTwoNodes(classNode, drawNode2, relationType);
             graph.linkTwoNodes(classNode, drawNode3, relationType);
             graph.linkTwoNodes(classNode, areaNode, relationType);
-            graph.setMethodsOverloads();
+            graph.setMethodVPs();
             try (Transaction tx = graphDatabaseService.beginTx()) {
                 List <Node> allNodes = graphDatabaseService.getAllNodes().stream()
                         .filter(node -> node.hasLabel(Label.label(EntityType.CLASS.toString())))
                         .collect(Collectors.toList());
                 assertEquals(1, allNodes.size());
                 Node node = allNodes.get(0);
-                assertTrue(node.getAllProperties().containsKey("methods"));
-                assertEquals(1L, node.getProperty("methods"));
+                assertTrue(node.getAllProperties().containsKey("methodVPs"));
+                assertEquals(1L, node.getProperty("methodVPs"));
                 tx.success();
             }
         });
@@ -188,15 +192,15 @@ public class NeoGraphTest extends Neo4JTest {
             graph.linkTwoNodes(classNode, drawNode2, relationType);
             graph.linkTwoNodes(classNode, areaNode1, relationType);
             graph.linkTwoNodes(classNode, areaNode2, relationType);
-            graph.setMethodsOverloads();
+            graph.setMethodVPs();
             try (Transaction tx = graphDatabaseService.beginTx()) {
                 List <Node> allNodes = graphDatabaseService.getAllNodes().stream()
                         .filter(node -> node.hasLabel(Label.label(EntityType.CLASS.toString())))
                         .collect(Collectors.toList());
                 assertEquals(1, allNodes.size());
                 Node node = allNodes.get(0);
-                assertTrue(node.getAllProperties().containsKey("methods"));
-                assertEquals(2L, node.getProperty("methods"));
+                assertTrue(node.getAllProperties().containsKey("methodVPs"));
+                assertEquals(2L, node.getProperty("methodVPs"));
                 tx.success();
             }
         });
@@ -211,15 +215,15 @@ public class NeoGraphTest extends Neo4JTest {
             RelationType relationType = RelationType.METHOD;
             graph.linkTwoNodes(classNode, constructorNode, relationType);
             graph.linkTwoNodes(classNode, methodNode, relationType);
-            graph.setConstructorsOverloads();
+            graph.setConstructorVPs();
             try (Transaction tx = graphDatabaseService.beginTx()) {
                 List <Node> allNodes = graphDatabaseService.getAllNodes().stream()
                         .filter(node -> node.hasLabel(Label.label(EntityType.CLASS.toString())))
                         .collect(Collectors.toList());
                 assertEquals(1, allNodes.size());
                 Node node = allNodes.get(0);
-                assertTrue(node.getAllProperties().containsKey("constructors"));
-                assertEquals(0L, node.getProperty("constructors"));
+                assertTrue(node.getAllProperties().containsKey("constructorVPs"));
+                assertEquals(0L, node.getProperty("constructorVPs"));
                 tx.success();
             }
         });
@@ -236,15 +240,15 @@ public class NeoGraphTest extends Neo4JTest {
             graph.linkTwoNodes(classNode, constructorNode1, relationType);
             graph.linkTwoNodes(classNode, constructorNode2, relationType);
             graph.linkTwoNodes(classNode, methodNode, relationType);
-            graph.setConstructorsOverloads();
+            graph.setConstructorVPs();
             try (Transaction tx = graphDatabaseService.beginTx()) {
                 List <Node> allNodes = graphDatabaseService.getAllNodes().stream()
                         .filter(node -> node.hasLabel(Label.label(EntityType.CLASS.toString())))
                         .collect(Collectors.toList());
                 assertEquals(1, allNodes.size());
                 Node node = allNodes.get(0);
-                assertTrue(node.getAllProperties().containsKey("constructors"));
-                assertEquals(1L, node.getProperty("constructors"));
+                assertTrue(node.getAllProperties().containsKey("constructorVPs"));
+                assertEquals(1L, node.getProperty("constructorVPs"));
                 tx.success();
             }
         });
@@ -263,15 +267,15 @@ public class NeoGraphTest extends Neo4JTest {
             graph.linkTwoNodes(classNode, constructorNode2, relationType);
             graph.linkTwoNodes(classNode, constructorNode3, relationType);
             graph.linkTwoNodes(classNode, methodNode, relationType);
-            graph.setConstructorsOverloads();
+            graph.setConstructorVPs();
             try (Transaction tx = graphDatabaseService.beginTx()) {
                 List <Node> allNodes = graphDatabaseService.getAllNodes().stream()
                         .filter(node -> node.hasLabel(Label.label(EntityType.CLASS.toString())))
                         .collect(Collectors.toList());
                 assertEquals(1, allNodes.size());
                 Node node = allNodes.get(0);
-                assertTrue(node.getAllProperties().containsKey("constructors"));
-                assertEquals(2L, node.getProperty("constructors"));
+                assertTrue(node.getAllProperties().containsKey("constructorVPs"));
+                assertEquals(1L, node.getProperty("constructorVPs"));
                 tx.success();
             }
         });
@@ -295,10 +299,10 @@ public class NeoGraphTest extends Neo4JTest {
                 assertEquals(3, allClassNodes.size());
                 allClassNodes.stream().filter(node -> node.getProperty("name").equals("class"))
                         .findFirst()
-                        .ifPresent(node -> assertEquals(2L, node.getProperty("nbVariants")));
+                        .ifPresent(node -> assertEquals(2L, node.getProperty("classVariants")));
                 allClassNodes.stream().filter(node -> node.getProperty("name").equals("subclass1"))
                         .findFirst()
-                        .ifPresent(node -> assertEquals(0L, node.getProperty("nbVariants")));
+                        .ifPresent(node -> assertEquals(0L, node.getProperty("classVariants")));
                 tx.success();
             }
         });
@@ -396,4 +400,55 @@ public class NeoGraphTest extends Neo4JTest {
         assertEquals("n:FACTORY OR n:STRATEGY", NeoGraph.getClauseForNodesMatchingLabels("n", DesignPatternType.FACTORY, DesignPatternType.STRATEGY));
     }
 
+    @Test
+    public void getSuperclassNodeWithExistingSuperclass() {
+        runTest(graph -> {
+            org.neo4j.driver.v1.types.Node shapeNode = graph.createNode("Shape", EntityType.CLASS, EntityAttribute.ABSTRACT);
+            org.neo4j.driver.v1.types.Node rectangleNode = graph.createNode("Rectangle", EntityType.CLASS);
+            graph.linkTwoNodes(shapeNode, rectangleNode, RelationType.EXTENDS);
+            assertTrue(graph.getSuperclassNode("Rectangle").isPresent());
+            assertEquals(shapeNode, graph.getSuperclassNode("Rectangle").get());
+        });
+    }
+
+    @Test
+    public void getSuperclassNodeWithNonExistingSuperclass() {
+        runTest(graph -> {
+            graph.createNode("Rectangle", EntityType.CLASS);
+            assertFalse(graph.getSuperclassNode("Rectangle").isPresent());
+        });
+    }
+
+    @Test
+    public void getInheritedInterfaceNodeWithExistingSuperclass() {
+        runTest(graph -> {
+            org.neo4j.driver.v1.types.Node shapeNode = graph.createNode("Shape", EntityType.INTERFACE);
+            org.neo4j.driver.v1.types.Node rectangleNode = graph.createNode("Rectangle", EntityType.CLASS);
+            graph.linkTwoNodes(shapeNode, rectangleNode, RelationType.IMPLEMENTS);
+            assertFalse(graph.getImplementedInterfacesNodes("Rectangle").isEmpty());
+            assertTrue(graph.getImplementedInterfacesNodes("Rectangle").contains(shapeNode));
+        });
+    }
+
+    @Test
+    public void getInheritedInterfaceNodeWithNonExistingSuperclass() {
+        runTest(graph -> {
+            graph.createNode("Rectangle", EntityType.CLASS);
+            assertTrue(graph.getImplementedInterfacesNodes("Rectangle").isEmpty());
+        });
+    }
+
+    @Test
+    public void getTwoInheritedInterfaces() {
+        runTest(graph -> {
+            org.neo4j.driver.v1.types.Node shapeNode = graph.createNode("Shape", EntityType.INTERFACE);
+            org.neo4j.driver.v1.types.Node objectNode = graph.createNode("Object", EntityType.INTERFACE);
+            org.neo4j.driver.v1.types.Node rectangleNode = graph.createNode("Rectangle", EntityType.CLASS);
+            graph.linkTwoNodes(shapeNode, rectangleNode, RelationType.IMPLEMENTS);
+            graph.linkTwoNodes(objectNode, rectangleNode, RelationType.IMPLEMENTS);
+            assertFalse(graph.getImplementedInterfacesNodes("Rectangle").isEmpty());
+            assertTrue(graph.getImplementedInterfacesNodes("Rectangle").contains(objectNode));
+            assertTrue(graph.getImplementedInterfacesNodes("Rectangle").contains(shapeNode));
+        });
+    }
 }

@@ -8,11 +8,11 @@
  *
  * symfinder is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
+ * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
  * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
  * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
@@ -28,7 +28,7 @@ import org.neo4j.driver.v1.types.Node;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class VPLabelTest extends Neo4JTest {
+public class VPLabelTest extends Neo4jTest {
 
     @Test
     public void setVPLabelAbstractClass() {
@@ -48,13 +48,30 @@ public class VPLabelTest extends Neo4JTest {
         });
     }
 
-
     @Test
     public void setVPLabelInterfaceWithVariants() {
         runTest(graph -> {
             graph.createNode("Shape", EntityType.INTERFACE);
             graph.setVPLabels();
             assertTrue(graph.getNode("Shape").get().hasLabel(EntityAttribute.VP.toString()));
+        });
+    }
+
+    @Test
+    public void setVPLabelOutOfScope() {
+        runTest(graph -> {
+            graph.createNode("Shape", EntityType.INTERFACE, EntityAttribute.OUT_OF_SCOPE);
+            graph.setVPLabels();
+            assertFalse(graph.getNode("Shape").get().hasLabel(EntityAttribute.VP.toString()));
+        });
+    }
+
+    @Test
+    public void setVPLabelMethod() {
+        runTest(graph -> {
+            graph.createNode("draw", EntityType.METHOD);
+            graph.setVPLabels();
+            assertFalse(graph.getNode("draw").get().hasLabel(EntityAttribute.VP.toString()));
         });
     }
 
@@ -82,10 +99,9 @@ public class VPLabelTest extends Neo4JTest {
             Node drawNode2 = graph.createNode("draw", EntityType.METHOD);
             graph.linkTwoNodes(shapeNode, drawNode1, RelationType.METHOD);
             graph.linkTwoNodes(shapeNode, drawNode2, RelationType.METHOD);
-            graph.setMethodsOverloads();
-            graph.setNbVariantsProperty();
-            graph.setVPLabels();
-            assertTrue(graph.getNode("Shape").get().hasLabel(EntityAttribute.VP.getString()));
+            graph.setMethodVPs();
+            graph.setMethodLevelVPLabels();
+            assertTrue(graph.getNode("Shape").get().hasLabel(EntityAttribute.METHOD_LEVEL_VP.getString()));
         });
     }
 
@@ -97,10 +113,9 @@ public class VPLabelTest extends Neo4JTest {
             Node shapeConstructorNode2 = graph.createNode("Shape", EntityType.CONSTRUCTOR);
             graph.linkTwoNodes(shapeNode, shapeConstructorNode1, RelationType.METHOD);
             graph.linkTwoNodes(shapeNode, shapeConstructorNode2, RelationType.METHOD);
-            graph.setConstructorsOverloads();
-            graph.setNbVariantsProperty();
-            graph.setVPLabels();
-            assertTrue(graph.getNode("Shape").get().hasLabel(EntityAttribute.VP.getString()));
+            graph.setConstructorVPs();
+            graph.setMethodLevelVPLabels();
+            assertTrue(graph.getNode("Shape").get().hasLabel(EntityAttribute.METHOD_LEVEL_VP.getString()));
         });
     }
 
