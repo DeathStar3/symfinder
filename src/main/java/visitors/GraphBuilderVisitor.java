@@ -49,9 +49,10 @@ public class GraphBuilderVisitor extends ImportsVisitor {
             }
             return true;
         }
-        return false;
+        return false; // TODO: 4/18/19 functional tests : only inner classes are ignored
     }
 
+    // TODO: 4/1/19 functional tests : imports from different packages
     private void createImportedClassNode(String thisClassName, Node thisNode, ITypeBinding importedClassType, EntityType entityType, RelationType relationType, String name) {
         Optional <String> myImportedClass = getClassFullName(importedClassType);
         String qualifiedName = getClassBaseName(importedClassType.getQualifiedName());

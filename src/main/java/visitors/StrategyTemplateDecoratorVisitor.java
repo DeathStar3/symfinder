@@ -23,6 +23,7 @@ import java.util.Optional;
  * - a class which possesses at least one subclass and a field corresponding to a class having at least two subclasses
  * - a class whose name contains "Decorator"
  */
+// TODO name contains template + update doc
 public class StrategyTemplateDecoratorVisitor extends ImportsVisitor {
 
     private static final Logger logger = LogManager.getLogger(StrategyTemplateDecoratorVisitor.class);
@@ -47,7 +48,7 @@ public class StrategyTemplateDecoratorVisitor extends ImportsVisitor {
                         neoGraph.addLabelToNode(node, DesignPatternType.STRATEGY.toString());
                     }
                     if (fieldTypeBinding.getName().contains("Decorator")) {
-                        neoGraph.addLabelToNode(node, DesignPatternType.DECORATOR.toString());                    	
+                        neoGraph.addLabelToNode(node, DesignPatternType.DECORATOR.toString());
                     }
                     checkAbstractDecorator(fieldDeclaringClassBinding, fieldTypeBinding);
                 });
@@ -65,6 +66,8 @@ public class StrategyTemplateDecoratorVisitor extends ImportsVisitor {
             String currentClassName = currentClassBinding.getErasure().getQualifiedName();
             boolean isClassInheritingFieldClass = neoGraph.getSuperclassNode(currentClassName).map(node -> node.equals(fieldClassNode)).orElse(false);
             boolean isClassImplementingFieldClass = neoGraph.getImplementedInterfacesNodes(currentClassName).stream().anyMatch(node -> node.equals(fieldClassNode));
+//            if(fieldClassBinding.getErasure().getQualifiedName().contains("Decorator") ||
+//                    ((isClassInheritingFieldClass || isClassImplementingFieldClass) && neoGraph.getNbVariants(fieldClassNode) >= 2 && neoGraph.getNbVariants(currentClassNode) >= 1)) {
             if (((isClassInheritingFieldClass || isClassImplementingFieldClass) && neoGraph.getNbVariants(fieldClassNode) >= 2 && neoGraph.getNbVariants(currentClassNode) >= 1)) {
                 neoGraph.addLabelToNode(currentClassNode, DesignPatternType.DECORATOR.toString());
             }
@@ -80,7 +83,7 @@ public class StrategyTemplateDecoratorVisitor extends ImportsVisitor {
     @Override
     public boolean visit(MethodInvocation node) {
         IMethodBinding methodBinding = node.resolveMethodBinding();
-        if (methodBinding != null) {
+        if (methodBinding != null) { // TODO: 4/10/19 check why null in JavaGeom, math.geom3d.Box3D, p1.getX()
             ITypeBinding declaringClass = methodBinding.getDeclaringClass();
             Node declaringClassNode = neoGraph.getOrCreateNode(declaringClass.getQualifiedName(), declaringClass.isInterface() ? EntityType.INTERFACE : EntityType.CLASS, new EntityAttribute[]{EntityAttribute.OUT_OF_SCOPE}, new EntityAttribute[]{});
             if (neoGraph.getNbVariants(declaringClassNode) > 0 && (declaringClass.getName().contains("Template") || (declaringClass.equals(this.thisClassBinding) && Modifier.isAbstract(methodBinding.getModifiers())))) {

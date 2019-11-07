@@ -97,19 +97,17 @@ Here is an example of visualization window:
 
 The window is made of several parts:
 
-- ①: By clicking on the `Hide project information` button, you can hide the parts ③ and ④ in order to be able to see the graph better.
+- ①: The top bar contains four buttons:
+	- By clicking on the `Hide project information` button, you can hide the parts ③ and ④ in order to be able to see the graph better.
+	- The `Color packages` button display a tab similar to the part ③ where you can enter the name of a package or a class and a new color will be applied to the corresponding nodes.
+	- The `Show legend` button displays a legend to help you read the visualization.
+	- The `Display variants` button displays all the variants of variation points, including the ones not being variation points. Click again on the button to show only variation points.
 - ②: Here you can see the name and tag/commit ID of the project corresponding to the visualization being viewed, as well as the commit corresponding to the version of Symfinder that generated the visualization.
 - ③: In the `Package/class to filter` field, you can enter the name of a class or package that you want to filter on the visualization.
 When a filter is added, it is added to the list below. The cross on the right of each filter allows you to remove it.
 On the right of this field is a `Filter isolated nodes` button which, when activated, removes the nodes having no relationship from the visualization.
 Click again on the button to unfilter them.
-- ④: Displays metrics on the project concerning _variation points_ and variants
-
-## Running additional experiment
-
-You can change the `experiments` parameter value in the `symfinder.yaml` file and replace `experiments.yaml` by `additional-experiment.yaml`.
-This configuration will run analyses on another project:
-- [Charts 1.0.5](https://github.com/HanSolo/charts/tree/1.0.5)
+- ④: Displays metrics on the project concerning variation points and variants
 
 ## Using Symfinder on your project
 
@@ -170,3 +168,19 @@ junit:
   commitIds:
     - c3715204786394f461d94953de9a66a4cec684e9
 ```
+
+## Building symfinder
+
+**This step is only needed if you edited symfinder's source code.**
+
+You can build symfinder's Docker images by running
+
+	```bash
+	./build.sh
+	```
+
+Then, run symfinder using the local images that you just built.
+
+	```bash
+	./run.sh --local
+	```
