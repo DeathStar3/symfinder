@@ -1,0 +1,40 @@
+sat4j:
+  repositoryUrl: https://gitlab.ow2.org/sat4j/sat4j/
+  sourcePackage: org.sat4j.core
+  commitIds:
+    - 5cee71e6
+jackson-core:
+  repositoryUrl: https://github.com/FasterXML/jackson-core
+  sourcePackage: src/main/java
+  tagIds:
+    - jackson-core-2.10.1
+zxing:
+  repositoryUrl: https://github.com/zxing/zxing
+  sourcePackage: core/src/main/java
+  tagIds:
+    - zxing-3.4.0
+mockito:
+  repositoryUrl: https://github.com/mockito/mockito
+  sourcePackage: src/main/java
+  tagIds:
+    - v3.1.12
+deeplearning4j:
+  repositoryUrl: https://github.com/eclipse/deeplearning4j
+  sourcePackage: deeplearning4j
+  tagIds:
+    - deeplearning4j-1.0.0-beta5 
+rxjava:
+  repositoryUrl: https://github.com/ReactiveX/RxJava
+  sourcePackage: src/main/java
+  tagIds:
+    - v2.2.15
+guava:
+  repositoryUrl: https://github.com/google/guava
+  sourcePackage: guava/src/com/google/common
+  tagIds:
+    - v28.1
+elasticsearch:
+  repositoryUrl: https://github.com/elastic/elasticsearch
+  sourcePackage: server/src
+  tagIds:
+    - v6.8.5
