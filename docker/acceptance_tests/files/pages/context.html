@@ -38,7 +38,7 @@ Reloaded before every execution run.
     <div class="card">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="headingOne">
             <a class="navbar-brand" href="#">
-<!--                <img src="symfinder-icon.png" width="35" height="35" class="d-inline-block" alt="">-->
+                <!--                <img src="symfinder-icon.png" width="35" height="35" class="d-inline-block" alt="">-->
                 Symfinder
             </a>
             <h2 class="mb-0">
@@ -109,7 +109,7 @@ Reloaded before every execution run.
         <div id="collapseThree" class="collapse multi-collapse border-white" aria-labelledby="headingThree">
             <div class="card-body">
                 <div class="text-center">
-<!--                    <img width="900" src="symfinder-legend.svg">-->
+                    <!--                    <img width="900" src="symfinder-legend.svg">-->
                 </div>
             </div>
         </div>
@@ -135,9 +135,7 @@ Reloaded before every execution run.
     window.display = display;
 
     async function display(jsonFile, jsonStatsFile, filters) {
-        var visualization = new Graph(jsonFile, jsonStatsFile, filters);
-        await visualization.displayGraph();
-        return visualization;
+        await new Graph(jsonFile, jsonStatsFile, filters, "").displayGraph();
     }
 
 </script>

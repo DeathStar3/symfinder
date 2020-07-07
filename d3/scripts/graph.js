@@ -25,50 +25,32 @@ import {VariantsFilter} from "./variants-filter.js";
 import {IsolatedFilter} from "./isolated-filter.js";
 
 class Graph {
-//	data stores
-    graph;
-    store;
 
-    width;
-    height;
-
-    filterIsolated;
-    filterVariants;
-
-    jsonFile;
-    jsonStatsFile;
-
-
-    filter;
-    packageColorer;
-
-    svg; g; link; node; label;
-
-    //	d3 color scales
-    color;
-
-    constructor(jsonFile, jsonStatsFile, nodeFilters) {
+    constructor(jsonFile, jsonStatsFile, nodeFilters, jsonTracesFile) {
         this.jsonFile = jsonFile;
         this.jsonStatsFile = jsonStatsFile;
+        this.jsonTracesFile = jsonTracesFile;
+        this.hasTraces = jsonTracesFile !== ""
         this.filter = new NodesFilter("#add-filter-button", "#package-to-filter", "#list-tab", nodeFilters, async () => await this.displayGraph());
         this.packageColorer = new PackageColorer("#add-package-button", "#package-to-color", "#color-tab", [], async () => await this.displayGraph());
-        if(sessionStorage.getItem("firstTime") === null){
+        if (sessionStorage.getItem("firstTime") === null) {
             sessionStorage.setItem("firstTime", "true");
         }
         this.color = d3.scaleLinear();
         this.setButtonsClickActions();
     }
 
-
     async displayGraph() {
         if (sessionStorage.getItem("firstTime") === "true") {
             sessionStorage.setItem("filteredIsolated", "false");
             sessionStorage.setItem("filteredVariants", "true");
+            sessionStorage.setItem("onlyHotspots", "false");
             sessionStorage.setItem("firstTime", "false");
         }
         d3.selectAll("svg > *").remove();
         this.filterIsolated = sessionStorage.getItem("filteredIsolated") === "true";
         this.filterVariants = sessionStorage.getItem("filteredVariants") === "true";
+        this.onlyHotspots = sessionStorage.getItem("onlyHotspots") === "true";
         await this.generateGraph();
         return this.graph;
     }
@@ -112,6 +94,20 @@ class Graph {
     }
 
     async getData(graph) {
+        if(this.hasTraces){
+            return new Promise((resolve, reject) => {
+                d3.queue()
+                    .defer(d3.json, graph.jsonFile)
+                    .defer(d3.json, graph.jsonStatsFile)
+                    .defer(d3.json, graph.jsonTracesFile)
+                    .await((err, gr, stats, traces) => {
+                        if (err) throw err;
+                        graph.displayData(gr, stats, traces);
+                        graph.update();
+                        resolve();
+                    });
+            });
+        }
         return new Promise((resolve, reject) => {
             d3.queue()
                 .defer(d3.json, graph.jsonFile)
@@ -126,7 +122,7 @@ class Graph {
 
     }
 
-    displayData(gr, stats) {
+    displayData(gr, stats, traces = {}) {
         //	data read and store
 
         document.getElementById("statistics").innerHTML =
@@ -151,6 +147,7 @@ class Graph {
 
         this.graph.nodes.forEach(function (n) {
             n.radius = n.types.includes("CLASS") ? 10 + n.methodVPs : 10;
+            n.traces = traces[n.name]
             nodeByID[n.name] = n;
         });
 
@@ -181,6 +178,7 @@ class Graph {
         if (this.filterIsolated) {
             var isolatedFilter = new IsolatedFilter(this.graph.nodes, this.graph.links);
             this.graph.nodes = isolatedFilter.getFilteredNodesList();
+            this.graph.links = isolatedFilter.getFilteredLinksList();
         }
 
     }
@@ -201,22 +199,25 @@ class Graph {
             .style("stroke-dasharray", function (d) {
                 return d.types.includes("ABSTRACT") ? "3,3" : "3,0"
             })
-            .style("stroke", "black")
-            .style("stroke-width", function (d) {
-                return d.types.includes("ABSTRACT") ? d.classVariants + 1 : d.classVariants;
-            })
+            .style("stroke", (d) => this.hasTraces && d.traces.length > 0 ? "blue" : "black")
+            .style("stroke-width", 2)
             .attr("r", function (d) {
                 return d.radius
             })
             .attr("fill", (d) => {
-                return d.types.includes("INTERFACE") ? d3.rgb(0, 0, 0) : d3.rgb(this.getNodeColor(d.name, d.constructorVariants))
+                let nodeColor = d.types.includes("INTERFACE") ? d3.rgb(0, 0, 0) : d3.rgb(this.getNodeColor(d.name, d.constructorVariants));
+                return nodeColor
             })
             .attr("name", function (d) {
                 return d.name
             });
 
-        newNode.append("title").text(function (d) {
-            return "types: " + d.types + "\n" + "name: " + d.name;
+        newNode.append("title").text(d  => {
+            var title = "types: " + d.types + "\n" + "name: " + d.name;
+            if(this.hasTraces) {
+                title += "\n" + "traces: " + d.traces.join(", ")
+            }
+            return title;
         });
 
         //	ENTER + UPDATE
@@ -266,9 +267,10 @@ class Graph {
         //	ENTER + UPDATE
         this.label = this.label.merge(newLabel);
 
-        // d3.selectAll("circle.node").on("click", () => {
-        //     this.filter.addFilter(d3.select(this).attr("name"), );
-        // });
+        d3.selectAll("circle.node").on("contextmenu", async (node) => {
+            d3.event.preventDefault();
+            await this.filter.addFilterAndRefresh(d3.select(node).node().name);
+        });
 
         this.addAdvancedBehaviour(newNode, this.width, this.height);
     }
@@ -299,8 +301,8 @@ class Graph {
             //	tick event handler with bounded box
             .on("tick", () => {
                 this.node
-                // .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
-                // .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
+                    // .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
+                    // .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
                     .attr("cx", function (d) {
                         return d.x;
                     })
@@ -361,31 +363,30 @@ class Graph {
         }
     }
 
-    getNodeColor(nodeName, valueOnScale){
+    getNodeColor(nodeName, valueOnScale) {
         var upperRangeColor = this.packageColorer.getColorForName(nodeName);
         return this.color
             .range(["#FFFFFF", upperRangeColor])
             .interpolate(d3.interpolateRgb)(valueOnScale);
     }
 
-    setButtonsClickActions(){
-        $(document).on('click', ".list-group-item", e => {
+    setButtonsClickActions() {
+        $(document).on('click', ".list-group-item", async e => {
             e.preventDefault();
             $('.active').removeClass('active');
         });
 
-        $("#filter-isolated").on('click', async e => {
+        $(document).on('click', "#filter-isolated", async e => {
             e.preventDefault();
-            var previouslyFiltered = sessionStorage.getItem("filteredIsolated") === "true";
+            const previouslyFiltered = sessionStorage.getItem("filteredIsolated") === "true";
             sessionStorage.setItem("filteredIsolated", previouslyFiltered ? "false" : "true");
             $("#filter-isolated").text(previouslyFiltered ? "Unfilter isolated nodes" : "Filter isolated nodes");
             await this.displayGraph();
         });
 
-        $("#filter-variants-button").on('click', async e => {
+        $(document).on('click', "#filter-variants-button", async e => {
             e.preventDefault();
-            console.log(sessionStorage.getItem("filteredVariants"));
-            var previouslyFiltered = sessionStorage.getItem("filteredVariants") === "true";
+            const previouslyFiltered = sessionStorage.getItem("filteredVariants") === "true";
             sessionStorage.setItem("filteredVariants", previouslyFiltered ? "false" : "true");
             $("#filter-variants-button").text(previouslyFiltered ? "Hide variants" : "Show variants");
             await this.displayGraph();
@@ -420,4 +421,4 @@ function contrastColor(color) {
     return d3.rgb(d, d, d);
 }
 
-export { Graph };
+export {Graph};

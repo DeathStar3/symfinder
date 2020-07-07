@@ -78,6 +78,7 @@ describe("Acceptance tests for all projects", () => {
                     expect(linksTargets.every(t => nodesNames.includes(t))).toBeTruthy();
                 });
 
+
             });
 
             describe("Checking visualization without variants", () => {
@@ -150,7 +151,7 @@ describe("Acceptance tests for all projects", () => {
 
                 it('No variant is on the visualization if it is not a VP too', () => {
                     expect(jsonData.nodes
-                        .filter(n => n.types.includes("VARIANT") && ! ["VP", "METHOD_LEVEL_VP"].some(label => n.types.includes(label)))
+                        .filter(n => n.types.includes("VARIANT") && !["VP", "METHOD_LEVEL_VP"].some(label => n.types.includes(label)))
                         .map(n => d3.select('circle[name = "' + n.name + '"]'))
                         .every(c => c.empty() === true))
                         .toBeTruthy();

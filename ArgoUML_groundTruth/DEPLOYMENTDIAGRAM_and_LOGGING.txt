@@ -1,0 +1,14 @@
+org.argouml.uml.diagram.deployment.DeploymentDiagramGraphModel Refinement
+org.argouml.uml.diagram.deployment.DeploymentDiagramGraphModel canAddEdge(Object) Refinement
+org.argouml.uml.diagram.deployment.DeploymentDiagramGraphModel addNode(Object) Refinement
+org.argouml.uml.diagram.deployment.DeploymentDiagramGraphModel addEdge(Object) Refinement
+org.argouml.uml.diagram.deployment.DeploymentDiagramGraphModel vetoableChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.deployment.ui.DeploymentDiagramRenderer Refinement
+org.argouml.uml.diagram.deployment.ui.DeploymentDiagramRenderer getFigNodeFor(GraphModel,Layer,Object,Map) Refinement
+org.argouml.uml.diagram.deployment.ui.UMLDeploymentDiagram Refinement
+org.argouml.uml.diagram.deployment.ui.UMLDeploymentDiagram setNamespace(Object) Refinement
+org.argouml.uml.diagram.deployment.ui.UMLDeploymentDiagram setModelElementNamespace(Object,Object) Refinement
+org.argouml.uml.diagram.deployment.ui.UMLDeploymentDiagram drop(Object,Point) Refinement
+org.argouml.uml.ui.ActionDeploymentDiagram Refinement
+org.argouml.uml.ui.ActionDeploymentDiagram createDiagram(Object) Refinement
+org.argouml.uml.ui.ActionDeploymentDiagram isValidNamespace(Object) Refinement

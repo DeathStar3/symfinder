@@ -37,4 +37,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./experiments:/experiments
       - ./symfinder.yaml:/symfinder.yaml
-      - ./symfinder-compose.yaml:/symfinder-compose.yaml
+      - ./${SYMFINDER_COMPOSE_FILE}:/symfinder-compose.yaml
+      - ./features-mapper-compose.yaml:/features-mapper-compose.yaml

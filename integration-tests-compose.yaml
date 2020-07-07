@@ -25,6 +25,6 @@ services:
   integration:
     build:
       context: .
-      dockerfile: docker/integration_tests/Dockerfile
+      dockerfile: docker/integration_tests/run/Dockerfile
     image: symfinder-integration-tests
     container_name: symfinder-integration-tests

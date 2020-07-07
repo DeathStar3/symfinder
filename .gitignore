@@ -27,3 +27,6 @@ hs_err_pid*
 target
 /resources
 /generated_visualizations
+/src/main/generated-sources
+node_modules/
+cmake-build-debug/

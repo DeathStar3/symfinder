@@ -1,0 +1,112 @@
+org.argouml.application.Main Refinement
+org.argouml.application.PostLoad Refinement
+org.argouml.application.LoadModules Refinement
+org.argouml.application.Main initializeSubsystems(SimpleTimer,SplashScreen) Refinement
+org.argouml.notation.NotationProviderFactory2 Refinement
+org.argouml.notation.providers.uml.CallStateNotationUml parseCallState(Object,String) Refinement
+org.argouml.notation.providers.uml.InitNotationUml init() Refinement
+org.argouml.notation.providers.uml.ObjectFlowStateStateNotationUml parseObjectFlowState2(Object,String) Refinement
+org.argouml.notation.providers.uml.ObjectFlowStateTypeNotationUml parseObjectFlowState1(Object,String) Refinement
+org.argouml.notation.providers.uml.StateBodyNotationUml
+org.argouml.notation.providers.uml.TransitionNotationUml Refinement
+org.argouml.notation.providers.uml.TransitionNotationUml parseTrigger(Object,String) Refinement
+org.argouml.notation.providers.uml.TransitionNotationUml parseGuard(Object,String) Refinement
+org.argouml.notation.providers.uml.TransitionNotationUml parseEffect(Object,String) Refinement
+org.argouml.persistence.ModelMemberFilePersister registerDiagramsInternal(Project,Collection,boolean) Refinement
+org.argouml.ui.cmd.GenericArgoMenuBar Refinement
+org.argouml.ui.cmd.GenericArgoMenuBar initMenuCreate() Refinement
+org.argouml.ui.cmd.ShortcutMgr Refinement
+org.argouml.ui.explorer.ExplorerPopup Refinement
+org.argouml.ui.explorer.ExplorerPopup ExplorerPopup(Object,MouseEvent) Refinement
+org.argouml.ui.explorer.ExplorerPopup initMenuCreateDiagrams() Refinement
+org.argouml.ui.explorer.rules.GoNamespaceToDiagram Refinement
+org.argouml.ui.explorer.rules.GoStateToDownstream getChildren(Object) Refinement
+org.argouml.uml.diagram.activity.ActivityDiagramGraphModel
+org.argouml.uml.diagram.activity.layout.ActivityDiagramLayouter
+org.argouml.uml.diagram.activity.ui.ActionCreatePartition
+org.argouml.uml.diagram.activity.ui.ActivityDiagramPropPanelFactory
+org.argouml.uml.diagram.activity.ui.ActivityDiagramRenderer
+org.argouml.uml.diagram.activity.ui.FigActionState
+org.argouml.uml.diagram.activity.ui.FigCallState
+org.argouml.uml.diagram.activity.ui.FigObjectFlowState
+org.argouml.uml.diagram.activity.ui.FigPartition
+org.argouml.uml.diagram.activity.ui.FigPool
+org.argouml.uml.diagram.activity.ui.FigSubactivityState
+org.argouml.uml.diagram.activity.ui.InitActivityDiagram
+org.argouml.uml.diagram.activity.ui.ModePlacePartition
+org.argouml.uml.diagram.activity.ui.PropPanelUMLActivityDiagram
+org.argouml.uml.diagram.activity.ui.SelectionActionState getNewNode(int)
+org.argouml.uml.diagram.activity.ui.SelectionCallState
+org.argouml.uml.diagram.activity.ui.UMLActivityDiagram
+org.argouml.uml.diagram.ArgoDiagramImpl Refinement
+org.argouml.uml.diagram.ArgoDiagramImpl repairFig(Fig,StringBuffer) Refinement
+org.argouml.uml.diagram.DiagramFactory Refinement
+org.argouml.uml.diagram.DiagramFactory DiagramFactory() Refinement
+org.argouml.uml.diagram.DiagramFactory createInternal(DiagramType,Object,Object,DiagramSettings) Refinement
+org.argouml.uml.diagram.DiagramFactory createDiagram(Class,Object,Object) Refinement
+org.argouml.uml.diagram.state.StateDiagramGraphModel
+org.argouml.uml.diagram.state.ui.ButtonActionNewCallEvent
+org.argouml.uml.diagram.state.ui.ButtonActionNewChangeEvent
+org.argouml.uml.diagram.state.ui.ButtonActionNewEvent
+org.argouml.uml.diagram.state.ui.ButtonActionNewSignalEvent
+org.argouml.uml.diagram.state.ui.ButtonActionNewTimeEvent
+org.argouml.uml.diagram.state.ui.FigFinalState
+org.argouml.uml.diagram.state.ui.FigStateVertex
+org.argouml.uml.diagram.state.ui.FigTransition
+org.argouml.uml.diagram.state.ui.StateDiagramRenderer
+org.argouml.uml.diagram.ui.ActionAddConcurrentRegion Refinement
+org.argouml.uml.diagram.ui.ActionAddConcurrentRegion isEnabled() Refinement
+org.argouml.uml.diagram.UmlDiagramRenderer Refinement
+org.argouml.uml.diagram.UmlDiagramRenderer getFigNodeFor(Object,int,int,Map) Refinement
+org.argouml.uml.ui.AbstractActionAddModelElement2 actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.ActionActivityDiagram
+org.argouml.uml.ui.ActionDeleteModelElements shouldBeEnabled() Refinement
+org.argouml.uml.ui.ActionLayout Refinement
+org.argouml.uml.ui.ActionLayout isEnabled() Refinement
+org.argouml.uml.ui.ActionLayout actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionAddEventAsTrigger doIt(Collection) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionNewClassifierInState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionSetSynch actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionAddCISState doIt(Collection) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionRemoveCISState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionAddOFSState doIt(Collection) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionRemoveOFSState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionAddOFSParameter doIt(Collection) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionNewOFSParameter actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionRemoveOFSParameter actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.activity_graphs.ActionAddPartitionContent doIt(Collection) Refinement
+org.argouml.uml.ui.behavior.common_behavior.ActionNewAction actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionAddEventAsDeferrableEvent doIt(Collection) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewCallEvent createEvent(Object)
+org.argouml.uml.ui.behavior.state_machines.ActionNewChangeEvent createEvent(Object)
+org.argouml.uml.ui.behavior.state_machines.ActionNewCompositeState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewEvent createEvent(Object)
+org.argouml.uml.ui.behavior.state_machines.ActionNewEvent actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewFinalState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewGuard actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewPseudoState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewSignalEvent createEvent(Object)
+org.argouml.uml.ui.behavior.state_machines.ActionNewSimpleState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewStubState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewSubmachineState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewSynchState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewTimeEvent createEvent(Object)
+org.argouml.uml.ui.behavior.state_machines.ActionNewTransition actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionNewTransition isEnabled() Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionSetCompositeStateConcurrent actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionSetContextStateMachine actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionSetStubStateReferenceState actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ActionSetSubmachineStateSubmachine actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.ButtonActionNewGuard actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.PropPanelStubState
+org.argouml.uml.ui.behavior.state_machines.PropPanelSubmachineState PropPanelSubmachineState() Refinement
+org.argouml.uml.ui.behavior.state_machines.PropPanelSynchState
+org.argouml.uml.ui.behavior.state_machines.UMLChangeExpressionModel setExpression(Object) Refinement
+org.argouml.uml.ui.behavior.state_machines.UMLStubStateComboBoxModel
+org.argouml.uml.ui.behavior.state_machines.UMLSubmachineStateComboBoxModel
+org.argouml.uml.ui.behavior.state_machines.UMLSynchStateBoundDocument
+org.argouml.uml.ui.ElementPropPanelFactory Refinement
+org.argouml.uml.ui.ElementPropPanelFactory getStateVertexPropPanel(Object) Refinement
+org.argouml.uml.ui.UMLExpressionExpressionModel setExpression(Object) Refinement
+org.argouml.uml.ui.UMLTimeExpressionModel setExpression(Object) Refinement
+org.argouml.model.Model getActivityGraphsFactory()

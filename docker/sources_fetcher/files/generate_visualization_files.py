@@ -66,7 +66,8 @@ def generate_visualization_file(xp_codename, xp_config):
             filters=",".join(['"' + f + '"' for f in xp_config.get("filters", [])]),
             jsonFile=os.path.join("data", "%s.json" % xp_codename),
             jsonStatsFile=os.path.join("data", "%s-stats.json" % xp_codename),
-            jsonMetricsFile=os.path.join("data", "%s-metrics.json" % xp_codename))
+            jsonMetricsFile=os.path.join("data", "%s-metrics.json" % xp_codename),
+            jsonTracesFile=os.path.join("data", "%s-traces.json" % xp_codename) if xp_config.get("traces", "") else "")
         )
 
 

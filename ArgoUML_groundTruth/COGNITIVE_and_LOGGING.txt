@@ -1,0 +1,116 @@
+org.argouml.application.StartCritics Refinement
+org.argouml.application.StartCritics run() Refinement
+org.argouml.cognitive.Agency Refinement
+org.argouml.cognitive.Agency register(String,String) Refinement
+org.argouml.cognitive.Agency register(Critic,Class) Refinement
+org.argouml.cognitive.Agency applyCritics(Object,Designer,Collection<Critic>,long) Refinement
+org.argouml.cognitive.checklist.ui.TabChecklist Refinement
+org.argouml.cognitive.checklist.ui.TableModelChecklist Refinement
+org.argouml.cognitive.checklist.ui.TableModelChecklist setValueAt(Object,int,int) Refinement
+org.argouml.cognitive.Critic Refinement
+org.argouml.cognitive.Critic stillValid(ToDoItem,Designer) Refinement
+org.argouml.cognitive.Critic makeWizard(ToDoItem) Refinement
+org.argouml.cognitive.critics.SnoozeOrder Refinement
+org.argouml.cognitive.critics.SnoozeOrder snooze() Refinement
+org.argouml.cognitive.critics.ui.CriticBrowserDialog Refinement
+org.argouml.cognitive.critics.ui.CriticBrowserDialog setTargetUseClarifiers() Refinement
+org.argouml.cognitive.critics.ui.CriticBrowserDialog actionPerformed(ActionEvent) Refinement
+org.argouml.cognitive.critics.ui.CriticBrowserDialog valueChanged(ListSelectionEvent) Refinement
+org.argouml.cognitive.critics.ui.CriticBrowserDialog insertUpdate(DocumentEvent) Refinement
+org.argouml.cognitive.critics.ui.CriticBrowserDialog changedUpdate(DocumentEvent) Refinement
+org.argouml.cognitive.critics.ui.CriticBrowserDialog itemStateChanged(ItemEvent) Refinement
+org.argouml.cognitive.critics.ui.TableModelCritics Refinement
+org.argouml.cognitive.critics.ui.TableModelCritics setValueAt(Object,int,int) Refinement
+org.argouml.cognitive.Designer Refinement
+org.argouml.cognitive.Designer run() Refinement
+org.argouml.cognitive.Designer critiqueASAP(Object,String) Refinement
+org.argouml.cognitive.Designer addListener(PropertyChangeListener) Refinement
+org.argouml.cognitive.Designer removeListener(PropertyChangeListener) Refinement
+org.argouml.cognitive.ResolvedCritic Refinement
+org.argouml.cognitive.ResolvedCritic importOffenders(ListSet,boolean) Refinement
+org.argouml.cognitive.ToDoList Refinement
+org.argouml.cognitive.ToDoList run() Refinement
+org.argouml.cognitive.ToDoList forceValidityCheck(List<ToDoItem>) Refinement
+org.argouml.cognitive.ToDoList addE(ToDoItem) Refinement
+org.argouml.cognitive.ToDoList removeAllElements() Refinement
+org.argouml.cognitive.ui.DismissToDoItemDialog Refinement
+org.argouml.cognitive.ui.DismissToDoItemDialog DismissToDoItemDialog() Refinement
+org.argouml.cognitive.ui.DismissToDoItemDialog explain(ActionEvent) Refinement
+org.argouml.cognitive.ui.ToDoByDecision Refinement
+org.argouml.cognitive.ui.ToDoByDecision toDoItemsChanged(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByDecision toDoItemsAdded(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByDecision toDoItemsRemoved(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByGoal Refinement
+org.argouml.cognitive.ui.ToDoByGoal toDoItemsChanged(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByGoal toDoItemsAdded(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByGoal toDoItemsRemoved(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByOffender Refinement
+org.argouml.cognitive.ui.ToDoByOffender toDoItemsChanged(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByOffender toDoItemsAdded(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByOffender toDoItemsRemoved(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByPoster Refinement
+org.argouml.cognitive.ui.ToDoByPoster toDoItemsChanged(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByPoster toDoItemsAdded(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByPoster toDoItemsRemoved(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByPriority Refinement
+org.argouml.cognitive.ui.ToDoByPriority toDoItemsChanged(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByPriority toDoItemsAdded(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByPriority toDoItemsRemoved(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByType Refinement
+org.argouml.cognitive.ui.ToDoByType toDoItemsChanged(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByType toDoItemsAdded(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoByType toDoItemsRemoved(ToDoListEvent) Refinement
+org.argouml.cognitive.ui.ToDoPane Refinement
+org.argouml.cognitive.ui.ToDoPane valueChanged(TreeSelectionEvent) Refinement
+org.argouml.cognitive.ui.ToDoPane updateTree() Refinement
+org.argouml.cognitive.ui.ToDoPane myDoubleClick(int,TreePath) Refinement
+org.argouml.cognitive.ui.ToDoPerspective Refinement
+org.argouml.cognitive.ui.ToDoPerspective addFlatChildren(Object) Refinement
+org.argouml.cognitive.ui.WizDescription Refinement
+org.argouml.cognitive.ui.WizDescription WizDescription() Refinement
+org.argouml.kernel.MemberList remove(Object) Refinement
+org.argouml.kernel.MemberList setTodoList(AbstractProjectMember) Refinement
+org.argouml.kernel.ProjectImpl addTodoMember(ProjectMemberTodoList) Refinement
+org.argouml.kernel.ProjectImpl addMember(Object) Refinement
+org.argouml.persistence.TodoListMemberFilePersister Refinement
+org.argouml.persistence.TodoParser Refinement
+org.argouml.persistence.TodoParser readTodoList(Reader) Refinement
+org.argouml.persistence.TodoParser handleStartElement(XMLElement) Refinement
+org.argouml.persistence.TodoParser handleEndElement(XMLElement) Refinement
+org.argouml.persistence.XmiFilePersister parseXmiExtensions(Project) Refinement
+org.argouml.profile.init.ProfileLoader loadJavaCriticsForProfile(Attributes,ClassLoader) Refinement
+org.argouml.profile.UserDefinedProfile generateCriticFromComment(Object) Refinement
+org.argouml.uml.cognitive.checklist.UMLCheckItem Refinement
+org.argouml.uml.cognitive.checklist.UMLCheckItem expand(String,Object) Refinement
+org.argouml.uml.cognitive.critics.ChildGenUML Refinement
+org.argouml.uml.cognitive.critics.ChildGenUML gen2(Object) Refinement
+org.argouml.uml.cognitive.critics.ClAttributeCompartment Refinement
+org.argouml.uml.cognitive.critics.ClAttributeCompartment hit(int,int) Refinement
+org.argouml.uml.cognitive.critics.CrCircularComposition Refinement
+org.argouml.uml.cognitive.critics.CrCircularComposition stillValid(ToDoItem,Designer) Refinement
+org.argouml.uml.cognitive.critics.CrCircularInheritance Refinement
+org.argouml.uml.cognitive.critics.CrCircularInheritance predicate2(Object,Designer) Refinement
+org.argouml.uml.cognitive.critics.CrEmptyPackage Refinement
+org.argouml.uml.cognitive.critics.CrMultipleDeepHistoryStates Refinement
+org.argouml.uml.cognitive.critics.CrMultipleDeepHistoryStates predicate2(Object,Designer) Refinement
+org.argouml.uml.cognitive.critics.CrMultipleDeepHistoryStates computeOffenders(Object) Refinement
+org.argouml.uml.cognitive.critics.CrMultipleInitialStates Refinement
+org.argouml.uml.cognitive.critics.CrMultipleInitialStates predicate2(Object,Designer) Refinement
+org.argouml.uml.cognitive.critics.CrMultipleInitialStates computeOffenders(Object) Refinement
+org.argouml.uml.cognitive.critics.CrMultipleShallowHistoryStates Refinement
+org.argouml.uml.cognitive.critics.CrMultipleShallowHistoryStates predicate2(Object,Designer) Refinement
+org.argouml.uml.cognitive.critics.CrMultipleShallowHistoryStates computeOffenders(Object) Refinement
+org.argouml.uml.cognitive.critics.CrUML Refinement
+org.argouml.uml.cognitive.critics.CrUML expand(String,ListSet) Refinement
+org.argouml.uml.cognitive.critics.WizAssocComposite Refinement
+org.argouml.uml.cognitive.critics.WizAssocComposite doAction(int) Refinement
+org.argouml.uml.cognitive.critics.WizBreakCircularComp Refinement
+org.argouml.uml.cognitive.critics.WizBreakCircularComp doAction(int) Refinement
+org.argouml.uml.cognitive.critics.WizManyNames Refinement
+org.argouml.uml.cognitive.critics.WizManyNames doAction(int) Refinement
+org.argouml.uml.cognitive.critics.WizMEName Refinement
+org.argouml.uml.cognitive.critics.WizMEName doAction(int) Refinement
+org.argouml.uml.cognitive.critics.WizNavigable Refinement
+org.argouml.uml.cognitive.critics.WizNavigable doAction(int) Refinement
+org.argouml.uml.cognitive.critics.WizOperName Refinement
+org.argouml.uml.cognitive.critics.WizOperName doAction(int) Refinement

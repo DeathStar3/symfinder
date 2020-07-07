@@ -19,16 +19,18 @@
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
-FROM maven:3-jdk-8-alpine as building
+FROM maven:3.6.1-jdk-13-alpine as building
 ARG BUILD_PARAMS
 ARG SOURCES_PACKAGE
 ARG GRAPH_OUTPUT_PATH
+ARG SYMFINDER_LANGUAGE
+ARG JVM_ARGUMENTS
 ADD src/ /src
 ADD pom.xml /pom.xml
-RUN mvn clean install $BUILD_PARAMS
+RUN mvn --no-transfer-progress clean install $BUILD_PARAMS
 
-FROM openjdk:8-jre-alpine
-RUN apk add git
+FROM openjdk:14-jdk-alpine3.10
+RUN apk add --no-cache git g++
 COPY --from=building target/symfinder-1.0-SNAPSHOT-jar-with-dependencies.jar /symfinder.jar
 ADD docker/symfinder/exec_symfinder.sh /exec_symfinder.sh
-ENTRYPOINT sh exec_symfinder.sh $SOURCES_PACKAGE $GRAPH_OUTPUT_PATH
+ENTRYPOINT sh exec_symfinder.sh $SOURCES_PACKAGE $GRAPH_OUTPUT_PATH $SYMFINDER_LANGUAGE $JVM_ARGUMENTS

@@ -20,8 +20,8 @@
  */
 
 import neo4j_types.EntityType;
-import org.junit.Test;
-import org.neo4j.driver.v1.types.Node;
+import org.junit.jupiter.api.Test;
+import org.neo4j.driver.types.Node;
 
 import java.util.Optional;
 

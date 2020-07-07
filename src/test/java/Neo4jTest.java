@@ -19,36 +19,43 @@
  * Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
  */
 
+import apoc.path.PathExplorer;
 import neograph.NeoGraph;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.neo4j.driver.v1.Config;
-import org.neo4j.driver.v1.Driver;
-import org.neo4j.driver.v1.GraphDatabase;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.neo4j.driver.Config;
+import org.neo4j.driver.Driver;
+import org.neo4j.driver.GraphDatabase;
 import org.neo4j.graphdb.GraphDatabaseService;
-import org.neo4j.harness.junit.Neo4jRule;
+import org.neo4j.harness.Neo4j;
+import org.neo4j.harness.internal.InProcessNeo4jBuilder;
 
 import java.util.function.Consumer;
 
 public class Neo4jTest {
 
-    @Rule
-    public Neo4jRule neo4jRule = new Neo4jRule();
-    protected GraphDatabaseService graphDatabaseService;
+    private static Neo4j embeddedDatabaseServer;
+    protected static GraphDatabaseService graphDatabaseService;
 
-    @Before
-    public void setUp() {
-        graphDatabaseService = neo4jRule.getGraphDatabaseService();
+    @BeforeAll
+    static void setUp() {
+        embeddedDatabaseServer = new InProcessNeo4jBuilder().withProcedure(PathExplorer.class).build();
+        graphDatabaseService = embeddedDatabaseServer.defaultDatabaseService();
+    }
+    	
+    @AfterEach
+    public void tearDown() {
+        graphDatabaseService.executeTransactionally("MATCH (n) DETACH DELETE (n)");
     }
 
-    @After
-    public void tearDown() {
-        graphDatabaseService.shutdown();
+    @AfterAll
+    static void tearDownAll() {
+        embeddedDatabaseServer.close();
     }
 
     protected void runTest(Consumer<NeoGraph> consumer){
-        try (Driver driver = GraphDatabase.driver(neo4jRule.boltURI(), Config.build().withoutEncryption().toConfig())) {
+        try (Driver driver = GraphDatabase.driver(embeddedDatabaseServer.boltURI(), Config.defaultConfig())) {
             NeoGraph graph = new NeoGraph(driver);
             consumer.accept(graph);
         }

@@ -1,0 +1,1 @@
+org.argouml.application.Main initializeGUI(SplashScreen) Refinement

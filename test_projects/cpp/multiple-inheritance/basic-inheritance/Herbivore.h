@@ -1,0 +1,14 @@
+//
+// Created by nathan on 27/11/2019.
+//
+
+#ifndef MULTIPLE_INHERITANCE_HERBIVORE_H
+#define MULTIPLE_INHERITANCE_HERBIVORE_H
+
+
+class Herbivore {
+
+};
+
+
+#endif //MULTIPLE_INHERITANCE_HERBIVORE_H

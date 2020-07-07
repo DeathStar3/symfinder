@@ -1,0 +1,17 @@
+org.argouml.uml.cognitive.critics.CrClassWithoutComponent
+org.argouml.uml.cognitive.critics.CrCompInstanceWithoutNode
+org.argouml.uml.cognitive.critics.CrComponentInstanceWithoutClassifier
+org.argouml.uml.cognitive.critics.CrComponentWithoutNode
+org.argouml.uml.cognitive.critics.CrInstanceWithoutClassifier
+org.argouml.uml.cognitive.critics.CrInterfaceWithoutComponent
+org.argouml.uml.cognitive.critics.CrNodeInsideElement
+org.argouml.uml.cognitive.critics.CrNodeInstanceInsideElement
+org.argouml.uml.cognitive.critics.CrNodeInstanceWithoutClassifier
+org.argouml.uml.cognitive.critics.CrNodesOverlap Refinement
+org.argouml.uml.cognitive.critics.CrNodesOverlap computeOffenders(Diagram) Refinement
+org.argouml.uml.cognitive.critics.CrObjectWithoutClassifier
+org.argouml.uml.cognitive.critics.CrObjectWithoutComponent
+org.argouml.uml.cognitive.critics.CrWrongDepEnds
+org.argouml.uml.cognitive.critics.CrWrongLinkEnds
+org.argouml.uml.cognitive.critics.ProfileCodeGeneration ProfileCodeGeneration(ProfileGoodPractices) Refinement
+org.argouml.uml.cognitive.critics.ProfileGoodPractices ProfileGoodPractices() Refinement

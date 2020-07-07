@@ -27,4 +27,5 @@ docker-compose -f acceptance-tests-compose.yaml build
 docker-compose -f acceptance-tests-compose.yaml up --abort-on-container-exit --exit-code-from acceptance
 RETURN_CODE=$?
 docker-compose -f acceptance-tests-compose.yaml down
+
 exit $RETURN_CODE

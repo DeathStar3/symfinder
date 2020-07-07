@@ -20,7 +20,7 @@
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
-create_directory(){
+create_directory() {
     if [[ ! -d "$1" ]]; then
         echo "Creating $1 directory"
         mkdir "$1"
@@ -29,11 +29,15 @@ create_directory(){
     fi
 }
 
-sed -i -e 's/experiments.yaml/test-experiments.yaml/g' symfinder.yaml
+sed -i -e 's/experimentsFile: experiments.yaml/experimentsFile: test-experiments.yaml/g' symfinder.yaml
 create_directory resources
-cp -r test_projects/* resources/
+cp -r test_projects/java/* resources/
+cp -r test_projects/cpp resources/cpp
+cp -r test_projects/cpp/* resources/
+cp -r test_projects/pom.xml resources/
 
-docker run -it --rm --name test_projects_builder -v "$(pwd)/resources":/usr/src/mymaven -w /usr/src/mymaven maven:3-jdk-8 mvn clean compile clean
+docker build -f docker/integration_tests/compile/Dockerfile -t test_projects_builder .
+docker run --rm --name test_projects_builder -v "$(pwd)/resources":/usr/src/mymaven -w /usr/src/mymaven test_projects_builder
 
 ./build.sh -DskipTests
 ./run.sh --local
@@ -43,6 +47,6 @@ docker-compose -f integration-tests-compose.yaml up --abort-on-container-exit --
 RETURN_CODE=$?
 docker-compose -f integration-tests-compose.yaml down
 
-sed -i -e 's/test-experiments.yaml/experiments.yaml/g' symfinder.yaml
+sed -i -e 's/experimentsFile: test-experiments.yaml/experimentsFile: experiments.yaml/g' symfinder.yaml
 
 exit $RETURN_CODE

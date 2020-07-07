@@ -24,9 +24,6 @@
  */
 class Filter {
 
-    nodesList;
-    linksList;
-
     constructor(nodesList, linksList) {
         this.nodesList = nodesList;
         this.linksList = linksList;

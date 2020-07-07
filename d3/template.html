@@ -132,14 +132,14 @@ Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 
     var visualization;
 
-    async function display(jsonFile, jsonStatsFile) {
-        let filters = [];
-        visualization = new Graph(jsonFile, jsonStatsFile, filters);
+    async function display(jsonFile, jsonStatsFile, jsonTracesFile) {
+        let filters = [${filters}];
+        visualization = new Graph(jsonFile, jsonStatsFile, filters, jsonTracesFile);
         return await visualization.displayGraph();
     }
 
     window.onload = async () => {
-        window.graph = await display("${jsonFile}", "${jsonStatsFile}");
+        window.graph = await display("${jsonFile}", "${jsonStatsFile}", "${jsonTracesFile}");
     };
 
 </script>

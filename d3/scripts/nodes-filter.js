@@ -23,13 +23,6 @@
 
 class NodesFilter {
 
-    filterButtonSelector;
-    filterInputSelector;
-    filtersListSelector;
-    displayGraphFunction;
-
-    filtersList;
-
     constructor(filterButtonSelector, filterInputSelector, filtersListSelector, nodeFilters, displayGraphFunction) {
         this.filterButtonSelector = filterButtonSelector;
         this.filterInputSelector = filterInputSelector;
@@ -88,12 +81,6 @@ class NodesFilter {
             '</li>';
     }
 
-    appendFiltersToTab() {
-        this.filtersList.forEach(filter => {
-            $(this.filtersListSelector).append(this.getFilterItem(filter));
-        });
-    }
-
     /**
      * If the filter is a class filter (distinguished by the fact that it contains at least an uppercase letter),
      * we check that the class name matches the filter exactly.
@@ -110,6 +97,11 @@ class NodesFilter {
 
     getLinksListWithoutMatchingFilter(listToFilter){
         return listToFilter.filter(l => !this.filtersList.some(filter => NodesFilter.matchesFilter(l.source, filter)) && !this.filtersList.some(filter => NodesFilter.matchesFilter(l.target, filter)))
+    }
+
+    async addFilterAndRefresh(value){
+        this.addFilter(value);
+        await this.displayGraphFunction();
     }
 
 }

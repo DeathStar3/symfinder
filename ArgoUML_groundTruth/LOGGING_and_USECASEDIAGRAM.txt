@@ -1,0 +1,14 @@
+org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram Refinement
+org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram setNamespace(Object) Refinement
+org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram drop(Object,Point) Refinement
+org.argouml.uml.diagram.use_case.ui.UseCaseDiagramRenderer Refinement
+org.argouml.uml.diagram.use_case.ui.UseCaseDiagramRenderer getFigNodeFor(GraphModel,Layer,Object,Map) Refinement
+org.argouml.uml.diagram.use_case.ui.UseCaseDiagramRenderer getFigEdgeFor(GraphModel,Layer,Object,Map) Refinement
+org.argouml.uml.diagram.use_case.UseCaseDiagramGraphModel Refinement
+org.argouml.uml.diagram.use_case.UseCaseDiagramGraphModel canAddEdge(Object) Refinement
+org.argouml.uml.diagram.use_case.UseCaseDiagramGraphModel addNode(Object) Refinement
+org.argouml.uml.diagram.use_case.UseCaseDiagramGraphModel addEdge(Object) Refinement
+org.argouml.uml.diagram.use_case.UseCaseDiagramGraphModel vetoableChange(PropertyChangeEvent) Refinement
+org.argouml.uml.ui.ActionUseCaseDiagram Refinement
+org.argouml.uml.ui.ActionUseCaseDiagram createDiagram(Object) Refinement
+org.argouml.uml.ui.ActionUseCaseDiagram createDiagram(Object,DiagramSettings) Refinement

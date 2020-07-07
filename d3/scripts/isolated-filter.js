@@ -38,6 +38,10 @@ class IsolatedFilter extends Filter {
             return this.nodesList.filter(n => nodesToKeep.has(n.name));
         };
 
+        this.getFilteredLinksList = () => {
+            return this.linksList;
+        }
+
     }
 
 }

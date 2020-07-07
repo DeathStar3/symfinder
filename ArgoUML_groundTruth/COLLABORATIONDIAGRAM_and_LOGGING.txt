@@ -1,0 +1,12 @@
+org.argouml.uml.diagram.collaboration.CollabDiagramGraphModel Refinement
+org.argouml.uml.diagram.collaboration.CollabDiagramGraphModel setCollaboration(Object) Refinement
+org.argouml.uml.diagram.collaboration.CollabDiagramGraphModel canAddEdge(Object) Refinement
+org.argouml.uml.diagram.collaboration.CollabDiagramGraphModel addNode(Object) Refinement
+org.argouml.uml.diagram.collaboration.CollabDiagramGraphModel addEdge(Object) Refinement
+org.argouml.uml.diagram.collaboration.CollabDiagramGraphModel vetoableChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.collaboration.ui.CollabDiagramRenderer Refinement
+org.argouml.uml.diagram.collaboration.ui.CollabDiagramRenderer getFigNodeFor(GraphModel,Layer,Object,Map) Refinement
+org.argouml.uml.diagram.collaboration.ui.CollabDiagramRenderer getFigEdgeFor(GraphModel,Layer,Object,Map) Refinement
+org.argouml.uml.diagram.collaboration.ui.UMLCollaborationDiagram Refinement
+org.argouml.uml.diagram.collaboration.ui.UMLCollaborationDiagram setNamespace(Object) Refinement
+org.argouml.uml.diagram.collaboration.ui.UMLCollaborationDiagram drop(Object,Point) Refinement

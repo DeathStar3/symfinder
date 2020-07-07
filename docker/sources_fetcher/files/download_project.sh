@@ -26,6 +26,15 @@ download_project(){
     git clone $1 $2
 }
 
+# $2 directory path to create
+setup_directory(){
+directory_path=$2
+ if [ ! -d $directory_path ]; then
+            mkdir -p $directory_path
+fi
+
+}
+
 # $1: project directory
 # ${@:2}: desired commits to checkout
 checkout_commits(){
@@ -61,6 +70,9 @@ case "$1" in
 	"download")
     	download_project ${@:2}
         ;;
+  "setup_directory")
+    	setup_directory ${@:2}
+        ;;
 	"commit")
     	checkout_commits ${@:2}
         ;;
@@ -70,4 +82,5 @@ case "$1" in
     "delete")
         delete_project ${@:2}
         ;;
+
 esac

@@ -46,6 +46,41 @@ structures:
 template:
   localDirectory: template
   sourcePackage: .
+vps_and_variants:
+  localDirectory: vps_and_variants
+  sourcePackage: .
 vps_in_different_packages:
   localDirectory: vps_in_different_packages
   sourcePackage: .
+shape:
+  localDirectory: shape
+  sourcePackage: .
+  language: cpp
+cpp_strategy:
+  localDirectory: cpp_strategy
+  sourcePackage: .
+  language: cpp
+cpp_decorator:
+  localDirectory: cpp_decorator
+  sourcePackage: .
+  language: cpp
+shape-h:
+  localDirectory: shape-h
+  sourcePackage: .
+  language: cpp
+template-class:
+  localDirectory: template-class
+  sourcePackage: .
+  language: cpp
+macro:
+  localDirectory: macro
+  sourcePackage: .
+  language: cpp
+shape-namespace:
+  localDirectory: shape-namespace
+  sourcePackage: .
+  language: cpp
+multiple-inheritance:
+  localDirectory: multiple-inheritance
+  sourcePackage: .
+  language: cpp

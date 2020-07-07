@@ -111,9 +111,9 @@ describe("Generating different types of nodes", () => {
         expect(distanceToRedFromString(d3.select('circle[name = "TenConstructorOverloads"]').attr("fill")))
             .toBeLessThan(distanceToRedFromString(d3.select('circle[name = "OneConstructorOverload"]').attr("fill")));
     });
-    it('node stroke-width increases with the number of variants', () => {
+    it('node stroke-width is the same  for all number of variants', () => {
         expect(d3.select('circle[name = "NoVariant"]').style("stroke-width"))
-            .toBeLessThan(d3.select('circle[name = "TenVariants"]').style("stroke-width"));
+            .toBe(d3.select('circle[name = "TenVariants"]').style("stroke-width"));
     });
     it('design pattern identifier should become light if the node gets dark', () => {
         expect(d3.select('text[name = "factoryClassNode"]').attr("fill")).toBe("rgb(0, 0, 0)");
@@ -145,14 +145,14 @@ describe("Testing utils functions : distanceToRed", () => {
 xdescribe("Testing utils functions : matchesFilter", () => {
 
     it('package filtering', () => {
-        expect(matchesFilter("foo.bar.Clazz", "foo.bar")).toBeTruthy();
-        expect(matchesFilter("bar.Clazz", "foo.bar")).toBeFalsy();
-        expect(matchesFilter("foo.bar.Clazz", "bar")).toBeFalsy();
+        expect(NodeFilter.matchesFilter("foo.bar.Clazz", "foo.bar")).toBeTruthy();
+        expect(NodeFilter.matchesFilter("bar.Clazz", "foo.bar")).toBeFalsy();
+        expect(NodeFilter.matchesFilter("foo.bar.Clazz", "bar")).toBeFalsy();
     });
     it('class filtering', () => {
-        expect(matchesFilter("foo.bar.Clazz", "foo.bar.Clazz")).toBeTruthy();
-        expect(matchesFilter("foo.bar.Clazz", "foo.bar.Clazzz")).toBeFalsy();
-        expect(matchesFilter("foo.bar.Clazzz", "foo.bar.Clazz")).toBeFalsy();
+        expect(NodeFilter.matchesFilter("foo.bar.Clazz", "foo.bar.Clazz")).toBeTruthy();
+        expect(NodeFilter.matchesFilter("foo.bar.Clazz", "foo.bar.Clazzz")).toBeFalsy();
+        expect(NodeFilter.matchesFilter("foo.bar.Clazzz", "foo.bar.Clazz")).toBeFalsy();
     });
 
 });

@@ -29,13 +29,23 @@ from generate_visualization_files import generate_visualization_files_for_projec
 def download_project():
     subprocess.run(["./download_project.sh", "download", repository_url, project_directory])
 
-
 def checkout_versions(id_type, *ids):
     subprocess.run(["./download_project.sh", id_type, project_directory, *ids])
 
 
 def delete_project():
     subprocess.run(["./download_project.sh", "delete", project_directory])
+
+def setup_directory():
+    subprocess.run(["sh","./download_project.sh", "setup_directory",project_directory])
+    os.chdir(project_directory)
+
+def execute_command(checkout_command):
+    """Setup the directory structure execute the checkout command in the set directory"""
+    setup_directory()
+    subprocess.run([checkout_command,project_directory])
+    os.chdir(origin_dir)
+
 
 
 with open('symfinder.yaml', 'r') as config_file:
@@ -57,11 +67,16 @@ with open('symfinder.yaml', 'r') as config_file:
                     version_ids = []
                     if "tagIds" in xp_config:
                         # cast to string in case of numerical tag id (e.g. 1.0)
-                        checkout_versions("tag", *[str(id) for id in xp_config["tagIds"]])
                         version_ids = [str(id) for id in xp_config["tagIds"]]
                         checkout_versions("tag", *version_ids)
                     if "commitIds" in xp_config:
-                        version_ids = xp_config["commitIds"]
-                        checkout_versions("commit", *version_ids)
+                        commit_ids = [str(id) for id in xp_config["commitIds"]]
+                        checkout_versions("commit", *commit_ids)
                     delete_project()
+                if "checkoutCommand" in xp_config:
+                    project_directory = os.path.join(projects_package, xp_name)
+                    origin_dir = os.getcwd()
+                    checkout_command = xp_config["checkoutCommand"]
+                    execute_command(checkout_command)
+
                 generate_visualization_files_for_project(xp_name, xp_config)

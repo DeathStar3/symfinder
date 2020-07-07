@@ -22,7 +22,10 @@
 package neo4j_types;
 
 public enum EntityAttribute implements NodeType {
-    ABSTRACT, INNER, VP, METHOD_LEVEL_VP, VARIANT, OUT_OF_SCOPE;
+    ABSTRACT, INNER, VP, METHOD_LEVEL_VP, VARIANT, OUT_OF_SCOPE,
+    CPP_TEMPLATE,
+    CPP_TEMPLATE_INSTANTIATION,
+    CPP_TEMPLATE_SPECIALIZATION;
 
     @Override
     public String getString() {

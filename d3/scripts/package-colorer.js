@@ -23,8 +23,6 @@ import {NodesFilter} from "./nodes-filter.js";
 
 class PackageColorer extends NodesFilter {
 
-    packagesMap;
-
     constructor(filterButtonSelector, filterInputSelector, filtersListSelector, nodeFilters, displayGraphFunction) {
         super(filterButtonSelector, filterInputSelector, filtersListSelector, nodeFilters, displayGraphFunction);
         this.packagesMap = new Map();

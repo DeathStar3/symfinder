@@ -34,6 +34,7 @@
 
     <modules>
         <module>abstract_decorator</module>
+        <module>cpp</module>
         <module>decorator</module>
         <module>factory</module>
         <module>generics</module>
@@ -49,6 +50,7 @@
         <module>strategy</module>
         <module>structures</module>
         <module>template</module>
+        <module>vps_and_variants</module>
         <module>vps_in_different_packages</module>
     </modules>
 </project>

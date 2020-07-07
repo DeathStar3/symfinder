@@ -19,7 +19,7 @@
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
-FROM python:3.7.3-alpine3.9
-RUN apk add git bash && pip install PyYAML mako
+FROM python:3.8.2-alpine3.11
+RUN apk add --no-cache git bash && pip install PyYAML mako
 ADD docker/sources_fetcher/files/* /
 CMD sh sources_fetcher.sh

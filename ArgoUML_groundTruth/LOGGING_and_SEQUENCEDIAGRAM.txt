@@ -1,0 +1,40 @@
+org.argouml.moduleloader.ModuleLoader2 huntForModules() Refinement
+org.argouml.uml.diagram.sequence.SequenceDiagramGraphModel Refinement
+org.argouml.uml.diagram.sequence.SequenceDiagramGraphModel canAddEdge(Object) Refinement
+org.argouml.uml.diagram.sequence.SequenceDiagramGraphModel connect(Object,Object,Object) Refinement
+org.argouml.uml.diagram.sequence.SequenceDiagramGraphModel vetoableChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.sequence.ui.FigClassifierRole Refinement
+org.argouml.uml.diagram.sequence.ui.FigClassifierRole updateActivations() Refinement
+org.argouml.uml.diagram.sequence.ui.FigClassifierRole getPortFig(Object) Refinement
+org.argouml.uml.diagram.sequence.ui.FigLifeLine Refinement
+org.argouml.uml.diagram.sequence.ui.FigLifeLine removeFig(Fig) Refinement
+org.argouml.uml.diagram.sequence.ui.FigMessagePort Refinement
+org.argouml.uml.diagram.sequence.ui.ModeCreateMessage Refinement
+org.argouml.uml.diagram.sequence.ui.ModeCreateMessage mouseReleased(MouseEvent) Refinement
+org.argouml.uml.diagram.sequence.ui.SequenceDiagramLayer Refinement
+org.argouml.uml.diagram.sequence.ui.SequenceDiagramLayer remove(Fig) Refinement
+org.argouml.uml.diagram.sequence.ui.SequenceDiagramRenderer Refinement
+org.argouml.uml.diagram.sequence.ui.SequenceDiagramRenderer getFigNodeFor(GraphModel,Layer,Object,Map) Refinement
+org.argouml.sequence2.diagram.FigClassifierRole Refinement
+org.argouml.sequence2.diagram.FigMessage Refinement
+org.argouml.sequence2.diagram.FigMessage updateListeners(Object,Object) Refinement
+org.argouml.sequence2.diagram.ModeCreateMessage Refinement
+org.argouml.sequence2.diagram.ModeCreateMessage ModeCreateMessage(Editor) Refinement
+org.argouml.sequence2.diagram.ModeCreateMessage ModeCreateMessage() Refinement
+org.argouml.sequence2.diagram.ModeCreateMessage ensureSpace(FigMessage) Refinement
+org.argouml.sequence2.diagram.SelectionMessage Refinement
+org.argouml.sequence2.diagram.SequenceDiagramFactory Refinement
+org.argouml.sequence2.diagram.SequenceDiagramFactory createDiagram(Object,String,DiagramSettings) Refinement
+org.argouml.sequence2.diagram.SequenceDiagramGraphModel Refinement
+org.argouml.sequence2.diagram.SequenceDiagramGraphModel getInteraction() Refinement
+org.argouml.sequence2.diagram.SequenceDiagramGraphModel canAddEdge(Object) Refinement
+org.argouml.sequence2.diagram.SequenceDiagramGraphModel connect(Object,Object,Object,Object) Refinement
+org.argouml.sequence2.diagram.SequenceDiagramRenderer Refinement
+org.argouml.sequence2.diagram.SequenceDiagramRenderer getFigNodeFor(GraphModel,Layer,Object,Map) Refinement
+org.argouml.sequence2.diagram.UMLSequenceDiagram Refinement
+org.argouml.sequence2.diagram.UMLSequenceDiagram UMLSequenceDiagram() Refinement
+org.argouml.sequence2.diagram.UMLSequenceDiagram UMLSequenceDiagram(Object) Refinement
+org.argouml.sequence2.diagram.UMLSequenceDiagram drop(Object,Point) Refinement
+org.argouml.sequence2.SequenceDiagramModule Refinement
+org.argouml.sequence2.SequenceDiagramModule enable() Refinement
+org.argouml.sequence2.SequenceDiagramModule disable() Refinement

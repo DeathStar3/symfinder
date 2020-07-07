@@ -22,8 +22,7 @@
 
 set -e
 
-
-create_directory(){
+create_directory() {
     if [[ ! -d "$1" ]]; then
         echo "Creating $1 directory"
         mkdir -p "$1"
@@ -36,10 +35,10 @@ export COMPOSE_CONVERT_WINDOWS_PATHS=1
 export SOURCES_PACKAGE="$1"
 export GRAPH_OUTPUT_PATH="$2"
 export PROJECT_NAME="$3"
-
+export SYMFINDER_LANGUAGE="$4"
+export JVM_ARGUMENTS="$5"
 
 echo "Cleaning previous execution..."
 docker-compose -f symfinder-compose.yaml down
 docker-compose -f symfinder-compose.yaml up --abort-on-container-exit
 docker-compose -f symfinder-compose.yaml down
-

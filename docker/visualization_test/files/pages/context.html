@@ -135,9 +135,7 @@ Reloaded before every execution run.
     window.display = display;
 
     async function display(jsonFile, jsonStatsFile, filters) {
-        var visualization = new Graph(jsonFile, jsonStatsFile, filters);
-        await visualization.displayGraph();
-        return visualization;
+        await new Graph(jsonFile, jsonStatsFile, filters, "").displayGraph();
     }
 
 </script>

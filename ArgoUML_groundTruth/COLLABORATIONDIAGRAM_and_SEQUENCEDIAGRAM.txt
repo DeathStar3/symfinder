@@ -1,0 +1,13 @@
+org.argouml.ui.explorer.rules.GoCollaborationToDiagram Refinement
+org.argouml.ui.explorer.rules.GoCollaborationToDiagram getChildren(Object) Refinement
+org.argouml.uml.ui.ActionSequenceDiagram createDiagram(Object) Refinement
+org.argouml.sequence2.diagram.ActionAddClassifierRole makeNode()
+org.argouml.sequence2.diagram.SequenceDiagramGraphModel getCollaboration()
+org.argouml.sequence2.diagram.SequenceDiagramGraphModel canAddNode(Object) Refinement
+org.argouml.sequence2.diagram.SequenceDiagramGraphModel connect(Object,Object,Object,Object) Refinement
+org.argouml.sequence2.diagram.UMLSequenceDiagram UMLSequenceDiagram(Object) Refinement
+org.argouml.sequence2.diagram.UMLSequenceDiagram initialize(Object) Refinement
+org.argouml.sequence2.diagram.UMLSequenceDiagram relocate(Object) Refinement
+org.argouml.sequence2.diagram.UMLSequenceDiagram makeNewCR(Object) Refinement
+org.argouml.sequence2.diagram.UMLSequenceDiagram getCollaboration()
+org.argouml.sequence2.diagram.UMLSequenceDiagram postLoad() Refinement

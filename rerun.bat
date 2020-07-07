@@ -25,7 +25,8 @@ SET SYMFINDER_GID=1000
 SET SYMFINDER_PROJECTS=%*
 set raw_path=%cd%
 set after_slash=%raw_path:\=/%
-SET PWD=%after_slash:C:=/c%
+SET PWD=%after_slash:D:=/d%
+SET TAG=local
 
 docker-compose -f runner-compose.yaml up
 docker-compose -f runner-compose.yaml down
