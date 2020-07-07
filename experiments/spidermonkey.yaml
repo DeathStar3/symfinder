@@ -1,0 +1,5 @@
+SpiderMonkey:
+  checkoutCommand: "/experiments/scripts/firefox_checkout.sh"
+  language: cpp
+  sourcePackage: js
+  jvmArguments: "-Xss128M"

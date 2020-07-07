@@ -62,8 +62,3 @@ musescore:
     - v3.4.2
   language: cpp
   jvmArguments: "-Xss128M"
-SpiderMonkey:
-  checkoutCommand: "/experiments/scripts/firefox_checkout.sh"
-  language: cpp
-  sourcePackage: .
-  jvmArguments: "-Xss128M"
