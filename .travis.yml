@@ -14,9 +14,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder. If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
-# Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
-# Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+# Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+# Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+# Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
 language: minimal
@@ -24,15 +24,28 @@ language: minimal
 jobs:
   include:
     - stage: "Unit tests"
-      name: "Symfinder engine unit tests"
-      script: ./build.sh
+      name: "Building symfinder engine"
+      script: docker build -f docker/symfinder/Dockerfile -t deathstar3/symfinder-engine:local .
+    - name: "Building sources fetcher"
+      script: docker build -f docker/sources_fetcher/Dockerfile -t deathstar3/symfinder-fetcher:local .
+    - name: "Building symfinder runner"
+      script: docker build -f docker/runner/Dockerfile -t deathstar3/symfinder-runner:local .
+    - name: "Building Neo4j procedures"
+      script: docker build -f docker/neo4j/Dockerfile -t deathstar3/symfinder-neo4j:local .
     - name: "Visualization unit tests"
       script: ./run_visualization_tests.sh
     - stage: "Integration tests"
       name: "Tests on sample projects"
       script: ./run_integration_tests.sh
     - name: "Acceptance tests on a pilot project"
-      script: ./run_acceptance_tests.sh junit
+      script: ./run_acceptance_tests.sh sat4j
+    - stage: "Feature mapping"
+      name: "Features extractor unit tests"
+      script: docker build -f docker/features-extractor/Dockerfile -t deathstar3/features-extractor:local .
+    - name: "Mapping features from Sat4j"
+      script: ./sat4j-feature-mapping.sh --local
+    - name: "Mapping features from ArgoUML"
+      script: ./argouml-feature-mapping.sh --local
 
 notifications:
   email: false

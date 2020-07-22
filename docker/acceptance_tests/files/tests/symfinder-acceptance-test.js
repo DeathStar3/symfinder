@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
- * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
- * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
- * Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+ * Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+ * Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+ * Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
  */
 
 describe("Acceptance tests for all projects", () => {
@@ -77,6 +77,7 @@ describe("Acceptance tests for all projects", () => {
                     expect(linksSources.every(s => nodesNames.includes(s))).toBeTruthy();
                     expect(linksTargets.every(t => nodesNames.includes(t))).toBeTruthy();
                 });
+
 
             });
 
@@ -150,7 +151,7 @@ describe("Acceptance tests for all projects", () => {
 
                 it('No variant is on the visualization if it is not a VP too', () => {
                     expect(jsonData.nodes
-                        .filter(n => n.types.includes("VARIANT") && ! ["VP", "METHOD_LEVEL_VP"].some(label => n.types.includes(label)))
+                        .filter(n => n.types.includes("VARIANT") && !["VP", "METHOD_LEVEL_VP"].some(label => n.types.includes(label)))
                         .map(n => d3.select('circle[name = "' + n.name + '"]'))
                         .every(c => c.empty() === true))
                         .toBeTruthy();

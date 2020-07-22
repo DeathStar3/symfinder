@@ -7,7 +7,7 @@ import neograph.NeoGraph;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jdt.core.dom.*;
-import org.neo4j.driver.v1.types.Node;
+import org.neo4j.driver.types.Node;
 
 import java.util.Optional;
 

@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
- * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
- * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
- * Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+ * Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+ * Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+ * Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
  */
 
 let timeout = 500;
@@ -177,7 +177,7 @@ describe("Template pattern", () => {
             setTimeout(() => done(), timeout); // wait
         });
 
-        xit('the graph should contain one node', () => {
+        it('the graph should contain one node', () => {
             expect(d3.selectAll('circle').size()).toBe(1);
         });
         it('the node should have a T on it', () => {

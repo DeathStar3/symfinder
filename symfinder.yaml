@@ -3,4 +3,7 @@ neo4j:
   user: neo4j
   password: root
 
+hotspots:
+  nbVariantsThreshold: 7
+
 experimentsFile: experiments.yaml

@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
-import org.neo4j.driver.v1.types.Node;
+import org.neo4j.driver.types.Node;
 
 import java.util.Optional;
 

@@ -14,13 +14,13 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder. If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
-# Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
-# Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+# Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+# Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+# Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
-FROM python:3.7.3-alpine3.9
-RUN apk add bash py-pip && apk add --virtual buildpacks python-dev libffi-dev openssl-dev gcc libc-dev make && pip install docker-compose && apk del buildpacks
+FROM python:3.8.2-alpine3.11
+RUN apk add --no-cache bash py-pip && apk add --no-cache --virtual buildpacks python-dev libffi-dev openssl-dev gcc libc-dev make && pip install docker-compose && apk del buildpacks
 ADD docker/runner/files/* /
 ADD docker/* /docker/
 CMD python3 run_xps.py

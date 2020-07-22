@@ -15,9 +15,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder. If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
-# Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
-# Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+# Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+# Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+# Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
 set -e
@@ -31,18 +31,44 @@ create_directory(){
     fi
 }
 
+ARGUMENT_LIST=(
+    "local"
+    "optimized"
+)
+
+SYMFINDER_PROJECTS=()
+
+export TAG=latest
+export SYMFINDER_COMPOSE_FILE="symfinder-compose.yaml"
+
 create_directory resources
 create_directory generated_visualizations
 
-#SYMFINDER_PROJECTS="$@"
+opts=$(getopt \
+    --longoptions "$(printf "%s," "${ARGUMENT_LIST[@]}")" \
+    --name "$(basename "$0")" \
+    --options "" \
+    -- "$@"
+)
 
-if [[ "$1" == "--local" ]]; then
-    export TAG=local
-    SYMFINDER_PROJECTS="${@:2}"
-else
-    export TAG=latest
-    SYMFINDER_PROJECTS="$@"
-fi
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --local)
+            export TAG=local
+            shift 1
+            ;;
+
+        --optimized)
+            export SYMFINDER_COMPOSE_FILE="symfinder-compose-optimized.yaml"
+            shift 1
+            ;;
+
+        *)
+            SYMFINDER_PROJECTS+=("$1")
+            break
+            ;;
+    esac
+done
 
 echo "Using $TAG images"
 

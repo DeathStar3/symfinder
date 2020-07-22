@@ -14,10 +14,16 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
- * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
- * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
- * Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+ * Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+ * Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+ * Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
  */
+
+function resetPage() {
+    $("#list-tab").empty();
+    $("#package-to-filter").val("");
+    sessionStorage.clear();
+}
 
 describe("Basic inheritance", () => {
 
@@ -45,7 +51,7 @@ describe("Basic inheritance", () => {
             expect(d3.select('line').attr("source")).toBe("Superclass");
         });
 
-        afterAll(() => sessionStorage.clear())
+        afterAll(resetPage);
 
     });
 
@@ -70,7 +76,7 @@ describe("Basic inheritance", () => {
             expect(d3.selectAll('line').size()).toBe(2);
         });
 
-        afterAll(() => sessionStorage.clear())
+        afterAll(resetPage);
 
     });
 
@@ -194,12 +200,6 @@ describe("Comparing metrics evolution", () => {
         });
         it('TwoConstructorOverloads should have the METHOD_LEVEL_VP label', () => {
             expect(getNodeWithName(jsonData, "TwoConstructorOverloads").types.includes("METHOD_LEVEL_VP")).toBeTruthy();
-        });
-        xit('NoMethodOverload should have 0 method VP', () => {
-            expect(getNodeWithName(jsonData, "NoMethodOverload").methodVPs).toBe(0);
-        });
-        xit('NoMethodOverload should have 0 method variant', () => {
-            expect(getNodeWithName(jsonData, "NoMethodOverload").methodVariants).toBe(0);
         });
         it('OneMethodOverload should have 1 method VP', () => {
             expect(getNodeWithName(jsonData, "OneMethodOverload").methodVPs).toBe(1);

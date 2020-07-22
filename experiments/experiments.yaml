@@ -10,7 +10,7 @@ cxf:
     - cxf-3.2.7
 junit:
   repositoryUrl: https://github.com/junit-team/junit4
-  sourcePackage: .
+  sourcePackage: src/main/java/org/junit
   tagIds:
     - r4.12
 maven:
@@ -41,17 +41,12 @@ argoUML:
   repositoryUrl: https://github.com/marcusvnac/argouml-spl/
   sourcePackage: src/argouml-app
   commitIds:
-    - bcae37308b13b7ee62da0867a77d21a0141a0f18
+    - bcae373
   filters:
     - org.argouml.ui.targetmanager
     - org.argouml.kernel.DelayedVChangeListener
     - org.argouml.util
     - org.argouml.application.events
-sat4j:
-  repositoryUrl: https://gitlab.ow2.org/sat4j/sat4j/
-  sourcePackage: org.sat4j.core
-  commitIds:
-    - 5cee71e6
 jackson-core:
   repositoryUrl: https://github.com/FasterXML/jackson-core
   sourcePackage: src/main/java
@@ -71,7 +66,7 @@ deeplearning4j:
   repositoryUrl: https://github.com/eclipse/deeplearning4j
   sourcePackage: deeplearning4j
   tagIds:
-    - deeplearning4j-1.0.0-beta5 
+    - deeplearning4j-1.0.0-beta5
 rxjava:
   repositoryUrl: https://github.com/ReactiveX/RxJava
   sourcePackage: src/main/java
@@ -87,3 +82,8 @@ elasticsearch:
   sourcePackage: server/src
   tagIds:
     - v6.8.5
+sat4j:
+  repositoryUrl: https://gitlab.ow2.org/sat4j/sat4j.git/
+  sourcePackage: org.sat4j.core
+  commitIds:
+    - 22374e5e

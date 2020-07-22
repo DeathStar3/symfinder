@@ -14,9 +14,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder. If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
-# Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
-# Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+# Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+# Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+# Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
 import os
@@ -66,8 +66,8 @@ def generate_visualization_file(xp_codename, xp_config):
             filters=",".join(['"' + f + '"' for f in xp_config.get("filters", [])]),
             jsonFile=os.path.join("data", "%s.json" % xp_codename),
             jsonStatsFile=os.path.join("data", "%s-stats.json" % xp_codename),
-            jsonMetricsFile=os.path.join("data", "%s-metrics.json" % xp_codename))
-        )
+            jsonMetricsFile=os.path.join("data", "%s-metrics.json" % xp_codename),
+            jsonTracesFile=os.path.join("data", "%s-traces.json" % xp_codename) if xp_config.get("traces", "") else ""))
 
 
 def generate_index():

@@ -14,16 +14,16 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
- * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
- * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
- * Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+ * Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+ * Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+ * Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
  */
 
 import neo4j_types.EntityAttribute;
 import neo4j_types.EntityType;
 import neo4j_types.RelationType;
-import org.junit.Test;
-import org.neo4j.driver.v1.types.Node;
+import org.junit.jupiter.api.Test;
+import org.neo4j.driver.types.Node;
 
 import static org.junit.Assert.assertEquals;
 
@@ -74,12 +74,22 @@ public class ClassLevelVariantsTest extends Neo4jTest {
         });
     }
 
-    // TODO: 3/25/19 determine if we should detect a variant or not
     @Test
     public void OneAbstractSubclass() {
         runTest(graph -> {
             Node shapeClass = graph.createNode("Shape", EntityType.CLASS, EntityAttribute.ABSTRACT);
             Node polygonClass = graph.createNode("Polygon", EntityType.CLASS, EntityAttribute.ABSTRACT);
+            graph.linkTwoNodes(shapeClass, polygonClass, RelationType.EXTENDS);
+            graph.detectVPsAndVariants();
+            assertEquals(0, graph.getNbClassLevelVariants());
+        });
+    }
+
+    @Test
+    public void OneConcreteSubclass() {
+        runTest(graph -> {
+            Node shapeClass = graph.createNode("Shape", EntityType.CLASS, EntityAttribute.ABSTRACT);
+            Node polygonClass = graph.createNode("Polygon", EntityType.CLASS);
             graph.linkTwoNodes(shapeClass, polygonClass, RelationType.EXTENDS);
             graph.detectVPsAndVariants();
             assertEquals(1, graph.getNbClassLevelVariants());

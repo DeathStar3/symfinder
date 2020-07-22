@@ -14,12 +14,12 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder. If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
-# Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
-# Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+# Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+# Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+# Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
-FROM python:3.7.3-alpine3.9
-RUN apk add git bash && pip install PyYAML mako
+FROM python:3.8.2-alpine3.11
+RUN apk add --no-cache git bash && pip install PyYAML mako
 ADD docker/sources_fetcher/files/* /
 CMD sh sources_fetcher.sh

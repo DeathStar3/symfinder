@@ -14,9 +14,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder. If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
-# Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
-# Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+# Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+# Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+# Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
 version: "3.6"
@@ -36,7 +36,6 @@ services:
     depends_on:
       - neo4j
     environment:
-      - JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk/jre
       - DIR_PATH=${DIR_PATH}
       - SYMFINDER_UID=${SYMFINDER_UID}
       - SYMFINDER_GID=${SYMFINDER_GID}
@@ -47,7 +46,7 @@ services:
       - SYMFINDER_VERSION=${SYMFINDER_VERSION}
 
   neo4j:
-    image: neo4j:3.5.0
+    image: deathstar3/symfinder-neo4j:${TAG}
     container_name: symfinder-neo4j
     ports:
       - "127.0.0.1:7474:7474"

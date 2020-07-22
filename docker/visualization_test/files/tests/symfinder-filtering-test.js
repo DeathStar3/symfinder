@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
- * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
- * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
- * Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+ * Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+ * Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+ * Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
  */
 
 
@@ -29,7 +29,7 @@ function resetPage() {
 describe("Filtering an isolated node", () => {
 
     beforeAll(async (done) => {
-        await display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["Shape"]);
+        await this.display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["Shape"]);
         setTimeout(() => done(), 500); // wait for onclick event to execute totally
     });
 
@@ -50,7 +50,7 @@ describe("Filtering an isolated node", () => {
 describe("Using a default filter", () => {
 
     beforeAll(async (done) => {
-        await display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["Shape"]);
+        await this.display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["Shape"]);
         setTimeout(() => done(), 500); // wait for onclick event to execute totally
     });
 
@@ -69,7 +69,7 @@ describe("Using a default filter", () => {
 describe("Unfiltering an isolated node", () => {
 
     beforeAll(async (done) => {
-        await display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["Shape"]);
+        await this.display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["Shape"]);
         $(".close > span").first().trigger("click");
         setTimeout(() => done(), 700); // wait for onclick event to execute totally
     });
@@ -79,16 +79,16 @@ describe("Unfiltering an isolated node", () => {
     });
     it('the node is brought back to the visualization', () => {
         expect(d3.select('circle[name = "Shape"]').empty()).toBeFalsy();
-
     });
 
     afterAll(resetPage);
 
 });
+
 describe("Filtering a linked node", () => {
 
     beforeAll(async (done) => {
-        await display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["foo.bar.Circle"]);
+        await this.display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["foo.bar.Circle"]);
         setTimeout(() => done(), 700); // wait for onclick event to execute totally
     });
 
@@ -109,7 +109,7 @@ describe("Filtering a linked node", () => {
 describe("Unfiltering a linked node", () => {
 
     beforeAll(async (done) => {
-        await display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["foo.bar.Circle"]);
+        await this.display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["foo.bar.Circle"]);
         $(".close > span").first().trigger("click");
         setTimeout(() => done(), 700); // wait for onclick event to execute totally
     });
@@ -131,9 +131,7 @@ describe("Unfiltering a linked node", () => {
 describe("Filtering a package", () => {
 
     beforeAll(async (done) => {
-        await display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["foo.bar"]);
-        // $("#package-to-filter").val("foo.bar");
-        // $("#add-filter-button").trigger("click");
+        await this.display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["foo.bar"]);
         setTimeout(() => done(), 700); // wait for onclick event to execute totally
     });
 
@@ -155,7 +153,7 @@ describe("Filtering a package", () => {
 describe("Unfiltering a package", () => {
 
     beforeAll(async (done) => {
-        await display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["foo.bar"]);
+        await this.display("tests/data/graph-to-filter.json", "tests/data/stats.json", ["foo.bar"]);
         $(".close > span").first().trigger("click");
         setTimeout(() => done(), 700); // wait for onclick event to execute totally
     });
@@ -176,21 +174,39 @@ describe("Unfiltering a package", () => {
 xdescribe("Filtering isolated nodes", () => {
 
     beforeAll(async (done) => {
-        await display("tests/data/graph-to-filter.json", "tests/data/stats.json", []);
-        $("#filter-isolated").trigger("click");
-        setTimeout(() => done(), 700); // wait for onclick event to execute totally
+        await this.display("tests/data/graph-to-filter.json", "tests/data/stats.json", []);
+        await $("#filter-isolated").click();
+        setTimeout(() => done(), 2000); // wait for onclick event to execute totally
     });
 
-    it('two nodes remain', async () => {
-        expect(d3.selectAll('circle').size()).toBe(2);
-    });
-    it('the two nodes are linked', async () => {
+    it('two nodes remain and they are linked', async () => {
+        this.remainingNodes = $("circle").toArray();
+        expect(this.remainingNodes.length).toBe(2);
+
         var linkedNodes = new Set();
         d3.selectAll('line').nodes().forEach(n => {
             linkedNodes.add(n.getAttribute("source"));
             linkedNodes.add(n.getAttribute("target"));
         });
-        expect(d3.selectAll('circle').nodes().every(n => linkedNodes.has(n.getAttribute("name")))).toBe(true);
+        expect(this.remainingNodes.every(n => linkedNodes.has(n.getAttribute("name")))).toBe(true);
+    });
+
+    afterAll(resetPage);
+
+});
+
+xdescribe("Filtering nodes that are not hotspots", () => {
+
+    beforeAll(async (done) => {
+        await this.display("tests/data/hotspots.json", "tests/data/stats.json", []);
+        await $("#hotspots-only-button").click();
+        setTimeout(() => done(), 2000); // wait for onclick event to execute totally
+    });
+
+    it('five nodes remain and they all have the HOTSPOT type', () => {
+        this.remainingNodes = $("circle").toArray();
+        expect(this.remainingNodes.length).toBe(5);
+        expect(this.remainingNodes.every(n => n.__data__.types.includes("HOTSPOT"))).toBe(true);
     });
 
     afterAll(resetPage);

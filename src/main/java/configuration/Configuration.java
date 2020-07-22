@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
- * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
- * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
- * Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+ * Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+ * Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+ * Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
  */
 
 package configuration;
@@ -26,7 +26,6 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 
 public class Configuration {
     private static Configuration ourInstance = new Configuration();
@@ -53,15 +52,19 @@ public class Configuration {
     }
 
     public static String getNeo4JBoltAddress() {
-        return properties.getNeo4j().getBoltAddress();
+        return properties.getNeo4j().boltAddress;
     }
 
     public static String getNeo4JUser() {
-        return properties.getNeo4j().getUser();
+        return properties.getNeo4j().user;
     }
 
     public static String getNeo4JPassword() {
-        return properties.getNeo4j().getPassword();
+        return properties.getNeo4j().password;
+    }
+
+    public static int getSingularityThreshold() {
+        return properties.getHotspotsParameters().nbVariantsThreshold;
     }
 
 }

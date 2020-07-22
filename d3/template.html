@@ -14,9 +14,9 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with symfinder.  If not, see <http://www.gnu.org/licenses/>.
 
-Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
-Copyright 2018-2019 Xhevahire Ternava <xhevahire.ternava@lip6.fr>
-Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+Copyright 2018-2020 Xhevahire Ternava <xhevahire.ternava@lip6.fr>
+Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 -->
 
 <!DOCTYPE html>
@@ -57,6 +57,9 @@ Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
             </h2>
             <h2 class="mb-0">
                 <button type="button" class="btn btn-dark btn-block" data-toggle="button" aria-pressed="false" id="filter-variants-button" value="filter-variants-button">Show variants</button>
+            </h2>
+            <h2 class="mb-0">
+                <button type="button" class="btn btn-dark btn-block" data-toggle="button" aria-pressed="false" id="hotspots-only-button" value="hotspots-only-button">Show hotspots only</button>
             </h2>
             <p class="badge-dark ml-auto mr-1 my-lg-0" style="font-size: 1em" id="xp-identifier">${identifier}</p>
         </nav>
@@ -132,14 +135,14 @@ Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 
     var visualization;
 
-    async function display(jsonFile, jsonStatsFile) {
-        let filters = [];
-        visualization = new Graph(jsonFile, jsonStatsFile, filters);
+    async function display(jsonFile, jsonStatsFile, jsonTracesFile) {
+        let filters = [${filters}];
+        visualization = new Graph(jsonFile, jsonStatsFile, filters, jsonTracesFile);
         return await visualization.displayGraph();
     }
 
     window.onload = async () => {
-        window.graph = await display("${jsonFile}", "${jsonStatsFile}");
+        window.graph = await display("${jsonFile}", "${jsonStatsFile}", "${jsonTracesFile}");
     };
 
 </script>

@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
- * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
- * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
- * Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+ * Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+ * Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+ * Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
  */
 
 import configuration.Configuration;
@@ -41,8 +41,6 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -62,19 +60,19 @@ public class Symfinder {
     public Symfinder(String sourcePackage, String graphOutputPath) {
         this.sourcePackage = sourcePackage;
         this.graphOutputPath = graphOutputPath;
-        this.neoGraph = new
-                NeoGraph(Configuration.getNeo4JBoltAddress(),
+        this.neoGraph = new NeoGraph(Configuration.getNeo4JBoltAddress(),
                 Configuration.getNeo4JUser(),
                 Configuration.getNeo4JPassword());
     }
 
     public void run() throws IOException {
+        long symfinderStartTime = System.currentTimeMillis();
         logger.log(Level.getLevel("MY_LEVEL"), "Symfinder version: " + System.getenv("SYMFINDER_VERSION"));
         String classpathPath;
 
         classpathPath = System.getenv("JAVA_HOME");
-        if (classpathPath == null) { // default to linux openJDK 8 path
-            classpathPath = "/usr/lib/jvm/java-8-openjdk";
+        if (classpathPath == null) { // default to linux openJDK 11 path
+            classpathPath = "/usr/lib/jvm/java-11-openjdk";
         }
 
         List <File> files = Files.walk(Paths.get(sourcePackage))
@@ -97,6 +95,9 @@ public class Symfinder {
         visitPackage(classpathPath, files, new FactoryVisitor(neoGraph));
 
         neoGraph.detectVPsAndVariants();
+        neoGraph.detectSingularHotspotsInSubtyping(Configuration.getSingularityThreshold());
+        neoGraph.detectSingularHotspotsInOverloading(Configuration.getSingularityThreshold());
+        neoGraph.setHotspotLabels();
         logger.log(Level.getLevel("MY_LEVEL"), "Number of VPs: " + neoGraph.getTotalNbVPs());
         logger.log(Level.getLevel("MY_LEVEL"), "Number of methods VPs: " + neoGraph.getNbMethodVPs());
         logger.log(Level.getLevel("MY_LEVEL"), "Number of constructors VPs: " + neoGraph.getNbConstructorVPs());
@@ -114,6 +115,8 @@ public class Symfinder {
         neoGraph.writeStatisticsFile(graphOutputPath.replace(".json", "-stats.json"));
         logger.debug(neoGraph.generateStatisticsJson());
         neoGraph.closeDriver();
+        long symfinderExecutionTime = System.currentTimeMillis() - symfinderStartTime;
+        logger.printf(Level.getLevel("MY_LEVEL"), "Total execution time: %s", formatExecutionTime(symfinderExecutionTime));
     }
 
     private void visitPackage(String classpathPath, List <File> files, ASTVisitor visitor) throws IOException {
@@ -121,7 +124,7 @@ public class Symfinder {
         for (File file : files) {
             String fileContent = getFileLines(file);
 
-            ASTParser parser = ASTParser.newParser(AST.JLS8);
+            ASTParser parser = ASTParser.newParser(AST.JLS13);
             parser.setResolveBindings(true);
             parser.setKind(ASTParser.K_COMPILATION_UNIT);
 
@@ -135,7 +138,7 @@ public class Symfinder {
             parser.setSource(fileContent.toCharArray());
 
             Map <String, String> options = JavaCore.getOptions();
-            options.put(JavaCore.COMPILER_SOURCE, JavaCore.VERSION_1_8);
+            options.put(JavaCore.COMPILER_SOURCE, JavaCore.VERSION_13);
             parser.setCompilerOptions(options);
 
             CompilationUnit cu = (CompilationUnit) parser.createAST(null);
@@ -147,7 +150,8 @@ public class Symfinder {
 
     private boolean isTestPath(Path path) {
         for (int i = 0 ; i < path.getNameCount() ; i++) {
-            if (path.getName(i).toString().equals("test")) {
+            int finalI = i;
+            if (List.of("test", "tests").stream().anyMatch(s -> path.getName(finalI).toString().equals(s))) {
                 return true;
             }
         }
@@ -175,10 +179,14 @@ public class Symfinder {
         return null;
     }
 
-    private String formatExecutionTime(long execTime) {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
-        Date resultdate = new Date(execTime);
-        return sdf.format(resultdate);
+    static String formatExecutionTime(long execTime) {
+        long ms = execTime % 1000;
+        long seconds = (execTime - ms) / 1000;
+        long s = seconds % 60;
+        long minutes = (seconds - s) / 60;
+        long m = minutes % 60;
+        long hours = (minutes - m) / 60;
+        return String.format("%02d:%02d:%02d.%03d", hours, m, s, ms);
     }
 
 }

@@ -15,9 +15,9 @@ rem
 rem You should have received a copy of the GNU Lesser General Public License
 rem along with symfinder. If not, see <http://www.gnu.org/licenses/>.
 rem
-rem Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
-rem Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
-rem Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+rem Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+rem Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+rem Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 
 
 docker build -f docker/sources_fetcher/SourcesFetcherDockerfile -t symfinder-sources_fetcher .

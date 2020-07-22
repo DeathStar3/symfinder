@@ -11,7 +11,7 @@ import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
-import org.neo4j.driver.v1.types.Node;
+import org.neo4j.driver.types.Node;
 
 /**
  * Parses all classes and the methods they contain, and adds them to the database.

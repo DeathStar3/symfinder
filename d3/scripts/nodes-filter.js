@@ -14,21 +14,14 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with symfinder. If not, see <http://www.gnu.org/licenses/>.
  *
- * Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
- * Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
- * Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+ * Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+ * Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+ * Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
  */
 
 /* Class allowing to easily create a logic allowing to process nodes whose name matches a pattern. */
 
 class NodesFilter {
-
-    filterButtonSelector;
-    filterInputSelector;
-    filtersListSelector;
-    displayGraphFunction;
-
-    filtersList;
 
     constructor(filterButtonSelector, filterInputSelector, filtersListSelector, nodeFilters, displayGraphFunction) {
         this.filterButtonSelector = filterButtonSelector;
@@ -88,12 +81,6 @@ class NodesFilter {
             '</li>';
     }
 
-    appendFiltersToTab() {
-        this.filtersList.forEach(filter => {
-            $(this.filtersListSelector).append(this.getFilterItem(filter));
-        });
-    }
-
     /**
      * If the filter is a class filter (distinguished by the fact that it contains at least an uppercase letter),
      * we check that the class name matches the filter exactly.
@@ -110,6 +97,11 @@ class NodesFilter {
 
     getLinksListWithoutMatchingFilter(listToFilter){
         return listToFilter.filter(l => !this.filtersList.some(filter => NodesFilter.matchesFilter(l.source, filter)) && !this.filtersList.some(filter => NodesFilter.matchesFilter(l.target, filter)))
+    }
+
+    async addFilterAndRefresh(value){
+        this.addFilter(value);
+        await this.displayGraphFunction();
     }
 
 }

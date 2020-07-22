@@ -15,13 +15,19 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with symfinder. If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright 2018-2019 Johann Mortara <johann.mortara@univ-cotedazur.fr>
-# Copyright 2018-2019 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
-# Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+# Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+# Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+# Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
 set -e
 
-java -jar /symfinder.jar /resources/"$1" "$2"
+if [[ -d /resources2 ]]; then
+  echo "Copying resources to analyse in tmpfs mount..."
+  cp -r /resources2/"$1" /resources/
+  java -jar /symfinder.jar /resources/ "$2"
+else
+  java -jar /symfinder.jar /resources/"$1" "$2"
+fi
 
 chown -R $SYMFINDER_UID:$SYMFINDER_GID /generated_visualizations

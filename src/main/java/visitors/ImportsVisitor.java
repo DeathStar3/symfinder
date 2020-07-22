@@ -4,7 +4,7 @@ import neograph.NeoGraph;
 import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.ImportDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
-import org.neo4j.driver.v1.types.Node;
+import org.neo4j.driver.types.Node;
 
 import java.util.ArrayList;
 import java.util.List;

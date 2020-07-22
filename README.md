@@ -1,11 +1,9 @@
-# symfinder
-
-[![Build Status](https://travis-ci.com/DeathStar3/symfinder.svg?branch=master)](https://travis-ci.com/DeathStar3/symfinder)
+# Symfinder
 
 ## Technical Requirements
 
 - Docker
-    - Instructions to install Docker are available [here](https://docs.docker.com/install/#supported-platforms).
+    - Instructions to install Docker are available [here](https://docs.docker.com/get-docker/).
 - Docker Compose
     - Instructions to install Docker Compose are available [here](https://docs.docker.com/compose/install/#install-compose).
 
@@ -23,7 +21,7 @@ If your system does not match any of the requirements above, you must install a 
 - Follow [these short steps](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) to allow your user to call Docker commands,
 - Preface the scripts calls with `sudo`.
 
-## Getting symfinder
+## Getting Symfinder
 
 1. Open a terminal and clone the repository by running:
 
@@ -58,12 +56,20 @@ Run the analyses by running
 This command will analyse the following projects:
 - [Java AWT 8u202-b1532](https://github.com/JetBrains/jdk8u_jdk/tree/jb8u202-b1532/src/share/classes/java/awt)
 - [Apache CXF 3.2.7](https://github.com/apache/cxf/tree/cxf-3.2.7/core/src/main/java/org/apache/cxf)
-- [JUnit 4.12](https://github.com/junit-team/junit4/tree/r4.12/src/main/java)
+- [JUnit 4.12](https://github.com/junit-team/junit4/tree/r4.12/src/main/java/org/junit)
 - [Apache Maven 3.6.0](https://github.com/apache/maven/tree/maven-3.6.0)
 - [JHipster 2.0.28](https://github.com/jhipster/jhipster/tree/2.0.28/jhipster-framework/src/main/java)
 - [JFreeChart 1.5.0](https://github.com/jfree/jfreechart/tree/v1.5.0/src/main/java/org/jfree)
 - [JavaGeom](https://github.com/dlegland/javaGeom/tree/7e5ee60ea9febe2acbadb75557d9659d7fafdd28/src)
 - [ArgoUML](https://github.com/marcusvnac/argouml-spl/tree/bcae37308b13b7ee62da0867a77d21a0141a0f18/src)
+- [Jackson Core](https://github.com/FasterXML/jackson-core/tree/jackson-core-2.10.1/src/main/java/)
+- [ZXing](https://github.com/zxing/zxing/tree/zxing-3.4.0/core/src/main/java/)
+- [Mockito](https://github.com/mockito/mockito/tree/v3.1.12/src/main/java/)
+- [DeepLearning4j](https://github.com/eclipse/deeplearning4j/tree/deeplearning4j-1.0.0-beta5/deeplearning4j/)
+- [RxJava](https://github.com/ReactiveX/RxJava/tree/v2.2.15/src/main/java/)
+- [Guava](https://github.com/google/guava/tree/v28.1/guava/src/com/google/common)
+- [Elasticsearch](https://github.com/elastic/elasticsearch/tree/v6.8.5/server/src/)
+- [Sat4j](https://gitlab.ow2.org/sat4j/sat4j/-/tree/22374e5e91dfb1ef5ea7ee7ee49d2e8022b5d6b5/org.sat4j.core)
 
 You can specify the projects you want to run by passing their names as parameters of the running script, for example
 
@@ -71,7 +77,7 @@ You can specify the projects you want to run by passing their names as parameter
 ./run.sh junit
 ```
 
-More details about the analysed projects and their definition are given in the [Using symfinder on your project](#using-symfinder-on-your-project) section.
+More details about the analysed projects and their definition are given in the [Using Symfinder on your project](#using-symfinder-on-your-project) section.
 
 ### Analysing the output data
 
@@ -104,16 +110,16 @@ The window is made of several parts:
 	- The `Color packages` button display a tab similar to the part ③ where you can enter the name of a package or a class and a new color will be applied to the corresponding nodes.
 	- The `Show legend` button displays a legend to help you read the visualization.
 	- The `Display variants` button displays all the variants of variation points, including the ones not being variation points. Click again on the button to show only variation points.
-- ②: Here you can see the name and tag/commit ID of the project corresponding to the visualization being viewed, as well as the commit corresponding to the version of symfinder that generated the visualization.
+- ②: Here you can see the name and tag/commit ID of the project corresponding to the visualization being viewed, as well as the commit corresponding to the version of Symfinder that generated the visualization.
 - ③: In the `Package/class to filter` field, you can enter the name of a class or package that you want to filter on the visualization.
 When a filter is added, it is added to the list below. The cross on the right of each filter allows you to remove it.
 On the right of this field is a `Filter isolated nodes` button which, when activated, removes the nodes having no relationship from the visualization.
 Click again on the button to unfilter them.
-- ④: Displays metrics on the project concerning variation points and variants.
+- ④: Displays metrics on the project concerning variation points and variants
 
-## Using symfinder on your project
+## Using Symfinder on your project
 
-### symfinder configuration
+### Symfinder configuration
 
 The application's settings are set up using a YAML file, called `symfinder.yaml`, that must be at the root of the project.
 Here is an example:
