@@ -1,0 +1,109 @@
+{
+  "nodes": [
+    {
+      "name": "Shape",
+      "constructorVariants": 0,
+      "classVariants": 0,
+      "types": ["CLASS","ABSTRACT","VP"],
+      "methodVPs": 0
+    },
+    {
+      "name": "Rounded",
+      "constructorVariants": 0,
+      "classVariants": 0,
+      "types": ["CLASS","ABSTRACT","VP"],
+      "methodVPs": 0
+    },
+    {
+      "name": "Ellipse",
+      "constructorVariants": 0,
+      "classVariants": 0,
+      "types": ["CLASS","ABSTRACT","VP"],
+      "methodVPs": 0
+    },
+    {
+      "name": "Circle",
+      "constructorVariants": 0,
+      "classVariants": 0,
+      "types": ["CLASS","ABSTRACT","VP"],
+      "methodVPs": 0
+    },
+    {
+      "name": "NotRounded",
+      "constructorVariants": 1,
+      "classVariants": 0,
+      "types": ["CLASS","ABSTRACT","VP","HOTSPOT"],
+      "methodVPs": 0
+    },
+    {
+      "name": "Square",
+      "constructorVariants": 1,
+      "classVariants": 0,
+      "types": ["CLASS","ABSTRACT","VP","HOTSPOT"],
+      "methodVPs": 0
+    },
+    {
+      "name": "Triangle",
+      "constructorVariants": 10,
+      "classVariants": 0,
+      "types": ["CLASS","ABSTRACT","VP","HOTSPOT"],
+      "methodVPs": 0
+    },
+    {
+      "name": "Rectangle",
+      "constructorVariants": 10,
+      "classVariants": 0,
+      "types": ["CLASS","ABSTRACT","VP","HOTSPOT"],
+      "methodVPs": 0
+    },
+    {
+      "name": "Trapeze",
+      "constructorVariants": 10,
+      "classVariants": 0,
+      "types": ["CLASS","ABSTRACT","VP","HOTSPOT"],
+      "methodVPs": 0
+    }
+  ],
+  "links": [
+    {
+      "type": "EXTENDS",
+      "source": "Rounded",
+      "target": "Shape"
+    },
+    {
+      "type": "EXTENDS",
+      "source": "NotRounded",
+      "target": "Shape"
+    },
+    {
+      "type": "EXTENDS",
+      "source": "Circle",
+      "target": "Rounded"
+    },
+    {
+      "type": "EXTENDS",
+      "source": "Ellipse",
+      "target": "Rounded"
+    },
+    {
+      "type": "EXTENDS",
+      "source": "Square",
+      "target": "NotRounded"
+    },
+    {
+      "type": "EXTENDS",
+      "source": "Rectangle",
+      "target": "NotRounded"
+    },
+    {
+      "type": "EXTENDS",
+      "source": "Trapeze",
+      "target": "NotRounded"
+    },
+    {
+      "type": "EXTENDS",
+      "source": "Triangle",
+      "target": "NotRounded"
+    }
+  ]
+}

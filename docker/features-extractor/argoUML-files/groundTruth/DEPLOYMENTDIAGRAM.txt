@@ -1,0 +1,42 @@
+org.argouml.application.Main Refinement
+org.argouml.application.PostLoad Refinement
+org.argouml.application.LoadModules Refinement
+org.argouml.application.Main initializeSubsystems(SimpleTimer,SplashScreen) Refinement
+org.argouml.ui.cmd.GenericArgoMenuBar Refinement
+org.argouml.ui.cmd.GenericArgoMenuBar initMenuCreate() Refinement
+org.argouml.ui.cmd.ShortcutMgr Refinement
+org.argouml.ui.explorer.ExplorerPopup Refinement
+org.argouml.ui.explorer.ExplorerPopup initMenuCreateDiagrams() Refinement
+org.argouml.uml.diagram.deployment.DeploymentDiagramGraphModel
+org.argouml.uml.diagram.deployment.ui.AbstractFigComponent
+org.argouml.uml.diagram.deployment.ui.AbstractFigNode
+org.argouml.uml.diagram.deployment.ui.CubePortFigRect
+org.argouml.uml.diagram.deployment.ui.DeploymentDiagramPropPanelFactory
+org.argouml.uml.diagram.deployment.ui.DeploymentDiagramRenderer
+org.argouml.uml.diagram.deployment.ui.FigComponent
+org.argouml.uml.diagram.deployment.ui.FigComponentInstance
+org.argouml.uml.diagram.deployment.ui.FigMNode
+org.argouml.uml.diagram.deployment.ui.FigNodeInstance
+org.argouml.uml.diagram.deployment.ui.FigObject
+org.argouml.uml.diagram.deployment.ui.InitDeploymentDiagram
+org.argouml.uml.diagram.deployment.ui.PropPanelUMLDeploymentDiagram
+org.argouml.uml.diagram.deployment.ui.SelectionComponent
+org.argouml.uml.diagram.deployment.ui.SelectionComponentInstance
+org.argouml.uml.diagram.deployment.ui.SelectionNode
+org.argouml.uml.diagram.deployment.ui.SelectionNodeInstance
+org.argouml.uml.diagram.deployment.ui.SelectionObject
+org.argouml.uml.diagram.deployment.ui.UMLDeploymentDiagram
+org.argouml.uml.diagram.DiagramFactory Refinement
+org.argouml.uml.diagram.DiagramFactory DiagramFactory() Refinement
+org.argouml.uml.diagram.DiagramFactory createDiagram(Class,Object,Object) Refinement
+org.argouml.uml.diagram.static_structure.ui.SelectionClass Refinement
+org.argouml.uml.diagram.static_structure.ui.SelectionClass getIcons() Refinement
+org.argouml.uml.diagram.static_structure.ui.SelectionGeneralizableElement Refinement
+org.argouml.uml.diagram.static_structure.ui.SelectionGeneralizableElement getIcons() Refinement
+org.argouml.uml.diagram.static_structure.ui.SelectionStereotype Refinement
+org.argouml.uml.diagram.static_structure.ui.SelectionStereotype getIcons() Refinement
+org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram Refinement
+org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram drop(Object,Point) Refinement
+org.argouml.uml.diagram.UmlDiagramRenderer Refinement
+org.argouml.uml.diagram.UmlDiagramRenderer getFigNodeFor(Object,int,int,Map) Refinement
+org.argouml.uml.ui.ActionDeploymentDiagram

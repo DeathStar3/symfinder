@@ -1,0 +1,66 @@
+org.argouml.application.Main Refinement
+org.argouml.application.PostLoad Refinement
+org.argouml.application.LoadModules Refinement
+org.argouml.application.Main initializeSubsystems(SimpleTimer,SplashScreen) Refinement
+org.argouml.kernel.ProjectManager createDefaultDiagrams(Project) Refinement
+org.argouml.notation.providers.uml.ExtensionPointNotationUml parseExtensionPointFig(Object,String) Refinement
+org.argouml.notation.providers.uml.ExtensionPointNotationUml parseExtensionPoint(String)
+org.argouml.ui.cmd.GenericArgoMenuBar Refinement
+org.argouml.ui.cmd.GenericArgoMenuBar initMenuCreate() Refinement
+org.argouml.ui.cmd.ShortcutMgr Refinement
+org.argouml.ui.explorer.ExplorerPopup Refinement
+org.argouml.ui.explorer.ExplorerPopup initMenuCreateDiagrams() Refinement
+org.argouml.uml.diagram.DiagramFactory Refinement
+org.argouml.uml.diagram.DiagramFactory DiagramFactory() Refinement
+org.argouml.uml.diagram.DiagramFactory createDiagram(Class,Object,Object) Refinement
+org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram Refinement
+org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram doesAccept(Object) Refinement
+org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram drop(Object,Point) Refinement
+org.argouml.uml.diagram.ui.ActionAddExtensionPoint actionPerformed(ActionEvent) Refinement
+org.argouml.uml.diagram.ui.ActionCompartmentDisplay Refinement
+org.argouml.uml.diagram.ui.ActionCompartmentDisplay actionPerformed(ActionEvent) Refinement
+org.argouml.uml.diagram.UmlDiagramRenderer Refinement
+org.argouml.uml.diagram.UmlDiagramRenderer getFigNodeFor(Object,int,int,Map) Refinement
+org.argouml.uml.diagram.UmlDiagramRenderer getFigEdgeFor(Object,Map) Refinement
+org.argouml.uml.diagram.use_case.ui.FigActor
+org.argouml.uml.diagram.use_case.ui.FigExtend
+org.argouml.uml.diagram.use_case.ui.FigInclude
+org.argouml.uml.diagram.use_case.ui.FigUseCase
+org.argouml.uml.diagram.use_case.ui.InitUseCaseDiagram
+org.argouml.uml.diagram.use_case.ui.PropPanelUMLUseCaseDiagram
+org.argouml.uml.diagram.use_case.ui.SelectionActor
+org.argouml.uml.diagram.use_case.ui.SelectionUseCase
+org.argouml.uml.diagram.use_case.ui.StylePanelFigUseCase
+org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram
+org.argouml.uml.diagram.use_case.ui.UseCaseDiagramPropPanelFactory
+org.argouml.uml.diagram.use_case.ui.UseCaseDiagramRenderer
+org.argouml.uml.diagram.use_case.UseCaseDiagramGraphModel
+org.argouml.uml.ui.ActionUseCaseDiagram
+org.argouml.uml.ui.behavior.use_cases.ActionAddExtendExtensionPoint
+org.argouml.uml.ui.behavior.use_cases.ActionNewActor
+org.argouml.uml.ui.behavior.use_cases.ActionNewExtendExtensionPoint
+org.argouml.uml.ui.behavior.use_cases.ActionNewExtensionPoint
+org.argouml.uml.ui.behavior.use_cases.ActionNewUseCase
+org.argouml.uml.ui.behavior.use_cases.ActionNewUseCaseExtensionPoint
+org.argouml.uml.ui.behavior.use_cases.PropPanelActor
+org.argouml.uml.ui.behavior.use_cases.PropPanelExtend
+org.argouml.uml.ui.behavior.use_cases.PropPanelExtensionPoint
+org.argouml.uml.ui.behavior.use_cases.PropPanelInclude
+org.argouml.uml.ui.behavior.use_cases.PropPanelUseCase
+org.argouml.uml.ui.behavior.use_cases.UMLExtendBaseListModel
+org.argouml.uml.ui.behavior.use_cases.UMLExtendExtensionListModel
+org.argouml.uml.ui.behavior.use_cases.UMLExtendExtensionPointListModel
+org.argouml.uml.ui.behavior.use_cases.UMLExtensionPointExtendListModel
+org.argouml.uml.ui.behavior.use_cases.UMLExtensionPointLocationDocument
+org.argouml.uml.ui.behavior.use_cases.UMLExtensionPointUseCaseListModel
+org.argouml.uml.ui.behavior.use_cases.UMLIncludeAdditionListModel
+org.argouml.uml.ui.behavior.use_cases.UMLIncludeBaseListModel
+org.argouml.uml.ui.behavior.use_cases.UMLIncludeListModel
+org.argouml.uml.ui.behavior.use_cases.UMLUseCaseExtendListModel
+org.argouml.uml.ui.behavior.use_cases.UMLUseCaseExtensionPointListModel
+org.argouml.uml.ui.behavior.use_cases.UMLUseCaseIncludeListModel
+org.argouml.uml.ui.ElementPropPanelFactory Refinement
+org.argouml.uml.ui.ElementPropPanelFactory createPropPanel(Object) Refinement
+org.argouml.uml.ui.ElementPropPanelFactory getClassifierPropPanel(Object) Refinement
+org.argouml.uml.ui.ElementPropPanelFactory getRelationshipPropPanel(Object) Refinement
+org.argouml.uml.ui.UMLConditionExpressionModel setExpression(Object) Refinement

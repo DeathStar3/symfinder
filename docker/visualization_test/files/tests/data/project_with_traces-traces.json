@@ -1,0 +1,5 @@
+{
+  "Shape": ["SHAPE", "LOG"],
+  "Ellipse": ["SHAPE_ELLIPSE"],
+  "Circle": ["SHAPE_CIRCLE"]
+}

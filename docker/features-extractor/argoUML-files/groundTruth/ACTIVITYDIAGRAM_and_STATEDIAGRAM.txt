@@ -1,0 +1,18 @@
+org.argouml.ui.explorer.ExplorerPopup ExplorerPopup(Object,MouseEvent) Refinement
+org.argouml.ui.explorer.rules.GoNamespaceToDiagram getChildren(Object) Refinement
+org.argouml.ui.explorer.rules.GoStatemachineToDiagram Refinement
+org.argouml.ui.explorer.rules.GoStatemachineToDiagram getChildren(Object) Refinement
+org.argouml.uml.diagram.activity.ui.UMLActivityDiagram Refinement
+org.argouml.uml.diagram.activity.ui.UMLActivityDiagram getStateMachine() Refinement
+org.argouml.uml.diagram.activity.ui.UMLActivityDiagram getUmlActions() Refinement
+org.argouml.uml.diagram.activity.ui.UMLActivityDiagram getTriggerActions()
+org.argouml.uml.diagram.activity.ui.UMLActivityDiagram getActionForkPseudoState()
+org.argouml.uml.diagram.activity.ui.UMLActivityDiagram getActionStartPseudoState()
+org.argouml.uml.diagram.activity.ui.UMLActivityDiagram getActionCallEvent()
+org.argouml.uml.diagram.activity.ui.UMLActivityDiagram encloserChanged(FigNode,FigNode,FigNode) Refinement
+org.argouml.uml.diagram.activity.ui.UMLActivityDiagram drop(Object,Point) Refinement
+org.argouml.uml.diagram.DiagramFactory createInternal(DiagramType,Object,Object,DiagramSettings) Refinement
+org.argouml.uml.diagram.state.ui.FigFinalState makeSelection() Refinement
+org.argouml.uml.diagram.state.ui.FigStateVertex makeSelection() Refinement
+org.argouml.uml.diagram.state.ui.UMLStateDiagram Refinement
+org.argouml.uml.diagram.state.ui.UMLStateDiagram drop(Object,Point) Refinement

@@ -1,0 +1,2 @@
+FROM deathstar3/features-extractor:local
+COPY docker/features-extractor/argoUML-files/. /

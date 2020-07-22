@@ -1,0 +1,63 @@
+#
+# This file is part of symfinder.
+#
+# symfinder is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# symfinder is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with symfinder. If not, see <http://www.gnu.org/licenses/>.
+#
+# Copyright 2018-2020 Johann Mortara <johann.mortara@univ-cotedazur.fr>
+# Copyright 2018-2020 Xhevahire Tërnava <xhevahire.ternava@lip6.fr>
+# Copyright 2018-2020 Philippe Collet <philippe.collet@univ-cotedazur.fr>
+#
+
+version: "3.6"
+
+services:
+  symfinder:
+    image: deathstar3/symfinder-engine:${TAG}
+    container_name: symfinder
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ${DIR_PATH}/resources:/resources2
+      - ${DIR_PATH}/generated_visualizations:/generated_visualizations
+      - ${DIR_PATH}/d3:/d3
+      - ${DIR_PATH}/experiments:/experiments
+      - ${DIR_PATH}/symfinder.yaml:/symfinder.yaml
+    tmpfs:
+      - /resources
+    depends_on:
+      - neo4j
+    environment:
+      - DIR_PATH=${DIR_PATH}
+      - SYMFINDER_UID=${SYMFINDER_UID}
+      - SYMFINDER_GID=${SYMFINDER_GID}
+      - SOURCES_PACKAGE=${SOURCES_PACKAGE}
+      - GRAPH_OUTPUT_PATH=${GRAPH_OUTPUT_PATH}
+      - PROJECT_NAME=${PROJECT_NAME}
+      - COMPOSE_CONVERT_WINDOWS_PATHS=1
+      - SYMFINDER_VERSION=${SYMFINDER_VERSION}
+
+  neo4j:
+    image: deathstar3/symfinder-neo4j:${TAG}
+    container_name: symfinder-neo4j
+    ports:
+      - "127.0.0.1:7474:7474"
+      - "127.0.0.1:7687:7687"
+    tmpfs:
+      - /data
+    environment:
+      - NEO4J_AUTH=neo4j/root
+      - NEO4J_dbms_memory_pagecache_size=64G
+      - NEO4J_dbms_memory_heap_initial__size=8G
+      - NEO4J_dbms_memory_heap_max__size=16G
+      - NEO4J_dbms_query__cache__size=10000

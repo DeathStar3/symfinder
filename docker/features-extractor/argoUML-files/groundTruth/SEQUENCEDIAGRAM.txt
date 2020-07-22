@@ -1,0 +1,93 @@
+org.argouml.application.Main Refinement
+org.argouml.application.PostLoad Refinement
+org.argouml.application.LoadModules Refinement
+org.argouml.application.Main initializeSubsystems(SimpleTimer,SplashScreen) Refinement
+org.argouml.moduleloader.ModuleLoader2 huntForModules() Refinement
+org.argouml.notation.providers.uml.AbstractMessageNotationUml handlePredecessors(Object,List<List>,boolean) Refinement
+org.argouml.notation.providers.uml.AbstractMessageNotationUml handleSequenceNumber(Object,List<Integer>,boolean) Refinement
+org.argouml.notation.providers.uml.AbstractMessageNotationUml buildAction(Object) Refinement
+org.argouml.notation.providers.uml.AbstractMessageNotationUml insertSuccessor(Object,Object,int) Refinement
+org.argouml.notation.providers.uml.AssociationRoleNotationUml parseRole(Object,String) Refinement
+org.argouml.notation.providers.uml.ClassifierRoleNotationUml parseClassifierRole(Object,String) Refinement
+org.argouml.ui.cmd.GenericArgoMenuBar Refinement
+org.argouml.ui.cmd.GenericArgoMenuBar initMenuCreate() Refinement
+org.argouml.ui.cmd.ShortcutMgr Refinement
+org.argouml.ui.explorer.ExplorerPopup Refinement
+org.argouml.ui.explorer.ExplorerPopup ExplorerPopup(Object,MouseEvent) Refinement
+org.argouml.ui.explorer.ExplorerPopup initMenuCreateDiagrams() Refinement
+org.argouml.ui.explorer.PerspectiveManager Refinement
+org.argouml.ui.explorer.PerspectiveManager getDefaultPerspectives() Refinement
+org.argouml.ui.explorer.PerspectiveManager loadRules() Refinement
+org.argouml.ui.explorer.rules.GoClassifierToSequenceDiagram
+org.argouml.ui.explorer.rules.GoNamespaceToDiagram Refinement
+org.argouml.ui.explorer.rules.GoOperationToSequenceDiagram
+org.argouml.uml.diagram.DiagramFactory Refinement
+org.argouml.uml.diagram.DiagramFactory DiagramFactory() Refinement
+org.argouml.uml.diagram.DiagramFactory createDiagram(Class,Object,Object) Refinement
+org.argouml.uml.diagram.sequence.MessageNode
+org.argouml.uml.diagram.sequence.SequenceDiagramGraphModel
+org.argouml.uml.diagram.sequence.ui.ActionAddClassifierRole
+org.argouml.uml.diagram.sequence.ui.FigActivation
+org.argouml.uml.diagram.sequence.ui.FigBirthActivation
+org.argouml.uml.diagram.sequence.ui.FigCallActionMessage
+org.argouml.uml.diagram.sequence.ui.FigClassifierRole
+org.argouml.uml.diagram.sequence.ui.FigCreateActionMessage
+org.argouml.uml.diagram.sequence.ui.FigDestroyActionMessage
+org.argouml.uml.diagram.sequence.ui.FigHead
+org.argouml.uml.diagram.sequence.ui.FigLifeLine
+org.argouml.uml.diagram.sequence.ui.FigMessage
+org.argouml.uml.diagram.sequence.ui.FigMessagePort
+org.argouml.uml.diagram.sequence.ui.FigReturnActionMessage
+org.argouml.uml.diagram.sequence.ui.InitSequenceDiagram
+org.argouml.uml.diagram.sequence.ui.ModeChangeHeight
+org.argouml.uml.diagram.sequence.ui.ModeContract
+org.argouml.uml.diagram.sequence.ui.ModeCreateMessage
+org.argouml.uml.diagram.sequence.ui.ModeExpand
+org.argouml.uml.diagram.sequence.ui.PropPanelUMLSequenceDiagram
+org.argouml.uml.diagram.sequence.ui.SelectionClassifierRole
+org.argouml.uml.diagram.sequence.ui.SelectionMessage
+org.argouml.uml.diagram.sequence.ui.SequenceDiagramLayer
+org.argouml.uml.diagram.sequence.ui.SequenceDiagramPropPanelFactory
+org.argouml.uml.diagram.sequence.ui.SequenceDiagramRenderer
+org.argouml.uml.diagram.sequence.ui.UMLSequenceDiagram
+org.argouml.uml.diagram.ui.ActionSetAddMessageMode
+org.argouml.uml.ui.ActionNewDiagram createCollaboration(Object)
+org.argouml.uml.ui.ActionSequenceDiagram
+org.argouml.uml.ui.behavior.collaborations.ActionAddClassifierRoleBase getChoices() Refinement
+org.argouml.uml.ui.behavior.collaborations.ActionAddClassifierRoleBase doIt(Collection) Refinement
+org.argouml.uml.ui.behavior.collaborations.ActionAddMessagePredecessor getChoices() Refinement
+org.argouml.uml.ui.behavior.collaborations.ActionAddMessagePredecessor doIt(Collection) Refinement
+org.argouml.uml.ui.behavior.collaborations.ActionRemoveClassifierRoleBase actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.collaborations.ActionSetAssociationRoleBase actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.collaborations.ActionSetRepresentedClassifierCollaboration actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.collaborations.ActionSetRepresentedOperationCollaboration actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.collaborations.UMLAssociationRoleBaseComboBoxModel buildModelList() Refinement
+org.argouml.uml.ui.behavior.collaborations.UMLAssociationRoleBaseComboBoxModel isValidElement(Object) Refinement
+org.argouml.uml.ui.behavior.collaborations.UMLClassifierRoleAvailableContentsListModel buildModelList() Refinement
+org.argouml.uml.ui.behavior.collaborations.UMLClassifierRoleAvailableFeaturesListModel buildModelList() Refinement
+org.argouml.uml.ui.behavior.collaborations.UMLMessageActivatorComboBox doIt(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.collaborations.UMLMessageActivatorComboBoxModel buildModelList() Refinement
+org.argouml.uml.ui.behavior.common_behavior.ActionNewAction actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.common_behavior.PropPanelStimulus setSender(Object) Refinement
+org.argouml.sequence2.diagram.ActionAddClassifierRole
+org.argouml.sequence2.diagram.ActionSetAddMessageMode
+org.argouml.sequence2.diagram.ActionSetOperation
+org.argouml.sequence2.diagram.FigActivation
+org.argouml.sequence2.diagram.FigClassifierRole
+org.argouml.sequence2.diagram.FigDestroy
+org.argouml.sequence2.diagram.FigHead
+org.argouml.sequence2.diagram.FigLifeLine
+org.argouml.sequence2.diagram.FigMessage
+org.argouml.sequence2.diagram.FigMessageComparator
+org.argouml.sequence2.diagram.FigMessageSpline
+org.argouml.sequence2.diagram.ModeBroomMessages
+org.argouml.sequence2.diagram.ModeCreateMessage
+org.argouml.sequence2.diagram.ModePlaceClassifierRole
+org.argouml.sequence2.diagram.SelectionClassifierRole
+org.argouml.sequence2.diagram.SelectionMessage
+org.argouml.sequence2.diagram.SequenceDiagramFactory
+org.argouml.sequence2.diagram.SequenceDiagramGraphModel
+org.argouml.sequence2.diagram.SequenceDiagramRenderer
+org.argouml.sequence2.diagram.UMLSequenceDiagram
+org.argouml.sequence2.SequenceDiagramModule
+org.argouml.sequence2.SequenceDiagramPropPanelFactory

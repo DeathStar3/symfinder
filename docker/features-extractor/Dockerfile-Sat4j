@@ -1,0 +1,2 @@
+FROM deathstar3/features-extractor:local
+ADD docker/features-extractor/sat4j-files/* /

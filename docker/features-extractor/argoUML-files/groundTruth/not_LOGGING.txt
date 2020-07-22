@@ -1,0 +1,6 @@
+org.argouml.application.helpers.ResourceLoaderWrapper lookupIcon(Object) Refinement
+org.argouml.persistence.ZargoFilePersister readerToWriter(Reader,Writer) Refinement
+org.argouml.uml.diagram.ui.FigAssociation paint(Graphics) Refinement
+org.argouml.model.mdr.CoreHelperMDRImpl getAllMetatypeNames() Refinement
+org.argouml.model.mdr.CoreHelperMDRImpl getAllMetaDatatypeNames() Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl buildTypeMap(ModelPackage) Refinement

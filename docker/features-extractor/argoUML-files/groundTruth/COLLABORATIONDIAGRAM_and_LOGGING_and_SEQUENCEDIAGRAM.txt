@@ -1,0 +1,3 @@
+org.argouml.sequence2.diagram.SequenceDiagramGraphModel getCollaboration() Refinement
+org.argouml.sequence2.diagram.SequenceDiagramGraphModel setCollaboration(Object) Refinement
+org.argouml.sequence2.diagram.UMLSequenceDiagram postLoad() Refinement

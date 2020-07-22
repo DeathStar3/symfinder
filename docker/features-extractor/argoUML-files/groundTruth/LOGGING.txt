@@ -1,0 +1,641 @@
+org.argouml.application.api.AbstractArgoJPanel Refinement
+org.argouml.application.api.AbstractArgoJPanel clone() Refinement
+org.argouml.application.api.Argo Refinement
+org.argouml.application.events.ArgoEventPump Refinement
+org.argouml.application.events.ArgoEventPump fireNotationEventInternal(ArgoNotationEvent,ArgoNotationEventListener) Refinement
+org.argouml.application.events.ArgoEventPump fireDiagramAppearanceEventInternal(ArgoDiagramAppearanceEvent,ArgoDiagramAppearanceEventListener) Refinement
+org.argouml.application.events.ArgoEventPump handleFireHelpEvent(ArgoHelpEvent,ArgoHelpEventListener) Refinement
+org.argouml.application.events.ArgoEventPump handleFireStatusEvent(ArgoStatusEvent,ArgoStatusEventListener) Refinement
+org.argouml.application.events.ArgoEventPump handleFireProfileEvent(ArgoProfileEvent,ArgoProfileEventListener) Refinement
+org.argouml.application.events.ArgoEventPump handleFireGeneratorEvent(ArgoGeneratorEvent,ArgoGeneratorEventListener) Refinement
+org.argouml.application.helpers.ResourceLoaderWrapper Refinement
+org.argouml.application.helpers.ResourceLoaderWrapper lookupIcon(Object) Refinement
+org.argouml.application.Main Refinement
+org.argouml.application.PostLoad Refinement
+org.argouml.application.LoadModules Refinement
+org.argouml.application.Main main(String[]) Refinement
+org.argouml.application.Main initPreinitialize() Refinement
+org.argouml.application.Main initModel() Refinement
+org.argouml.application.Main getMostRecentProject() Refinement
+org.argouml.application.Main projectUrl(String,URL) Refinement
+org.argouml.application.PostLoad run() Refinement
+org.argouml.application.LoadModules huntForInternalModules() Refinement
+org.argouml.application.LoadModules run() Refinement
+org.argouml.configuration.ConfigurationFactory Refinement
+org.argouml.configuration.ConfigurationHandler Refinement
+org.argouml.configuration.ConfigurationHandler addListener(PropertyChangeListener) Refinement
+org.argouml.configuration.ConfigurationHandler removeListener(PropertyChangeListener) Refinement
+org.argouml.configuration.ConfigurationHandler addListener(ConfigurationKey,PropertyChangeListener) Refinement
+org.argouml.configuration.ConfigurationHandler removeListener(ConfigurationKey,PropertyChangeListener) Refinement
+org.argouml.configuration.ConfigurationProperties Refinement
+org.argouml.configuration.ConfigurationProperties ConfigurationProperties() Refinement
+org.argouml.configuration.ConfigurationProperties copyFile(File,File) Refinement
+org.argouml.configuration.ConfigurationProperties loadFile(File) Refinement
+org.argouml.configuration.ConfigurationProperties saveFile(File) Refinement
+org.argouml.configuration.ConfigurationProperties loadURL(URL) Refinement
+org.argouml.configuration.ConfigurationProperties setValue(String,String) Refinement
+org.argouml.gefext.DeferredBufferedImage Refinement
+org.argouml.gefext.DeferredBufferedImage getData() Refinement
+org.argouml.gefext.DeferredBufferedImage getData(Rectangle) Refinement
+org.argouml.gefext.DeferredBufferedImage computeRaster(Rectangle) Refinement
+org.argouml.gefext.DeferredBufferedImage getMinX() Refinement
+org.argouml.gefext.DeferredBufferedImage getMinY() Refinement
+org.argouml.gefext.DeferredBufferedImage getMinTileX() Refinement
+org.argouml.gefext.DeferredBufferedImage getMinTileY() Refinement
+org.argouml.gefext.DeferredBufferedImage getNumXTiles() Refinement
+org.argouml.gefext.DeferredBufferedImage getNumYTiles() Refinement
+org.argouml.gefext.DeferredBufferedImage getTile(int,int) Refinement
+org.argouml.gefext.DeferredBufferedImage getTileGridXOffset() Refinement
+org.argouml.gefext.DeferredBufferedImage getTileGridYOffset() Refinement
+org.argouml.gefext.DeferredBufferedImage getTileWidth() Refinement
+org.argouml.gefext.DeferredBufferedImage getTileHeight() Refinement
+org.argouml.gefext.DeferredBufferedImage getWidth() Refinement
+org.argouml.gefext.DeferredBufferedImage getHeight() Refinement
+org.argouml.i18n.Translator Refinement
+org.argouml.i18n.Translator loadBundle(String) Refinement
+org.argouml.i18n.Translator localize(String) Refinement
+org.argouml.kernel.DefaultUndoManager Refinement
+org.argouml.kernel.DefaultUndoManager startInteraction(String) Refinement
+org.argouml.kernel.MemberList Refinement
+org.argouml.kernel.MemberList MemberList() Refinement
+org.argouml.kernel.MemberList remove(Object) Refinement
+org.argouml.kernel.MemberList removeDiagram(ArgoDiagram) Refinement
+org.argouml.kernel.MemberList clear() Refinement
+org.argouml.kernel.ProfileConfiguration Refinement
+org.argouml.kernel.ProfileConfiguration addProfile(Profile) Refinement
+org.argouml.kernel.ProfileConfiguration removeProfile(Profile) Refinement
+org.argouml.kernel.ProjectImpl Refinement
+org.argouml.kernel.ProjectImpl ProjectImpl() Refinement
+org.argouml.kernel.ProjectImpl setUri(URI) Refinement
+org.argouml.kernel.ProjectImpl setFile(File) Refinement
+org.argouml.kernel.ProjectImpl getMembers() Refinement
+org.argouml.kernel.ProjectImpl addMember(Object) Refinement
+org.argouml.kernel.ProjectImpl addModelMember(Object) Refinement
+org.argouml.kernel.ProjectImpl addModelInternal(Object) Refinement
+org.argouml.kernel.ProjectImpl removeProjectMemberDiagram(ArgoDiagram) Refinement
+org.argouml.kernel.ProjectImpl getModels() Refinement
+org.argouml.kernel.ProjectImpl findType(String,boolean) Refinement
+org.argouml.kernel.ProjectImpl postLoad() Refinement
+org.argouml.kernel.ProjectImpl trashInternal(Object) Refinement
+org.argouml.kernel.ProjectImpl setRoots(Collection) Refinement
+org.argouml.kernel.ProjectImpl remove() Refinement
+org.argouml.kernel.ProjectManager Refinement
+org.argouml.kernel.ProjectManager makeEmptyProject(boolean) Refinement
+org.argouml.language.ui.LanguageComboBox Refinement
+org.argouml.language.ui.LanguageComboBox refresh() Refinement
+org.argouml.moduleloader.ModuleLoader2 Refinement
+org.argouml.moduleloader.ModuleStatus Refinement
+org.argouml.moduleloader.ModuleLoader2 doInternal(boolean) Refinement
+org.argouml.moduleloader.ModuleLoader2 computeExtensionLocations() Refinement
+org.argouml.moduleloader.ModuleLoader2 huntModulesFromNamedDirectory(String) Refinement
+org.argouml.moduleloader.ModuleLoader2 processJarFile(ClassLoader,File) Refinement
+org.argouml.moduleloader.ModuleLoader2 addClass(ClassLoader,String) Refinement
+org.argouml.notation.Notation Refinement
+org.argouml.notation.Notation setDefaultNotation(NotationName) Refinement
+org.argouml.notation.Notation getConfiguredNotation() Refinement
+org.argouml.notation.Notation propertyChange(PropertyChangeEvent) Refinement
+org.argouml.notation.NotationNameImpl Refinement
+org.argouml.notation.NotationNameImpl findNotation(String) Refinement
+org.argouml.notation.NotationProvider Refinement
+org.argouml.notation.NotationProvider updateListener(PropertyChangeListener,Object,PropertyChangeEvent) Refinement
+org.argouml.notation.NotationProvider addElementListener(PropertyChangeListener,Object) Refinement
+org.argouml.notation.NotationProvider addElementListener(PropertyChangeListener,Object,String) Refinement
+org.argouml.notation.NotationProvider addElementListener(PropertyChangeListener,Object,String[]) Refinement
+org.argouml.notation.NotationProviderFactory2 Refinement
+org.argouml.notation.NotationProviderFactory2 getNotationProvider(int,Object,NotationName) Refinement
+org.argouml.notation.providers.java.OperationNotationJava Refinement
+org.argouml.notation.providers.java.OperationNotationJava toString(Object) Refinement
+org.argouml.notation.providers.uml.AbstractMessageNotationUml Refinement
+org.argouml.notation.providers.uml.AbstractMessageNotationUml parseMessage(Object,String) Refinement
+org.argouml.notation.providers.uml.AbstractMessageNotationUml printDebugInfo(String,String,StringBuilder,String,StringBuilder,List<List>,List<Integer>,boolean,boolean)
+org.argouml.notation.providers.uml.AttributeNotationUml Refinement
+org.argouml.notation.providers.uml.AttributeNotationUml AttributeNotationUml() Refinement
+org.argouml.notation.providers.uml.AttributeNotationUml parseAttribute(String,Object) Refinement
+org.argouml.notation.providers.uml.MessageNotationUml Refinement
+org.argouml.notation.ui.NotationComboBox Refinement
+org.argouml.notation.ui.NotationComboBox refresh() Refinement
+org.argouml.ocl.ArgoFacade Refinement
+org.argouml.ocl.ArgoAny Refinement
+org.argouml.ocl.ArgoAny internalNavigateParameterized(String,Type[],boolean) Refinement
+org.argouml.ocl.ArgoAny hasState(String) Refinement
+org.argouml.ocl.ArgoAny operationMatchesCall(Object,String,Type[]) Refinement
+org.argouml.persistence.AbstractFilePersister Refinement
+org.argouml.persistence.AbstractFilePersister newPersister(Class<? extends MemberFilePersister>) Refinement
+org.argouml.persistence.ArgoParser Refinement
+org.argouml.persistence.ArgoParser readProject(Project,InputSource) Refinement
+org.argouml.persistence.ArgoParser readProject(Project,Reader) Refinement
+org.argouml.persistence.ArgoParser preRead(Project) Refinement
+org.argouml.persistence.ArgoParser logError(String,SAXException)
+org.argouml.persistence.ArgoParser handleStartElement(XMLElement) Refinement
+org.argouml.persistence.ArgoParser handleEndElement(XMLElement) Refinement
+org.argouml.persistence.ArgoParser handleFontSize(XMLElement) Refinement
+org.argouml.persistence.DiagramMemberFilePersister Refinement
+org.argouml.persistence.DiagramMemberFilePersister load(Project,InputStream) Refinement
+org.argouml.persistence.ModelMemberFilePersister Refinement
+org.argouml.persistence.ModelMemberFilePersister load(Project,InputSource) Refinement
+org.argouml.persistence.ModelMemberFilePersister parse(String,String) Refinement
+org.argouml.persistence.ModelMemberFilePersister readModels(URL,XmiExtensionParser) Refinement
+org.argouml.persistence.ModelMemberFilePersister readModels(InputSource) Refinement
+org.argouml.persistence.OldZargoFilePersister Refinement
+org.argouml.persistence.OldZargoFilePersister doSave(Project,File) Refinement
+org.argouml.persistence.PGMLStackParser Refinement
+org.argouml.persistence.PGMLStackParser getHandler(HandlerStack,Object,String,String,String,Attributes) Refinement
+org.argouml.persistence.PGMLStackParser setAttrs(Fig,Attributes) Refinement
+org.argouml.persistence.PGMLStackParser attachEdges(Diagram) Refinement
+org.argouml.persistence.PGMLStackParser getFigNode(String) Refinement
+org.argouml.persistence.PGMLStackParser constructFig(String,String,Rectangle) Refinement
+org.argouml.persistence.PrivateHandler Refinement
+org.argouml.persistence.PrivateHandler startElement(String,String,String,Attributes) Refinement
+org.argouml.persistence.PrivateHandler getPips(String,String) Refinement
+org.argouml.persistence.PrivateHandler getItemUID(String) Refinement
+org.argouml.persistence.ProfileConfigurationFilePersister Refinement
+org.argouml.persistence.ProfileConfigurationParser Refinement
+org.argouml.persistence.ProfileConfigurationFilePersister addUserDefinedProfile(String,StringBuffer,ProfileManager) Refinement
+org.argouml.persistence.ProfileConfigurationParser handleStartElement(XMLElement) Refinement
+org.argouml.persistence.ProfileConfigurationParser handleEndElement(XMLElement) Refinement
+org.argouml.persistence.ProfileConfigurationParser handleProfileEnd(XMLElement) Refinement
+org.argouml.persistence.ProfileConfigurationParser handlePluginEnd(XMLElement) Refinement
+org.argouml.persistence.ProfileConfigurationParser handleUserDefinedEnd(XMLElement) Refinement
+org.argouml.persistence.ProfileConfigurationParser handleFilenameEnd(XMLElement) Refinement
+org.argouml.persistence.ProfileConfigurationParser handleModelEnd(XMLElement) Refinement
+org.argouml.persistence.SAXParserBase Refinement
+org.argouml.persistence.SAXParserBase parse(InputSource) Refinement
+org.argouml.persistence.SAXParserBase startElement(String,String,String,Attributes) Refinement
+org.argouml.persistence.SAXParserBase endElement(String,String,String) Refinement
+org.argouml.persistence.SAXParserBase resolveEntity(String,String) Refinement
+org.argouml.persistence.SAXParserBase ignoreElement(XMLElement) Refinement
+org.argouml.persistence.SAXParserBase notImplemented(XMLElement) Refinement
+org.argouml.persistence.UmlFilePersister Refinement
+org.argouml.persistence.UmlFilePersister doSave(Project,File) Refinement
+org.argouml.persistence.UmlFilePersister writeProject(Project,OutputStream,ProgressMgr) Refinement
+org.argouml.persistence.UmlFilePersister doLoad(File,File,ProgressMgr) Refinement
+org.argouml.persistence.UmlFilePersister transform(File,int) Refinement
+org.argouml.persistence.XmiFilePersister Refinement
+org.argouml.persistence.XmiFilePersister doSave(Project,File) Refinement
+org.argouml.persistence.XmiFilePersister writeProject(Project,OutputStream,ProgressMgr) Refinement
+org.argouml.persistence.XmiFilePersister doLoad(File) Refinement
+org.argouml.persistence.XmiFilePersister parseXmiExtensions(Project) Refinement
+org.argouml.persistence.XmlInputStream Refinement
+org.argouml.persistence.XmlInputStream skipToTag() Refinement
+org.argouml.persistence.XMLTokenTableBase Refinement
+org.argouml.persistence.XMLTokenTableBase toToken(String,boolean) Refinement
+org.argouml.persistence.XMLTokenTableBase addToken(String,Integer) Refinement
+org.argouml.persistence.ZargoFilePersister Refinement
+org.argouml.persistence.ZargoFilePersister doSave(Project,File) Refinement
+org.argouml.persistence.ZargoFilePersister doLoad(File) Refinement
+org.argouml.persistence.ZargoFilePersister loadFromZargo(File,ProgressMgr) Refinement
+org.argouml.persistence.ZargoFilePersister zargoToUml(File,ProgressMgr) Refinement
+org.argouml.persistence.ZargoFilePersister copyArgo(File,String,PrintWriter) Refinement
+org.argouml.persistence.ZargoFilePersister readerToWriter(Reader,Writer) Refinement
+org.argouml.persistence.ZipFilePersister Refinement
+org.argouml.persistence.ZipFilePersister doSave(Project,File) Refinement
+org.argouml.persistence.ZipFilePersister doLoad(File) Refinement
+org.argouml.profile.FileModelLoader Refinement
+org.argouml.profile.FileModelLoader loadModel(ProfileReference) Refinement
+org.argouml.profile.init.ProfileLoader Refinement
+org.argouml.profile.init.ProfileLoader huntForProfilesInDir(String) Refinement
+org.argouml.profile.init.ProfileLoader loadProfilesFromJarFile(Manifest,File,ClassLoader) Refinement
+org.argouml.profile.internal.ocl.ComputeDesignMaterials Refinement
+org.argouml.profile.internal.ocl.ComputeDesignMaterials caseAClassifierContext(AClassifierContext) Refinement
+org.argouml.profile.internal.ocl.ContextApplicable Refinement
+org.argouml.profile.internal.ocl.DefaultOclEvaluator Refinement
+org.argouml.profile.internal.ocl.DefaultOclEvaluator evaluate(Map<String,Object>,ModelInterpreter,String) Refinement
+org.argouml.profile.internal.ocl.EvaluateExpression Refinement
+org.argouml.profile.internal.ocl.EvaluateExpression errorNotType(Object,String,Object) Refinement
+org.argouml.profile.internal.ocl.EvaluateExpression error(Object) Refinement
+org.argouml.profile.internal.ocl.uml14.ModelAccessModelInterpreter Refinement
+org.argouml.profile.internal.ocl.uml14.ModelAccessModelInterpreter internalOcl(Object,Map<String,Object>,String) Refinement
+org.argouml.profile.internal.ocl.uml14.OclAPIModelInterpreter Refinement
+org.argouml.profile.internal.ocl.uml14.Uml14ModelInterpreter Refinement
+org.argouml.profile.internal.ProfileManagerImpl Refinement
+org.argouml.profile.internal.ProfileManagerImpl loadDefaultProfilesfromConfiguration() Refinement
+org.argouml.profile.internal.ProfileManagerImpl addSearchPathDirectory(String) Refinement
+org.argouml.profile.internal.ProfileManagerImpl removeSearchPathDirectory(String) Refinement
+org.argouml.profile.internal.ProfileManagerImpl refreshRegisteredProfiles() Refinement
+org.argouml.profile.ReaderModelLoader Refinement
+org.argouml.profile.ReaderModelLoader loadModel(ProfileReference) Refinement
+org.argouml.profile.ResourceModelLoader Refinement
+org.argouml.profile.ResourceModelLoader loadModel(ProfileReference) Refinement
+org.argouml.profile.StreamModelLoader Refinement
+org.argouml.profile.StreamModelLoader loadModel(InputStream,URL) Refinement
+org.argouml.profile.UserDefinedProfile Refinement
+org.argouml.profile.UserDefinedProfile UserDefinedProfile(File) Refinement
+org.argouml.profile.UserDefinedProfile UserDefinedProfile(URL) Refinement
+org.argouml.profile.UserDefinedProfile UserDefinedProfile(String,URL,Set<Critic>,Set<String>) Refinement
+org.argouml.profile.UserDefinedProfile finishLoading() Refinement
+org.argouml.profile.ZipModelLoader Refinement
+org.argouml.profile.ZipModelLoader loadModel(ProfileReference) Refinement
+org.argouml.ui.ActionCreateEdgeModelElement Refinement
+org.argouml.ui.ActionCreateEdgeModelElement actionPerformed(ActionEvent) Refinement
+org.argouml.ui.cmd.GenericArgoMenuBar Refinement
+org.argouml.ui.cmd.GenericArgoMenuBar registerForMacEvents() Refinement
+org.argouml.ui.cmd.ShortcutMgr Refinement
+org.argouml.ui.cmd.ShortcutMgr decodeKeyStroke(String) Refinement
+org.argouml.ui.cmd.ShortcutMgr decodeModifier(String) Refinement
+org.argouml.ui.DetailsPane Refinement
+org.argouml.ui.DetailsPane DetailsPane(String,Orientation) Refinement
+org.argouml.ui.DetailsPane stateChanged(ChangeEvent) Refinement
+org.argouml.ui.DetailsPane mySingleClick(int) Refinement
+org.argouml.ui.DetailsPane myDoubleClick(int) Refinement
+org.argouml.ui.DisplayTextTree Refinement
+org.argouml.ui.DisplayTextTree fireTreeExpanded(TreePath) Refinement
+org.argouml.ui.DisplayTextTree fireTreeCollapsed(TreePath) Refinement
+org.argouml.ui.DisplayTextTree setModel(TreeModel) Refinement
+org.argouml.ui.DisplayTextTree getExpandedPaths() Refinement
+org.argouml.ui.DisplayTextTree reexpand() Refinement
+org.argouml.ui.explorer.ActionExportProfileXMI Refinement
+org.argouml.ui.explorer.ActionExportProfileXMI actionPerformed(ActionEvent) Refinement
+org.argouml.ui.explorer.DnDExplorerTree Refinement
+org.argouml.ui.explorer.DnDExplorerTree dragGestureRecognized(DragGestureEvent) Refinement
+org.argouml.ui.explorer.DnDExplorerTree isValidDrag(TreePath,Transferable) Refinement
+org.argouml.ui.explorer.ArgoDropTargetListener dragEnter(DropTargetDragEvent) Refinement
+org.argouml.ui.explorer.ArgoDropTargetListener dragExit(DropTargetEvent) Refinement
+org.argouml.ui.explorer.ArgoDropTargetListener dragOver(DropTargetDragEvent) Refinement
+org.argouml.ui.explorer.ArgoDropTargetListener drop(DropTargetDropEvent) Refinement
+org.argouml.ui.explorer.ExplorerEventAdaptor Refinement
+org.argouml.ui.explorer.ExplorerEventAdaptor propertyChange(PropertyChangeEvent) Refinement
+org.argouml.ui.explorer.ExplorerPopup Refinement
+org.argouml.ui.explorer.ActionCreateAssociation actionPerformed(ActionEvent) Refinement
+org.argouml.ui.explorer.ActionCreateAssociationRole actionPerformed(ActionEvent) Refinement
+org.argouml.ui.explorer.ExplorerTreeModel Refinement
+org.argouml.ui.explorer.ExplorerTreeModel collectChildren(Object,List,Set) Refinement
+org.argouml.ui.explorer.PerspectiveConfigurator Refinement
+org.argouml.ui.explorer.PerspectiveConfigurator doAddRule() Refinement
+org.argouml.ui.explorer.PerspectiveManager Refinement
+org.argouml.ui.explorer.PerspectiveManager loadUserPerspectives() Refinement
+org.argouml.ui.HelpBox Refinement
+org.argouml.ui.HelpBox HelpBox(String) Refinement
+org.argouml.ui.HelpBox hyperlinkUpdate(HyperlinkEvent) Refinement
+org.argouml.ui.LoadSwingWorker Refinement
+org.argouml.ui.LoadSwingWorker finished() Refinement
+org.argouml.ui.LookAndFeelMgr Refinement
+org.argouml.ui.LookAndFeelMgr setLookAndFeel(String) Refinement
+org.argouml.ui.LookAndFeelMgr setTheme(MetalTheme) Refinement
+org.argouml.ui.MultiEditorPane Refinement
+org.argouml.ui.MultiEditorPane MultiEditorPane() Refinement
+org.argouml.ui.MultiEditorPane stateChanged(ChangeEvent) Refinement
+org.argouml.ui.MultiEditorPane mySingleClick(int) Refinement
+org.argouml.ui.MultiEditorPane myDoubleClick(int) Refinement
+org.argouml.ui.ProjectBrowser Refinement
+org.argouml.ui.ProjectBrowser setApplicationIcon() Refinement
+org.argouml.ui.ProjectBrowser trySave(boolean,File,ProgressMonitor) Refinement
+org.argouml.ui.ProjectBrowser testSimulateErrors() Refinement
+org.argouml.ui.ProjectBrowser loadProject(File,boolean,ProgressMonitor) Refinement
+org.argouml.ui.StylePanel Refinement
+org.argouml.ui.StylePanel insertUpdate(DocumentEvent) Refinement
+org.argouml.ui.StylePanelFig Refinement
+org.argouml.ui.StylePanelFig parseBBox() Refinement
+org.argouml.ui.SwingWorker Refinement
+org.argouml.ui.SwingWorker doConstruct() Refinement
+org.argouml.ui.TabResults Refinement
+org.argouml.ui.TabResults myDoubleClick(Object) Refinement
+org.argouml.ui.TabResults valueChanged(ListSelectionEvent) Refinement
+org.argouml.ui.TabText Refinement
+org.argouml.ui.TabText parseText(String) Refinement
+org.argouml.ui.targetmanager.TargetManager Refinement
+org.argouml.ui.targetmanager.TargetManager internalOnSetTarget(String,Object[]) Refinement
+org.argouml.ui.targetmanager.TargetManager addTarget(Object) Refinement
+org.argouml.ui.targetmanager.TargetManager fireTargetSet(TargetEvent) Refinement
+org.argouml.ui.targetmanager.TargetManager fireTargetAdded(TargetEvent) Refinement
+org.argouml.ui.targetmanager.TargetManager fireTargetRemoved(TargetEvent) Refinement
+org.argouml.ui.targetmanager.TargetManager navigateForward() Refinement
+org.argouml.ui.targetmanager.TargetManager navigateBackward() Refinement
+org.argouml.ui.targetmanager.Remover removeListener(Object) Refinement
+org.argouml.ui.TreeModelComposite Refinement
+org.argouml.ui.TreeModelComposite getIndexOfChild(Object,Object) Refinement
+org.argouml.uml.diagram.ArgoDiagramImpl Refinement
+org.argouml.uml.diagram.ArgoDiagramImpl constructorInit() Refinement
+org.argouml.uml.diagram.ArgoDiagramImpl repairFig(Fig,StringBuffer) Refinement
+org.argouml.uml.diagram.ArgoDiagramImpl setNamespace(Object) Refinement
+org.argouml.uml.diagram.ArgoDiagramImpl renderingChanged() Refinement
+org.argouml.uml.diagram.DiagramAppearance Refinement
+org.argouml.uml.diagram.DiagramAppearance propertyChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.DiagramUndoManager Refinement
+org.argouml.uml.diagram.DiagramUndoManager addPropertyChangeListener(PropertyChangeListener) Refinement
+org.argouml.uml.diagram.DiagramUtils Refinement
+org.argouml.uml.diagram.DiagramUtils getActiveDiagram() Refinement
+org.argouml.uml.diagram.static_structure.ClassDiagramGraphModel Refinement
+org.argouml.uml.diagram.static_structure.ClassDiagramGraphModel canAddNode(Object) Refinement
+org.argouml.uml.diagram.static_structure.ClassDiagramGraphModel canAddEdge(Object) Refinement
+org.argouml.uml.diagram.static_structure.ClassDiagramGraphModel addEdge(Object) Refinement
+org.argouml.uml.diagram.static_structure.ClassDiagramGraphModel vetoableChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.static_structure.layout.ClassdiagramInheritanceEdge Refinement
+org.argouml.uml.diagram.static_structure.layout.ClassdiagramInheritanceEdge layout() Refinement
+org.argouml.uml.diagram.static_structure.layout.ClassdiagramLayouter Refinement
+org.argouml.uml.diagram.static_structure.layout.NodeRow doSplit(int,int) Refinement
+org.argouml.uml.diagram.static_structure.layout.NodeRow getWidth(int) Refinement
+org.argouml.uml.diagram.static_structure.layout.ClassdiagramLayouter layout() Refinement
+org.argouml.uml.diagram.static_structure.layout.ClassdiagramLayouter placeNode(ClassdiagramNode) Refinement
+org.argouml.uml.diagram.static_structure.layout.ClassdiagramLayouter setupLinks() Refinement
+org.argouml.uml.diagram.static_structure.layout.ClassdiagramModelElementFactory Refinement
+org.argouml.uml.diagram.static_structure.layout.ClassdiagramModelElementFactory getInstance(Object) Refinement
+org.argouml.uml.diagram.static_structure.ui.ClassDiagramRenderer Refinement
+org.argouml.uml.diagram.static_structure.ui.ClassDiagramRenderer getFigNodeFor(GraphModel,Layer,Object,Map) Refinement
+org.argouml.uml.diagram.static_structure.ui.ClassDiagramRenderer getFigEdgeFor(GraphModel,Layer,Object,Map) Refinement
+org.argouml.uml.diagram.static_structure.ui.FigClassifierBoxWithAttributes Refinement
+org.argouml.uml.diagram.static_structure.ui.FigClassifierBoxWithAttributes setStandardBounds(int,int,int,int) Refinement
+org.argouml.uml.diagram.static_structure.ui.FigComment Refinement
+org.argouml.uml.diagram.static_structure.ui.FigComment mouseClicked(MouseEvent) Refinement
+org.argouml.uml.diagram.static_structure.ui.FigComment vetoableChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.static_structure.ui.FigComment keyTyped(KeyEvent) Refinement
+org.argouml.uml.diagram.static_structure.ui.FigDataType Refinement
+org.argouml.uml.diagram.static_structure.ui.FigDataType setEnclosingFig(Fig) Refinement
+org.argouml.uml.diagram.static_structure.ui.FigEdgeNote Refinement
+org.argouml.uml.diagram.static_structure.ui.FigEdgeNote setFig(Fig) Refinement
+org.argouml.uml.diagram.static_structure.ui.FigInterface Refinement
+org.argouml.uml.diagram.static_structure.ui.FigInterface setEnclosingFig(Fig) Refinement
+org.argouml.uml.diagram.static_structure.ui.FigPackage Refinement
+org.argouml.uml.diagram.static_structure.ui.PackagePortFigRect Refinement
+org.argouml.uml.diagram.static_structure.ui.FigPackageFigText mouseClicked(MouseEvent) Refinement
+org.argouml.uml.diagram.static_structure.ui.FigPackage modelChanged(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram Refinement
+org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram UMLClassDiagram(Object) Refinement
+org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram setNamespace(Object) Refinement
+org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram drop(Object,Point) Refinement
+org.argouml.uml.diagram.ui.ActionAddConcurrentRegion Refinement
+org.argouml.uml.diagram.ui.ActionAddConcurrentRegion actionPerformed(ActionEvent) Refinement
+org.argouml.uml.diagram.ui.ActionSetMode Refinement
+org.argouml.uml.diagram.ui.ActionSetMode putIcon(String) Refinement
+org.argouml.uml.diagram.ui.ArgoFigGroup Refinement
+org.argouml.uml.diagram.ui.ArgoFigGroup renderingChanged() Refinement
+org.argouml.uml.diagram.ui.CompartmentFigText Refinement
+org.argouml.uml.diagram.ui.CompartmentFigText CompartmentFigText(int,int,int,int,Fig,NotationProvider) Refinement
+org.argouml.uml.diagram.ui.CompartmentFigText CompartmentFigText(Object,Rectangle,DiagramSettings,NotationProvider) Refinement
+org.argouml.uml.diagram.ui.DiagramNameDocument Refinement
+org.argouml.uml.diagram.ui.DiagramNameDocument update(DocumentEvent) Refinement
+org.argouml.uml.diagram.ui.DnDJGraph Refinement
+org.argouml.uml.diagram.ui.DnDJGraph drop(DropTargetDropEvent) Refinement
+org.argouml.uml.diagram.ui.FigAssociation Refinement
+org.argouml.uml.diagram.ui.FigMultiplicity Refinement
+org.argouml.uml.diagram.ui.FigOrdering Refinement
+org.argouml.uml.diagram.ui.FigRole Refinement
+org.argouml.uml.diagram.ui.FigAssociationEndAnnotation Refinement
+org.argouml.uml.diagram.ui.FigAssociation paint(Graphics) Refinement
+org.argouml.uml.diagram.ui.FigEdgeAssociationClass Refinement
+org.argouml.uml.diagram.ui.FigEdgeAssociationClass constructFigs(FigClassAssociationClass,Fig) Refinement
+org.argouml.uml.diagram.ui.FigEdgeAssociationClass getRemoveDelegate() Refinement
+org.argouml.uml.diagram.ui.FigEdgeModelElement Refinement
+org.argouml.uml.diagram.ui.FigEdgeModelElement getTipString(MouseEvent) Refinement
+org.argouml.uml.diagram.ui.FigEdgeModelElement propertyChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.ui.FigEdgeModelElement determineFigNodes() Refinement
+org.argouml.uml.diagram.ui.FigEdgeModelElement getSettings() Refinement
+org.argouml.uml.diagram.ui.FigEditableCompartment Refinement
+org.argouml.uml.diagram.ui.FigEditableCompartment addFig(Fig) Refinement
+org.argouml.uml.diagram.ui.FigEditableCompartment populate() Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement vetoableChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement delayedVetoableChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement propertyChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement stereotypeChanged(UmlChangeEvent) Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement mouseClicked(MouseEvent) Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement keyTyped(KeyEvent) Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement updateStereotypeText() Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement notationChanged(ArgoNotationEvent) Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement updateStereotypeIcon() Refinement
+org.argouml.uml.diagram.ui.FigNodeModelElement getSettings() Refinement
+org.argouml.uml.diagram.ui.FigSingleLineText Refinement
+org.argouml.uml.diagram.ui.FigSingleLineText propertyChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.ui.FigStereotypesGroup Refinement
+org.argouml.uml.diagram.ui.FigStereotypesGroup propertyChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.ui.FigStereotypesGroup populate() Refinement
+org.argouml.uml.diagram.ui.FigStereotypesGroup getIconForStereotype(FigStereotype) Refinement
+org.argouml.uml.diagram.ui.ModeAddToDiagram Refinement
+org.argouml.uml.diagram.ui.AddToDiagramMemento Refinement
+org.argouml.uml.diagram.ui.ModeAddToDiagram mouseReleased(MouseEvent) Refinement
+org.argouml.uml.diagram.ui.ModeAddToDiagram keyTyped(KeyEvent) Refinement
+org.argouml.uml.diagram.ui.ModeCreateAssociationClass Refinement
+org.argouml.uml.diagram.ui.ModeCreateAssociationClass buildParts(Editor,FigAssociationClass,Layer) Refinement
+org.argouml.uml.diagram.ui.ModeCreateGraphEdge Refinement
+org.argouml.uml.diagram.ui.ModeCreateGraphEdge mouseReleased(MouseEvent) Refinement
+org.argouml.uml.diagram.ui.PathItemPlacement Refinement
+org.argouml.uml.diagram.ui.PathItemPlacement getPosition(Point) Refinement
+org.argouml.uml.diagram.ui.PathItemPlacement getRectLineIntersection(Rectangle,Point,Point) Refinement
+org.argouml.uml.diagram.ui.SelectionNodeClarifiers2 Refinement
+org.argouml.uml.diagram.ui.SelectionNodeClarifiers2 dragHandle(int,int,int,int,Handle) Refinement
+org.argouml.uml.diagram.ui.TabDiagram Refinement
+org.argouml.uml.diagram.ui.ArgoEditor Refinement
+org.argouml.uml.diagram.ui.TabDiagram setTarget(Object) Refinement
+org.argouml.uml.diagram.ui.TabDiagram modeChange(ModeChangeEvent) Refinement
+org.argouml.uml.diagram.ui.TabDiagram propertyChange(PropertyChangeEvent) Refinement
+org.argouml.uml.diagram.ui.UMLDiagram Refinement
+org.argouml.uml.diagram.ui.UMLDiagram UMLDiagram(String,Object) Refinement
+org.argouml.uml.diagram.UMLMutableGraphSupport Refinement
+org.argouml.uml.diagram.UMLMutableGraphSupport connect(Object,Object,Object) Refinement
+org.argouml.uml.diagram.UMLMutableGraphSupport getSourcePort(Object) Refinement
+org.argouml.uml.diagram.UMLMutableGraphSupport getDestPort(Object) Refinement
+org.argouml.uml.diagram.UMLMutableGraphSupport buildConnection(Object,Object,Object,Object,Object,Object,Object) Refinement
+org.argouml.uml.generator.AbstractSection Refinement
+org.argouml.uml.generator.AbstractSection write(String,String,boolean) Refinement
+org.argouml.uml.generator.AbstractSection read(String) Refinement
+org.argouml.uml.generator.GeneratorManager Refinement
+org.argouml.uml.generator.GeneratorManager addGenerator(Language,CodeGenerator) Refinement
+org.argouml.uml.generator.GeneratorManager removeGenerator(Language) Refinement
+org.argouml.uml.generator.TempFileUtils Refinement
+org.argouml.uml.generator.TempFileUtils createTempDir() Refinement
+org.argouml.uml.generator.TempFileUtils readAllFiles(File) Refinement
+org.argouml.uml.generator.TempFileUtils deleteDir(File) Refinement
+org.argouml.uml.generator.TempFileUtils readFileNames(File) Refinement
+org.argouml.uml.generator.ui.ClassGenerationDialog Refinement
+org.argouml.uml.generator.ui.ClassGenerationDialog doBrowse() Refinement
+org.argouml.uml.reveng.DiagramInterface Refinement
+org.argouml.uml.reveng.DiagramInterface addClassDiagram(Object,String) Refinement
+org.argouml.uml.reveng.ImportClassLoader Refinement
+org.argouml.uml.reveng.ImportClassLoader removeFile(File) Refinement
+org.argouml.uml.reveng.ImportClassLoader setPath(String) Refinement
+org.argouml.uml.reveng.ImportClassLoader getURLs(String) Refinement
+org.argouml.uml.reveng.ImportClassLoader setPath(Object[]) Refinement
+org.argouml.uml.reveng.ImporterManager Refinement
+org.argouml.uml.reveng.ImporterManager addImporter(ImportInterface) Refinement
+org.argouml.uml.reveng.ImporterManager removeImporter(ImportInterface) Refinement
+org.argouml.uml.ui.ActionAddDiagram Refinement
+org.argouml.uml.ui.ActionAddDiagram actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.ActionClassDiagram Refinement
+org.argouml.uml.ui.ActionClassDiagram createDiagram(Object) Refinement
+org.argouml.uml.ui.ActionClassDiagram createDiagram(Object,DiagramSettings) Refinement
+org.argouml.uml.ui.ActionDeleteModelElements Refinement
+org.argouml.uml.ui.ActionDeleteModelElements actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.ActionImportFromSources Refinement
+org.argouml.uml.ui.ActionImportFromSources actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.ActionNewDiagram Refinement
+org.argouml.uml.ui.ActionNewDiagram actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.ActionSaveAllGraphics Refinement
+org.argouml.uml.ui.ActionSaveAllGraphics trySaveDiagram(Object,File) Refinement
+org.argouml.uml.ui.ActionSaveAllGraphics getFileChooser(Project) Refinement
+org.argouml.uml.ui.ActionSaveGraphics Refinement
+org.argouml.uml.ui.ActionSaveGraphics trySave() Refinement
+org.argouml.uml.ui.ActionSaveGraphics doCommand(String) Refinement
+org.argouml.uml.ui.ActionSaveProject Refinement
+org.argouml.uml.ui.ActionSaveProject actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.ActionSaveProject setEnabled(boolean) Refinement
+org.argouml.uml.ui.ActionSaveProjectAs Refinement
+org.argouml.uml.ui.ActionSaveProjectAs actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.behavior.state_machines.UMLChangeExpressionModel Refinement
+org.argouml.uml.ui.behavior.state_machines.UMLChangeExpressionModel newExpression() Refinement
+org.argouml.uml.ui.foundation.core.PropPanelMethod Refinement
+org.argouml.uml.ui.foundation.core.UMLMethodProcedureExpressionModel Refinement
+org.argouml.uml.ui.foundation.core.UMLMethodProcedureExpressionModel newExpression() Refinement
+org.argouml.uml.ui.foundation.core.UMLModelElementNamespaceComboBoxModel Refinement
+org.argouml.uml.ui.foundation.core.UMLModelElementNamespaceComboBoxModel buildModelList() Refinement
+org.argouml.uml.ui.foundation.extension_mechanisms.ActionSetTagDefinitionOwner Refinement
+org.argouml.uml.ui.foundation.extension_mechanisms.ActionSetTagDefinitionOwner actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.foundation.extension_mechanisms.ActionSetTagDefinitionType Refinement
+org.argouml.uml.ui.foundation.extension_mechanisms.ActionSetTagDefinitionType actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.foundation.extension_mechanisms.PropPanelTagDefinition Refinement
+org.argouml.uml.ui.foundation.extension_mechanisms.UMLTagDefinitionNamespaceComboBoxModel Refinement
+org.argouml.uml.ui.foundation.extension_mechanisms.ActionSetTagDefinitionNamespace Refinement
+org.argouml.uml.ui.foundation.extension_mechanisms.UMLTagDefinitionNamespaceComboBoxModel buildModelList() Refinement
+org.argouml.uml.ui.foundation.extension_mechanisms.UMLTagDefinitionComboBoxModel Refinement
+org.argouml.uml.ui.foundation.extension_mechanisms.UMLTagDefinitionComboBoxModel modelChanged(UmlChangeEvent) Refinement
+org.argouml.uml.ui.PropPanel Refinement
+org.argouml.uml.ui.PropPanel buildToolbar() Refinement
+org.argouml.uml.ui.PropPanel setTarget(Object) Refinement
+org.argouml.uml.ui.SaveGraphicsManager Refinement
+org.argouml.uml.ui.SaveScaledEPSAction Refinement
+org.argouml.uml.ui.SavePNGAction2 Refinement
+org.argouml.uml.ui.SaveGIFAction2 Refinement
+org.argouml.uml.ui.SavePNGAction2 actionPerformed(ActionEvent) Refinement
+org.argouml.uml.ui.SavePNGAction2 saveGraphics(OutputStream,Editor,Rectangle) Refinement
+org.argouml.uml.ui.SourcePathTableModel Refinement
+org.argouml.uml.ui.SourcePathTableModel SourcePathTableModel(SourcePathController) Refinement
+org.argouml.uml.ui.TabConstraints Refinement
+org.argouml.uml.ui.CR setData(String,EditingUtilities) Refinement
+org.argouml.uml.ui.CR setName(String,EditingUtilities) Refinement
+org.argouml.uml.ui.TabProps Refinement
+org.argouml.uml.ui.TabProps setTarget(Object) Refinement
+org.argouml.uml.ui.TabProps findPanelFor(Object) Refinement
+org.argouml.uml.ui.TabSrc Refinement
+org.argouml.uml.ui.TabSrc generateSource(Object) Refinement
+org.argouml.uml.ui.TabSrc parseText(String) Refinement
+org.argouml.uml.ui.TabStyle Refinement
+org.argouml.uml.ui.TabStyle findPanelFor(Class) Refinement
+org.argouml.uml.ui.TabStyle panelClassFor(Class) Refinement
+org.argouml.uml.ui.TabStyle loadClass(String) Refinement
+org.argouml.uml.ui.TabTaggedValues Refinement
+org.argouml.uml.ui.ActionRemoveTaggedValue Refinement
+org.argouml.uml.ui.TabTaggedValues stopEditing() Refinement
+org.argouml.uml.ui.TabTaggedValuesModel Refinement
+org.argouml.uml.ui.TabTaggedValuesModel setTarget(Object) Refinement
+org.argouml.uml.ui.UMLComboBox2 Refinement
+org.argouml.uml.ui.UMLComboBoxModel2 Refinement
+org.argouml.uml.ui.UMLComboBoxModel2 propertyChange(PropertyChangeEvent) Refinement
+org.argouml.uml.ui.UMLComboBoxModel2 setTarget(Object) Refinement
+org.argouml.uml.ui.UMLComboBoxModel2 buildModelListTimed() Refinement
+org.argouml.uml.ui.UMLComboBoxModel2 targetAdded(TargetEvent) Refinement
+org.argouml.uml.ui.UMLComboBoxModel2 targetRemoved(TargetEvent) Refinement
+org.argouml.uml.ui.UMLComboBoxModel2 targetSet(TargetEvent) Refinement
+org.argouml.uml.ui.UMLConditionExpressionModel Refinement
+org.argouml.uml.ui.UMLConditionExpressionModel newExpression() Refinement
+org.argouml.uml.ui.UMLExpressionBodyField Refinement
+org.argouml.uml.ui.UMLExpressionBodyField targetChanged() Refinement
+org.argouml.uml.ui.UMLExpressionBodyField propertyChange(PropertyChangeEvent) Refinement
+org.argouml.uml.ui.UMLList2 Refinement
+org.argouml.uml.ui.UMLList2 showPopup(MouseEvent) Refinement
+org.argouml.uml.ui.UMLModelElementListModel2 Refinement
+org.argouml.uml.ui.UMLModelElementListModel2 rebuildModelList() Refinement
+org.argouml.uml.ui.UMLMutableLinkedList Refinement
+org.argouml.uml.ui.UMLMutableLinkedList mouseReleased(MouseEvent) Refinement
+org.argouml.uml.ui.UMLMutableLinkedList mousePressed(MouseEvent) Refinement
+org.argouml.uml.ui.UMLMutableLinkedList mouseClicked(MouseEvent) Refinement
+org.argouml.uml.ui.UMLPlainTextDocument Refinement
+org.argouml.uml.ui.UMLPlainTextDocument updateText(String) Refinement
+org.argouml.uml.ui.UMLRecurrenceExpressionModel Refinement
+org.argouml.uml.ui.UMLRecurrenceExpressionModel newExpression() Refinement
+org.argouml.uml.ui.UMLTimeExpressionModel Refinement
+org.argouml.uml.ui.UMLTimeExpressionModel newExpression() Refinement
+org.argouml.uml.util.namespace.StringNamespace Refinement
+org.argouml.uml.util.namespace.StringNamespace getBaseNamespace() Refinement
+org.argouml.util.ArgoFrame Refinement
+org.argouml.util.ArgoFrame getInstance() Refinement
+org.argouml.util.FileFilters Refinement
+org.argouml.util.ItemUID Refinement
+org.argouml.util.ItemUID readObjectID(Object) Refinement
+org.argouml.util.ItemUID createObjectID(Object) Refinement
+org.argouml.util.logging.AwtExceptionHandler Refinement
+org.argouml.util.logging.AwtExceptionHandler handle(Throwable) Refinement
+org.argouml.util.osdep.OSXAdapter Refinement
+org.argouml.util.osdep.OSXAdapter setAboutHandler(Object,Method) Refinement
+org.argouml.util.osdep.OSXAdapter setPreferencesHandler(Object,Method) Refinement
+org.argouml.util.osdep.OSXAdapter setHandler(OSXAdapter) Refinement
+org.argouml.util.osdep.OSXAdapter setApplicationEventHandled(Object,boolean) Refinement
+org.argouml.util.osdep.StartBrowser Refinement
+org.argouml.util.osdep.StartBrowser openUrl(String) Refinement
+org.argouml.util.ToolBarUtility Refinement
+org.argouml.util.ToolBarUtility buildPopupToolBoxButton(Object[],boolean) Refinement
+org.argouml.util.Tools Refinement
+org.argouml.util.Tools getVersionInfo() Refinement
+org.argouml.util.Tools logVersionInfo()
+org.argouml.model.euml.EUMLModelImplementation Refinement
+org.argouml.model.euml.EUMLModelImplementation EUMLModelImplementation() Refinement
+org.argouml.model.euml.EUMLModelImplementation initializeEditingDomain() Refinement
+org.argouml.model.euml.ModelEventPumpEUMLImpl Refinement
+org.argouml.model.mdr.CollaborationsHelperMDRImpl Refinement
+org.argouml.model.mdr.CollaborationsHelperMDRImpl allAvailableFeatures(Object) Refinement
+org.argouml.model.mdr.CollaborationsHelperMDRImpl allAvailableContents(Object) Refinement
+org.argouml.model.mdr.CoreFactoryMDRImpl Refinement
+org.argouml.model.mdr.CoreFactoryMDRImpl buildClass(Object) Refinement
+org.argouml.model.mdr.CoreFactoryMDRImpl deleteNamespace(Object) Refinement
+org.argouml.model.mdr.CoreHelperMDRImpl Refinement
+org.argouml.model.mdr.CoreHelperMDRImpl isVisiblyOwned(ModelElement,GeneralizableElement,Set<ModelElement>) Refinement
+org.argouml.model.mdr.CoreHelperMDRImpl getAllPossibleNamespaces(Object,Object) Refinement
+org.argouml.model.mdr.CoreHelperMDRImpl setMultiplicity(Object,Object) Refinement
+org.argouml.model.mdr.CoreHelperMDRImpl getAllMetatypeNames() Refinement
+org.argouml.model.mdr.CoreHelperMDRImpl getAllMetaDatatypeNames() Refinement
+org.argouml.model.mdr.DataTypesFactoryMDRImpl Refinement
+org.argouml.model.mdr.DataTypesFactoryMDRImpl createMultiplicity(int,int) Refinement
+org.argouml.model.mdr.DataTypesFactoryMDRImpl createMultiplicity(List) Refinement
+org.argouml.model.mdr.ExtensionMechanismsHelperMDRImpl Refinement
+org.argouml.model.mdr.FacadeMDRImpl Refinement
+org.argouml.model.mdr.FacadeMDRImpl getRootElements() Refinement
+org.argouml.model.mdr.FacadeMDRImpl getValueOfTag(Object) Refinement
+org.argouml.model.mdr.MDRModelImplementation Refinement
+org.argouml.model.mdr.MDRModelImplementation getUmlPackage() Refinement
+org.argouml.model.mdr.MDRModelImplementation createExtent(String,boolean) Refinement
+org.argouml.model.mdr.MDRModelImplementation isReadOnly(Object) Refinement
+org.argouml.model.mdr.MDRModelImplementation MDRModelImplementation() Refinement
+org.argouml.model.mdr.MDRModelImplementation getDefaultRepository() Refinement
+org.argouml.model.mdr.MDRModelImplementation initializeM2() Refinement
+org.argouml.model.mdr.MDRModelImplementation initializeFactories(UmlPackage) Refinement
+org.argouml.model.mdr.MDRModelImplementation createDefaultExtent() Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl Refinement
+org.argouml.model.mdr.Registry Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl change(MDRChangeEvent) Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl fire(UmlChangeEvent) Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl registerModelEvent(PropertyChangeListener,Object,String[]) Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl unregisterModelEvent(PropertyChangeListener,Object,String[]) Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl registerClassEvent(PropertyChangeListener,Object,String[]) Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl unregisterClassEvent(PropertyChangeListener,Object,String[]) Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl startPumpingEvents() Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl stopPumpingEvents() Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl flushModelEvents() Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl otherAssocEnd(AssociationEvent) Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl buildTypeMap(ModelPackage) Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl mapPropertyName(Map<String,Collection<String>>,String,String) Refinement
+org.argouml.model.mdr.ModelEventPumpMDRImpl verifyAttributeNames(RefObject,String[]) Refinement
+org.argouml.model.mdr.Registry register(T,String,String[]) Refinement
+org.argouml.model.mdr.Registry lookupRemoveItem(Map<String,List<T>>,String,T) Refinement
+org.argouml.model.mdr.ModelManagementFactoryMDRImpl Refinement
+org.argouml.model.mdr.ModelManagementHelperMDRImpl Refinement
+org.argouml.model.mdr.ModelManagementHelperMDRImpl getAllModelElementsOfKind(Object,Object) Refinement
+org.argouml.model.mdr.ModelManagementHelperMDRImpl getAllContents(Collection<ModelElement>,ModelElement,Collection<ModelElement>) Refinement
+org.argouml.model.mdr.StateMachinesFactoryMDRImpl Refinement
+org.argouml.model.mdr.StateMachinesFactoryMDRImpl buildGuard(Object) Refinement
+org.argouml.model.mdr.UmlFactoryMDRImpl Refinement
+org.argouml.model.mdr.UmlFactoryMDRImpl delete(Object) Refinement
+org.argouml.model.mdr.UmlFactoryMDRImpl deleteExtent(Object) Refinement
+org.argouml.model.mdr.XmiHeaderProviderImpl Refinement
+org.argouml.model.mdr.XmiHeaderProviderImpl writeHeader(Writer) Refinement
+org.argouml.model.mdr.XmiReaderImpl Refinement
+org.argouml.model.mdr.XmiReaderImpl parse(InputSource,boolean) Refinement
+org.argouml.model.mdr.XmiReaderImpl convertAndLoadUml13(String,RefPackage,XMIReader,InputSource) Refinement
+org.argouml.model.mdr.XmiReaderImpl serialTransform(String[],InputSource) Refinement
+org.argouml.model.mdr.XmiReaderImpl copySource(InputSource) Refinement
+org.argouml.model.mdr.XmiReaderImpl elementFound(String) Refinement
+org.argouml.model.mdr.XmiReaderImpl consumeHeader(InputStream) Refinement
+org.argouml.model.mdr.XmiReferenceResolverImpl Refinement
+org.argouml.model.mdr.XmiReferenceResolverImpl XmiReferenceResolverImpl(RefPackage[],XMIInputConfig,Map<String,XmiReference>,Map<String,String>,List<String>,boolean,String,String) Refinement
+org.argouml.model.mdr.XmiReferenceResolverImpl register(String,String,RefObject) Refinement
+org.argouml.model.mdr.XmiReferenceResolverImpl toURL(String) Refinement
+org.argouml.model.mdr.XmiReferenceResolverImpl findModuleURL(String) Refinement
+org.argouml.model.mdr.XmiReferenceResolverImpl findModelUrlOnClasspath(String) Refinement
+org.argouml.model.mdr.XmiReferenceResolverImpl readExternalDocument(String) Refinement
+org.argouml.model.mdr.XmiWriterMDRImpl Refinement
