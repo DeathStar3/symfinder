@@ -21,7 +21,7 @@ If your system does not match any of the requirements above, you must install a 
 - Follow [these short steps](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) to allow your user to call Docker commands,
 - Preface the scripts calls with `sudo`.
 
-## Getting Symfinder
+## Getting symfinder
 
 1. Open a terminal and clone the repository by running:
 
@@ -77,7 +77,21 @@ You can specify the projects you want to run by passing their names as parameter
 ./run.sh junit
 ```
 
-More details about the analysed projects and their definition are given in the [Using Symfinder on your project](#using-symfinder-on-your-project) section.
+More details about the analysed projects and their definition are given in the [Using symfinder on your project](#using-symfinder-on-your-project) section.
+
+### Reproducing the mapping with feature traces
+
+#### Mapping on ArgoUML traces
+
+```bash
+./argouml-feature-mapping.sh
+```
+
+#### Mapping on Sat4j traces
+
+```bash
+./sat4j-feature-mapping.sh
+```
 
 ### Analysing the output data
 
@@ -110,16 +124,16 @@ The window is made of several parts:
 	- The `Color packages` button display a tab similar to the part ③ where you can enter the name of a package or a class and a new color will be applied to the corresponding nodes.
 	- The `Show legend` button displays a legend to help you read the visualization.
 	- The `Display variants` button displays all the variants of variation points, including the ones not being variation points. Click again on the button to show only variation points.
-- ②: Here you can see the name and tag/commit ID of the project corresponding to the visualization being viewed, as well as the commit corresponding to the version of Symfinder that generated the visualization.
+- ②: Here you can see the name and tag/commit ID of the project corresponding to the visualization being viewed, as well as the commit corresponding to the version of symfinder that generated the visualization.
 - ③: In the `Package/class to filter` field, you can enter the name of a class or package that you want to filter on the visualization.
 When a filter is added, it is added to the list below. The cross on the right of each filter allows you to remove it.
 On the right of this field is a `Filter isolated nodes` button which, when activated, removes the nodes having no relationship from the visualization.
 Click again on the button to unfilter them.
 - ④: Displays metrics on the project concerning variation points and variants
 
-## Using Symfinder on your project
+## Using symfinder on your project
 
-### Symfinder configuration
+### symfinder configuration
 
 The application's settings are set up using a YAML file, called `symfinder.yaml`, that must be at the root of the project.
 Here is an example:
@@ -130,6 +144,9 @@ neo4j:
   user: neo4j
   password: root
 
+hotspots:
+  nbVariantsThreshold: 7
+
 experiments_file: experiments.yaml
 ```
 
@@ -138,6 +155,10 @@ experiments_file: experiments.yaml
 - `boltAddress`: address where Neo4j's bolt driver is exposed
 - `user`: username
 - `password`: the password to access the database
+
+#### Hotspots parameters
+
+- `nbVariantsThreshold`: minimum threshold of variants to consider _vp_-s and variants as a zone of high density of symmetries and keep them for the mapping
 
 #### Experiments
 

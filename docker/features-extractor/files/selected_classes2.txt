@@ -1,9 +1,0 @@
-org.sat4j.minisat.core.Solver
-org.sat4j.reader.Reader
-org.sat4j.minisat.core.IOrder
-org.sat4j.specs.IGroupSolver
-org.sat4j.specs.Constr
-org.sat4j.minisat.constraints.AbstractDataStructureFactory
-org.sat4j.minisat.core.RestartStrategy
-org.sat4j.specs.SearchListenerAdapter
-org.sat4j.reader.Reader
