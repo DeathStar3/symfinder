@@ -6,7 +6,7 @@ if [[ "$1" == "--local" ]]; then
     export TAG=local
     ./build.sh -DskipTests
 else
-    export TAG=latest
+    export TAG=jss
 fi
 
 ./run.sh $@ argoUML

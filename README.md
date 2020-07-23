@@ -1,4 +1,4 @@
-# Symfinder
+# symfinder [![Build Status](https://travis-ci.com/DeathStar3/symfinder.svg?branch=jss)](https://travis-ci.com/DeathStar3/symfinder)
 
 ## Technical Requirements
 
@@ -246,3 +246,5 @@ Then, run symfinder using the local images that you just built.
 ```bash
 ./run.sh --local
 ```
+
+Note: the `--local` parameter is also applicable to the scripts running the mappings.

@@ -38,7 +38,7 @@ ARGUMENT_LIST=(
 
 SYMFINDER_PROJECTS=()
 
-export TAG=latest
+export TAG=jss
 export SYMFINDER_COMPOSE_FILE="symfinder-compose.yaml"
 
 create_directory resources

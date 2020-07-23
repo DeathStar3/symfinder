@@ -183,11 +183,11 @@ public class NeoGraph {
     }
 
     public void detectSingularHotspotsInSubtyping(int threshold) {
-        detectHotspotsInSubtyping(  "singular", threshold);
+        detectHotspotsInSubtyping("hotspot", threshold);
     }
 
     public void detectSingularHotspotsInOverloading(int threshold) {
-        detectHotspotsInOverloading("singular", threshold);
+        detectHotspotsInOverloading("hotspot", threshold);
     }
 
     void detectHotspotsInSubtyping(String property, int threshold) {
@@ -205,7 +205,7 @@ public class NeoGraph {
 
     public void setHotspotLabels() {
         submitRequest(String.format("MATCH (n) " +
-                "WHERE n.singular = TRUE OR n.aggregated = TRUE " +
+                "WHERE n.hotspot = TRUE " +
                 "SET n:%s", EntityAttribute.HOTSPOT));
     }
 
