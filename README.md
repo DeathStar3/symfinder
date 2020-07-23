@@ -81,17 +81,50 @@ More details about the analysed projects and their definition are given in the [
 
 ### Reproducing the mapping with feature traces
 
-#### Mapping on ArgoUML traces
+- #### Mapping on ArgoUML traces
+
+From the root of the repository, run
 
 ```bash
 ./argouml-feature-mapping.sh
 ```
 
-#### Mapping on Sat4j traces
+- #### Mapping on Sat4j traces
+
+From the root of the repository, run
 
 ```bash
 ./sat4j-feature-mapping.sh
 ```
+
+These scripts first execute symfinder on the project, and then run another Docker container to automatically build the mapping.
+
+Here is a sample of mapping output:
+
+```
+Mapping on all vp-s
+Number of VPs and variants linked to features (TP): 113
+Number of VPs and variants not linked to features (FP): 112
+Number of features traces not linked to any VP nor variant (FN): 0
+Number of traces (TP + FN): 113
+Number of VPs / variants (TP + FP): 225
+Precision = TP / (TP + FP): 0.5022222222222222
+Recall = TP / (TP + FN): 1.0
+
+Mapping on hotspots only
+Number of VPs and variants linked to features (TP): 48
+Number of VPs and variants not linked to features (FP): 25
+Number of features traces not linked to any VP nor variant (FN): 65
+Number of traces (TP + FN): 113
+Number of VPs / variants (TP + FP): 73
+Precision = TP / (TP + FP): 0.6575342465753424
+Recall = TP / (TP + FN): 0.4247787610619469
+```
+
+Two mappings are done. The first takes into account all the potential _vp_-s and variants identified by symfinder,
+whereas the second only considers nodes in zones of high density of symmetries (see [Hotspots parameters](#hotspots-parameters)).  
+
+Precision and recall values are displayed, as well as the intermediate values calculated. 
 
 ### Analysing the output data
 
