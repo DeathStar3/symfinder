@@ -26,6 +26,7 @@ SET SYMFINDER_PROJECTS=%*
 set raw_path=%cd%
 set after_slash=%raw_path:\=/%
 SET PWD=%after_slash:C:=/c%
+SET TAG=vamos2020
 
 docker-compose -f runner-compose.yaml up
 docker-compose -f runner-compose.yaml down

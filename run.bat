@@ -25,5 +25,7 @@ if not exist "generated_visualizations\NUL" mkdir generated_visualizations
 
 for /f "usebackq tokens=*" %%a in (`git rev-parse --verify HEAD`) do @set symfinder_version=%%a
 
-docker run -it -v %cd%\resources:/resources -v %cd%\d3:/d3 -v %cd%\generated_visualizations:/generated_visualizations --user 1000:1000 -e SYMFINDER_VERSION=%symfinder_version%  -e SYMFINDER_PROJECTS="%*" --rm symfinder-sources_fetcher
+SET TAG=vamos2020
+
+docker run -it -v %cd%\experiments:/experiments -v %cd%\symfinder.yaml:/symfinder.yaml -v %cd%\resources:/resources -v %cd%\d3:/d3 -v %cd%\generated_visualizations:/generated_visualizations --user 1000:1000 -e SYMFINDER_VERSION=%symfinder_version%  -e SYMFINDER_PROJECTS="%*" --rm deathstar3/symfinder-fetcher:%TAG%
 rerun.bat %*
