@@ -19,8 +19,8 @@
 # Copyright 2018-2019 Philippe Collet <philippe.collet@univ-cotedazur.fr>
 #
 
-FROM python:3.7.3-alpine3.9
-RUN apk add bash py-pip && apk add --virtual buildpacks python-dev libffi-dev openssl-dev gcc libc-dev make && pip install docker-compose && apk del buildpacks
+FROM python:3.9.4-alpine3.13
+RUN apk add --no-cache bash py-pip && apk add --no-cache --virtual buildpacks libffi-dev openssl-dev gcc libc-dev make rust cargo && pip install docker-compose && apk del buildpacks
 ADD docker/runner/files/* /
 ADD docker/* /docker/
 CMD python3 run_xps.py
